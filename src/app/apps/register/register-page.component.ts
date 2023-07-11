@@ -5,11 +5,10 @@ import {RegisterService} from "../../core/service/authorization/register.service
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register-page.component.html',
+  styleUrls: ['./register-page.component.scss']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterPage implements OnInit, OnDestroy {
 
   registerForm: FormGroup = this.initializeRegisterForm();
   registerSubscription = new Subscription();

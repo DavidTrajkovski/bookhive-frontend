@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
+import { RegisterPage } from './register/register-page.component';
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
@@ -13,7 +13,7 @@ import {SharedModule} from "../shared/shared.module";
     SharedModule
   ],
   declarations: [
-    RegisterComponent
+    RegisterPage
   ],
   providers: [
 
