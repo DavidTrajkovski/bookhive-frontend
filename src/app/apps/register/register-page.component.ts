@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegisterRequest } from '../../core/interface/register/register-request';
+import { RegisterRequest } from '../../core/interface/authorization/register-request';
 import { RegisterService } from '../../core/service/authorization/register.service';
 import { Subscription } from 'rxjs';
 
@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit, OnDestroy {
           console.log('Registration successful');
         },
         (error) => {
-          console.error('Registration failed:', error);
+          console.error('Registration failed: ', error);
         }
       );
   }

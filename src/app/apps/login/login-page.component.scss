@@ -26,12 +26,12 @@ form button {
   height: 50px;
 }
 
-.register-container {
+.login-container {
   display: flex;
   flex-direction: row;
 }
 
-.register-form-div {
+.login-form-div {
   width: 55%;
   display: flex;
   justify-content: center;
@@ -47,11 +47,11 @@ form button {
   flex-direction: column;
 }
 
-.create-account-div {
+.login-div {
   margin-top: 150px;
 }
 
-.create-account {
+.login {
   font-size: 30px;
 }
 
@@ -63,25 +63,24 @@ mat-label {
   margin-top: 100px;
 }
 
-
 @media (max-width: 1200px) {
-  .register-container {
+  .login-container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .register-div {
+  .logo-div {
     order: 1;
     width: 90%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .register-form-div {
+  .login-form-div {
     order: 2;
     width: 90%;
   }
-  .create-account-div {
+  .login-div {
     margin-top: 70px;
   }
   .title-container {
