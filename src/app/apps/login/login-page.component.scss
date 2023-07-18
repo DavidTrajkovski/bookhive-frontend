@@ -1,6 +1,7 @@
+@import "styles";
+
 form div {
   margin-bottom: 20px;
-
 }
 
 mat-form-field {
@@ -37,6 +38,7 @@ form button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: map-get($bookhive-primary, 300);
 }
 
 .logo-div {
@@ -61,6 +63,13 @@ mat-label {
 
 .title-container {
   margin-top: 100px;
+}
+
+.title-div {
+  h1 {
+    font-family: var(--bookhive-logo-font);
+    font-weight: 500;
+  }
 }
 
 @media (max-width: 1200px) {
