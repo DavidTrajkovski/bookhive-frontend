@@ -1,10 +1,11 @@
+@import "styles";
+
 form div {
   margin-bottom: 20px;
-
 }
 
 mat-form-field {
-  height: 80px;
+  height: 70px;
 }
 
 form {
@@ -20,6 +21,8 @@ button {
   width: 100%;
   font-size: 25px;
   height: 100px;
+  color: white !important;
+  padding: 20px !important;
 }
 
 form button {
@@ -27,6 +30,7 @@ form button {
 }
 
 .register-container {
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -37,6 +41,7 @@ form button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: -120px;
 }
 
 .logo-div {
@@ -45,6 +50,7 @@ form button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: map-get($bookhive-primary, 400);
 }
 
 .create-account-div {
@@ -60,15 +66,61 @@ mat-label {
 }
 
 .title-container {
-  margin-top: 100px;
+  margin-top: -75px;
 }
 
+input {
+  font-size: 20px !important;
+}
+
+a {
+  text-decoration: none;
+  color: map-get($bookhive-primary, 500);
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.title-div {
+  h1 {
+    font-family: var(--bookhive-logo-font);
+    font-weight: 500;
+  }
+}
+
+.paragraph-div {
+  margin-top: -65px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  font-family: var(--bookhive-logo-font);
+  width: 360px;
+}
+
+img {
+  width: 45px;
+  height: 45px;
+  margin-top: 14px;
+  margin-left: 8px;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  width: 100%;
+  height: 10px;
+}
 
 @media (max-width: 1200px) {
   .register-container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: map-get($bookhive-primary, 400);
   }
   .register-div {
     order: 1;
@@ -80,9 +132,10 @@ mat-label {
   .register-form-div {
     order: 2;
     width: 90%;
+    margin-top: -20px;
   }
   .create-account-div {
-    margin-top: 70px;
+    margin-top: 50px;
   }
   .title-container {
     width: 100%;
@@ -92,6 +145,13 @@ mat-label {
     flex-direction: column;
   }
   .paragraph-div {
-    margin-top: -20px;
+    margin-top: -65px;
   }
+  a {
+    color: white;
+  }
+  button {
+    background-color: map-get($bookhive-primary, 800) !important;
+  }
+
 }
