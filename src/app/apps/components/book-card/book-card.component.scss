@@ -1,0 +1,37 @@
+.size-lg {
+  width: 60em;
+}
+
+.content-container {
+  cursor: pointer;
+  line-height: 1.2em;
+  height: 5em;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.show {
+  overflow: visible;
+  height: auto;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 3em;
+  padding: 1.5em;
+}
+
+.cover-image img {
+  height: 100%;
+  box-shadow: 2px 2px 7px gray;
+}
+
+mat-card-actions {
+  padding-top: 1.5em;
+}
+
+mat-card-title {
+  font-weight: 700;
+}
