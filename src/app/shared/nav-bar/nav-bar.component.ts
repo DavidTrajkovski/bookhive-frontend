@@ -8,7 +8,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { RouteConstants } from '../RouteConstants';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'bh-sidenav',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
   standalone: true,
