@@ -4,3 +4,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.search-container {
+  width: 32em;
+  margin-top: 2em;
+  mat-form-field {
+    width: fill;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .search-container {
+    width: 18em;
+    margin-top: 2em;
+    mat-form-field {
+      width: fill;
+    }
+  }
+}

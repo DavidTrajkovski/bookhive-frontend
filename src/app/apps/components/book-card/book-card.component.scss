@@ -1,7 +1,3 @@
-.size-lg {
-  width: 60em;
-}
-
 .content-container {
   cursor: pointer;
   line-height: 1.2em;
@@ -21,6 +17,7 @@
   align-items: start;
   gap: 3em;
   padding: 1.5em;
+  width: 60em;
 }
 
 .cover-image img {
@@ -34,4 +31,28 @@ mat-card-actions {
 
 mat-card-title {
   font-weight: 700;
+}
+
+@media screen and (max-width: 1200px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
 }
