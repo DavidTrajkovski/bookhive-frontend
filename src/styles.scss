@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Playfair+Display&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @include mat.core();
 
 $bookhive-primary: mat.define-palette(mat.$green-palette);
@@ -30,5 +30,11 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.default-button {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  font-weight: 600;
 }
