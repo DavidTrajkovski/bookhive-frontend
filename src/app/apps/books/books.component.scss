@@ -3,14 +3,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .search-container {
+  margin-bottom: 5em;
   width: 32em;
   margin-top: 2em;
   mat-form-field {
     width: fill;
   }
+}
+
+bh-book-card {
+
+}
+
+
+
+.books-wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: center;
 }
 
 @media screen and (max-width: 600px) {

@@ -11,13 +11,42 @@
   height: auto;
 }
 
+mat-card-header {
+  display: block;
+}
+
+mat-card-actions {
+  display: block;
+  padding-top: 1.5em;
+}
+
 .card-container {
+  margin-bottom: 1.5em;
   display: flex;
   flex-direction: row;
   align-items: start;
-  gap: 3em;
+  gap: 1em;
   padding: 1.5em;
-  width: 60em;
+  width: 30em;
+}
+
+.header-content {
+  flex-grow: 1;
+}
+
+.footer-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 1.3em;
+  margin-right: 1em;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .cover-image img {
@@ -25,12 +54,14 @@
   box-shadow: 2px 2px 7px gray;
 }
 
-mat-card-actions {
-  padding-top: 1.5em;
+mat-card-title {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
 }
 
-mat-card-title {
-  font-weight: 700;
+mat-card-subtitle {
+  font-size: 1.2em;
 }
 
 @media screen and (max-width: 1200px) {
