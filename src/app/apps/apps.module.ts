@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
+import { BooksComponent } from './books/books.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { LoginPage } from './login/login-page.component';
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [RegisterPage, LoginPage],
+  declarations: [RegisterPage, LoginPage, BooksComponent],
   providers: [],
 })
 export class AppsModule {}
