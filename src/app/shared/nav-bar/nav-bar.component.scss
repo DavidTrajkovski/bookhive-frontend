@@ -1,0 +1,18 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+#logo {
+  margin-left: 1em;
+  font-family: var(--bookhive-logo-font);
+  font-size: x-large;
+  font-weight: 500;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+mat-sidenav {
+  width: 15em;
+}

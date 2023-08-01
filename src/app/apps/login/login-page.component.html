@@ -1,0 +1,53 @@
+<div class="login-container">
+  <div class="login-form-div">
+    <div class="login-div">
+      <span class="login">LOGIN</span>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-field-wrapper">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="loginForm.get('email')?.invalid"
+            >Email is required and must be valid.</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="form-field-wrapper password">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required />
+          <mat-error *ngIf="loginForm.get('password')?.invalid"
+            >Password is required.</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+    <div>
+      <p>
+        Don't have an account? Click <a href="/register">here</a> to register!
+      </p>
+    </div>
+  </div>
+
+  <div class="logo-div">
+    <div class="title-container">
+      <div class="title-div">
+        <h1>BookHive</h1>
+      </div>
+      <div class="paragraph-div">
+        <p>A place buzzing with books</p>
+        <img src="/assets/bee.png" alt="bee_png">
+      </div>
+    </div>
+  </div>
+</div>
