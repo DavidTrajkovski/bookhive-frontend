@@ -1,0 +1,58 @@
+.content-container {
+  cursor: pointer;
+  line-height: 1.2em;
+  height: 5em;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.show {
+  overflow: visible;
+  height: auto;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 3em;
+  padding: 1.5em;
+  width: 60em;
+}
+
+.cover-image img {
+  height: 100%;
+  box-shadow: 2px 2px 7px gray;
+}
+
+mat-card-actions {
+  padding-top: 1.5em;
+}
+
+mat-card-title {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1200px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
