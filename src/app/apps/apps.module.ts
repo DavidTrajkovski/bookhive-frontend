@@ -10,6 +10,9 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
 import { BooksComponent } from './books/books.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { BookshopsComponent } from './bookshops/bookshops.component';
+import { BookshopCardComponent } from './components/bookshop-card/bookshop-card.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -21,7 +24,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent],
+  declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent, BookshopsComponent, BookshopCardComponent, HomeComponent],
   providers: [],
 })
 export class AppsModule {}
