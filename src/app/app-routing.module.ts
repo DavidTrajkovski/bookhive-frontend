@@ -7,6 +7,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { BooksComponent } from './apps/books/books.component';
 import { BookshopsComponent } from './apps/bookshops/bookshops.component';
 import { HomeComponent } from './apps/home/home.component';
+import { BookshopDetailsComponent } from './apps/bookshop-details/bookshop-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full' },
@@ -17,6 +18,10 @@ const routes: Routes = [
       { path: RouteConstants.HOME, component: HomeComponent },
       { path: RouteConstants.BOOKS, component: BooksComponent },
       { path: RouteConstants.BOOKSHOPS, component: BookshopsComponent },
+      {
+        path: `${RouteConstants.BOOKSHOPS}/:${RouteConstants.BOOKSHOPS_ID}`,
+        component: BookshopDetailsComponent,
+      },
     ],
   },
   { path: RouteConstants.REGISTER, component: RegisterPage },

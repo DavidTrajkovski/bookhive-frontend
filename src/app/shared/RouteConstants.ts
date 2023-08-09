@@ -4,4 +4,6 @@ export class RouteConstants {
   public static readonly REGISTER = 'register';
   public static readonly BOOKS = 'books';
   public static readonly BOOKSHOPS = 'bookshops';
+
+  public static readonly BOOKSHOPS_ID = 'bookshopId';
 }

@@ -13,6 +13,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { BookshopsComponent } from './bookshops/bookshops.component';
 import { BookshopCardComponent } from './components/bookshop-card/bookshop-card.component';
 import { HomeComponent } from './home/home.component';
+import { BookshopDetailsComponent } from './bookshop-details/bookshop-details.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent, BookshopsComponent, BookshopCardComponent, HomeComponent],
+  declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent, BookshopsComponent, BookshopCardComponent, HomeComponent, BookshopDetailsComponent],
   providers: [],
 })
 export class AppsModule {}
