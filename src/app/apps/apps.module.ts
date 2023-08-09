@@ -14,6 +14,7 @@ import { BookshopsComponent } from './bookshops/bookshops.component';
 import { BookshopCardComponent } from './components/bookshop-card/bookshop-card.component';
 import { HomeComponent } from './home/home.component';
 import { BookshopDetailsComponent } from './bookshop-details/bookshop-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -23,9 +24,19 @@ import { BookshopDetailsComponent } from './bookshop-details/bookshop-details.co
     MatCardModule,
     MatExpansionModule,
     ReactiveFormsModule,
+    RouterModule,
     SharedModule,
   ],
-  declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent, BookshopsComponent, BookshopCardComponent, HomeComponent, BookshopDetailsComponent],
+  declarations: [
+    RegisterPage,
+    LoginPage,
+    BooksComponent,
+    BookCardComponent,
+    BookshopsComponent,
+    BookshopCardComponent,
+    HomeComponent,
+    BookshopDetailsComponent,
+  ],
   providers: [],
 })
 export class AppsModule {}
