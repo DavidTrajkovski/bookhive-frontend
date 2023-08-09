@@ -8,11 +8,14 @@ import { Bookshop } from '../interface/bookshop';
   providedIn: 'root',
 })
 export class BookshopService {
-  URL: string = environment.apiUrl;
+  baseUrl: string = `${environment.apiUrl}/bookshops`;
   constructor(private http: HttpClient) {}
 
   getAllBookshops(): Observable<Bookshop[]> {
-    console.log(`${this.URL}/bookshops`);
-    return this.http.get<Bookshop[]>(`${this.URL}/bookshops`);
+    return this.http.get<Bookshop[]>(this.baseUrl);
+  }
+
+  getBookshopById(bookshopId: string): Observable<Bookshop> {
+    return this.http.get<Bookshop>(`${this.baseUrl}/${bookshopId}`);
   }
 }
