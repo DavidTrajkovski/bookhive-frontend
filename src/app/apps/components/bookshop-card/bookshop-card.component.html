@@ -9,16 +9,30 @@
     <div class="header-content">
       <mat-card-header>
         <mat-card-title-group>
-          <mat-card-title>Bookshop Name</mat-card-title>
-          <mat-card-subtitle>Bookshop Grade</mat-card-subtitle>
-          <mat-card-subtitle>Bookshop Address + City</mat-card-subtitle>
-          <mat-card-subtitle>Bookshop Phone Number</mat-card-subtitle>
+          <mat-card-title>
+            {{ bookshop?.name }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            Grade: <strong>{{ bookshop?.grade }}</strong>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            {{ bookshop?.address }} {{ bookshop?.city }}
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            {{ bookshop?.phoneNumber }}
+          </mat-card-subtitle>
         </mat-card-title-group>
       </mat-card-header>
     </div>
     <div>
       <mat-card-actions align="end">
-        <button class="default-button" mat-stroked-button>Details</button>
+        <button
+          [routerLink]="[bookshop?.id]"
+          class="default-button"
+          mat-stroked-button
+        >
+          Details
+        </button>
       </mat-card-actions>
     </div>
   </div>
