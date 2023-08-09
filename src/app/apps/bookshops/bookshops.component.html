@@ -10,14 +10,11 @@
   <div
     class="d-flex justify-content-xxl-start justify-content-center flex-wrap gap-3"
   >
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
-    <bh-bookshop-card></bh-bookshop-card>
+    <mat-progress-spinner mode="indeterminate" *ngIf="bookshopsAreLoading">
+    </mat-progress-spinner>
+    <bh-bookshop-card
+      *ngFor="let bookshop of bookshops"
+      [bookshop]="bookshop"
+    ></bh-bookshop-card>
   </div>
 </div>
