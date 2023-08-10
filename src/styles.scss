@@ -39,3 +39,7 @@ body {
   text-transform: uppercase;
   font-weight: 600;
 }
+
+a {
+  color: map-get($bookhive-primary, 500) !important;
+}
