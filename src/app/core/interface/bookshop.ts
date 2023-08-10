@@ -5,7 +5,7 @@ export interface Bookshop {
   name: string;
   city: string;
   address: string;
-  email: string;
+  bookshopEmail: string;
   phoneNumber: string;
   websiteLink: string;
   latitude: number;
