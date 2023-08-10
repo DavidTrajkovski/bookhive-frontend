@@ -1,1 +1,86 @@
-<p>bookshop-details works! {{bookshopId}}</p>
+<div class="container my-5 d-flex flex-column gap-4">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../bookshops">Bookshops</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ bookshop?.name }}
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <mat-progress-spinner
+    class="align-self-center"
+    mode="indeterminate"
+    *ngIf="bookshopIsLoading"
+  ></mat-progress-spinner>
+  <div
+    *ngIf="!bookshopIsLoading"
+    class="d-flex flex-xl-row flex-column w-100 gap-5"
+  >
+    <div class="align-self-center">
+      <img
+        class="rounded-4"
+        height="300em"
+        mat-card-lg-image
+        src="https://i.pinimg.com/564x/32/14/c2/3214c218a46bc12139e515a6ba7ef1a1.jpg"
+      />
+    </div>
+    <div>
+      <h1>{{ bookshop?.name }}</h1>
+      <ul>
+        <li>
+          <bh-text-icon
+            icon="home"
+            [text]="bookshop?.address + ' ' + bookshop?.city"
+          ></bh-text-icon>
+        </li>
+        <li>
+          <bh-text-icon
+            icon="phone"
+            [text]="bookshop?.phoneNumber"
+          ></bh-text-icon>
+        </li>
+        <li>
+          <bh-text-icon
+            icon="email"
+            [text]="bookshop?.bookshopEmail"
+          ></bh-text-icon>
+        </li>
+        <li>
+          <a href="https://{{bookshop?.websiteLink}}">
+            <bh-text-icon
+              icon="link"
+              [text]="bookshop?.websiteLink"
+            ></bh-text-icon>
+          </a>
+        </li>
+        <li>
+          <bh-text-icon icon="star" [text]="bookshop?.grade"></bh-text-icon>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="d-flex flex-column align-items-start w-100 gap-3">
+    <div>
+      <h2>📖 Books</h2>
+    </div>
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate"
+      *ngIf="booksAreLoading"
+    ></mat-progress-spinner>
+    <div class="w-100 mt-2">
+      <bh-bookshop-books-table
+        [books]="books"
+        [filteredBooks]="books"
+      ></bh-bookshop-books-table>
+    </div>
+  </div>
+</div>
