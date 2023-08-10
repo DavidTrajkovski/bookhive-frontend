@@ -1,4 +1,3 @@
-
 import { Observable } from 'rxjs';
 import {RegisterRequest} from "../../interface/authorization/register-request";
 import {Injectable} from "@angular/core";

@@ -1,38 +1,63 @@
-.container {
+.container1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
 }
 
 .search-container {
   margin-bottom: 5em;
-  width: 32em;
+  width: 60em;
   margin-top: 2em;
   mat-form-field {
     width: fill;
   }
 }
 
+.books-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 bh-book-card {
 
 }
 
-
-
-.books-wrapper {
-  align-items: center;
+.form-div {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   flex-direction: row;
-  align-content: center;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.filter-div {
+  width: 45%;
+}
+
+.sort-div {
+  width: 45%;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .form-div {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .search-container {
-    width: 18em;
+    width: 40em;
     margin-top: 2em;
     mat-form-field {
       width: fill;

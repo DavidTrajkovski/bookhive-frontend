@@ -10,6 +10,10 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
 import { BooksComponent } from './books/books.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { MatIconModule } from "@angular/material/icon";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -20,6 +24,10 @@ import { BookCardComponent } from './components/book-card/book-card.component';
     MatExpansionModule,
     ReactiveFormsModule,
     SharedModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   declarations: [RegisterPage, LoginPage, BooksComponent, BookCardComponent],
   providers: [],

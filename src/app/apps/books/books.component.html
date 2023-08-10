@@ -1,10 +1,32 @@
-<div class="container">
+<div class="container1">
   <div class="search-container">
-    <form>
-      <mat-form-field>
-        <mat-label>Search</mat-label>
-        <input type="search" matInput placeholder="The Lord of The Rings" />
-      </mat-form-field>
+    <form [formGroup]="searchAndFilterForm" >
+
+      <div class='form-div' formGroupName="searchAndFilter">
+
+        <div class='filter-div'>
+          <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input [autofocus]="false" matInput type="text" formControlName="searchValue"
+                   placeholder="The Lord of The Rings">
+          </mat-form-field>
+        </div>
+
+        <div class='sort-div'>
+          <mat-form-field>
+            <mat-label>Genres</mat-label>
+            <mat-select formControlName="sortValue">
+              <mat-option value="">Filter by genre</mat-option>
+              <mat-option value="ratingLowToHigh">1</mat-option>
+              <mat-option value="ratingHighToLow">2</mat-option>
+              <mat-option value="distanceClosestToFurthest">3</mat-option>
+              <mat-option value="distanceFurthestToClosest">4</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+
     </form>
   </div>
   <div class="books-wrapper">
