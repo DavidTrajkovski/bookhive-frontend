@@ -8,6 +8,7 @@ import { BooksComponent } from './apps/books/books.component';
 import { BookshopsComponent } from './apps/bookshops/bookshops.component';
 import { HomeComponent } from './apps/home/home.component';
 import { BookshopDetailsComponent } from './apps/bookshop-details/bookshop-details.component';
+import {ProfileComponent} from "./apps/profile/profile.component";
 
 const routes: Routes = [
   { path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full' },
@@ -22,6 +23,8 @@ const routes: Routes = [
         path: `${RouteConstants.BOOKSHOPS}/:${RouteConstants.BOOKSHOPS_ID}`,
         component: BookshopDetailsComponent,
       },
+      { path: RouteConstants.PROFILE, component: ProfileComponent },
+
     ],
   },
   { path: RouteConstants.REGISTER, component: RegisterPage },

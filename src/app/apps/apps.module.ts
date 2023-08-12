@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { BookshopBooksTableComponent } from './components/bookshop-books-table/bookshop-books-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HomeComponent,
     BookshopDetailsComponent,
     BookshopBooksTableComponent,
+    ProfileComponent
   ],
   providers: [],
 })
