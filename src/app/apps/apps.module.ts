@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { RegisterPage } from './register/register-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,15 @@ import { BookshopBooksTableComponent } from './components/bookshop-books-table/b
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './profile/profile.component';
+import { MatIconModule } from "@angular/material/icon";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
+import { AuthorsComponent } from './authors/authors.component';
+import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   imports: [
@@ -38,6 +47,30 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
+    imports: [
+        CommonModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatExpansionModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatIconModule,
+        MatSnackBarModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatTooltipModule,
+        RouterLink,
+        NgOptimizedImage
+    ],
+  declarations: [
+    RegisterPage,
+    LoginPage,
+    BooksComponent,
+    BookCardComponent,
+    AuthorsComponent,
+    AuthorDetailsComponent,
+    BookDetailsComponent
   ],
   declarations: [
     RegisterPage,

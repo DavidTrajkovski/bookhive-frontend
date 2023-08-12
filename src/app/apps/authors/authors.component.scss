@@ -1,0 +1,48 @@
+@import "styles";
+
+.author-container {
+  margin-top: 3em;
+}
+
+.add-author-button {
+  display: flex;
+  float: right;
+  background-color: map-get($bookhive-primary, 400);
+}
+
+.button-colons {
+  text-align: center;
+  width: 5%;
+}
+
+.mat-buttons {
+  margin-left: 0.5em;
+}
+
+mat-icon {
+  color: black;
+}
+
+mat-icon:hover {
+  font-size:26px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: map-get($bookhive-warn, 400);
+}
+
+.info:hover {
+  color: map-get($bookhive-primary, 400);
+}
+
+.edit:hover {
+  color: map-get($bookhive-accent, 400);
+}
+
+a {
+  text-decoration: none;
+}

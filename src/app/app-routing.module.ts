@@ -19,6 +19,9 @@ const routes: Routes = [
       { path: RouteConstants.HOME, component: HomeComponent },
       { path: RouteConstants.BOOKS, component: BooksComponent },
       { path: RouteConstants.BOOKSHOPS, component: BookshopsComponent },
+      { path: `${RouteConstants.BOOKS}/:${RouteConstants.BOOKS_ID}`, component: BookDetailsComponent },
+      { path: RouteConstants.AUTHORS, component: AuthorsComponent },
+      { path: `${RouteConstants.AUTHORS}/:${RouteConstants.AUTHORS_ID}`, component: AuthorDetailsComponent },
       {
         path: `${RouteConstants.BOOKSHOPS}/:${RouteConstants.BOOKSHOPS_ID}`,
         component: BookshopDetailsComponent,

@@ -1,0 +1,52 @@
+<div class="container">
+  <mat-progress-spinner
+    class="align-self-center"
+    mode="indeterminate"
+    *ngIf="authorIsLoading">
+  </mat-progress-spinner>
+  <h1>{{author?.name}}&nbsp;{{author?.surname}}</h1>
+  <h2>Age: {{author?.age}}</h2>
+  <div class="bio-author-img">
+    <div class="bio-div">
+      <h5>Biography</h5>
+      <p>{{author?.biography}}</p>
+    </div>
+    <div>
+      <img id="avatar" ngSrc="/assets/writer.png" height="350" width="350"/>
+    </div>
+  </div>
+  <div class="books-wrapper">
+    <h3>Some of his books</h3>
+    <ul>
+      <li *ngFor="let authorBook of authorBooks"
+          [ngStyle]="{'list-style-image': 'url(\'' + '/assets/book_resized.png' + '\')'}"
+          [routerLink]="['/books/', authorBook?.id]">
+        <div class="author-book">{{authorBook.bookName}}</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--<div class="container">-->
+<!--  <h1>Author1&nbsp;Author1</h1>-->
+<!--  <h2>23 years old</h2>-->
+<!--  <div class="bio-author-img">-->
+<!--    <div>-->
+<!--      <p>AKSDKASKD AS DA SD ASD ASDAS DASDA SDASDASD ASDA SD A SDASDAS DASDAS DASD-->
+<!--        DASDASD ASDA SDASDASD ASDASD ASDASD ASDASDA SDASDASD ASDASDASDASD </p>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <img id="avatar" ngSrc="/assets/writer.png" height="350" width="350"/>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="books-wrapper">-->
+<!--    <h3>Books by this author:</h3>-->
+<!--    <ul>-->
+<!--      <li [ngStyle]="{'list-style-image': 'url(\'' + '/assets/book_resized.png' + '\')'}">Book1</li>-->
+<!--      <li [ngStyle]="{'list-style-image': 'url(\'' + '/assets/book_resized.png' + '\')'}">Book2</li>-->
+<!--      <li>Book3</li>-->
+<!--      <li>Book4</li>-->
+<!--      <li>Book5</li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
