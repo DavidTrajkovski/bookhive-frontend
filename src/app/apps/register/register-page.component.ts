@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterRequest } from '../../core/interface/authorization/register-request';
-import { RegisterService } from '../../core/service/authorization/register.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/core/service/authentication/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bh-register',
@@ -15,7 +16,8 @@ export class RegisterPage implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _registerService: RegisterService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -41,11 +43,12 @@ export class RegisterPage implements OnInit, OnDestroy {
       password: this.registerForm.value.password,
     };
 
-    this.registerSubscription = this._registerService
+    this.registerSubscription = this.authService
       .register(registerRequest)
       .subscribe(
         (next) => {
           console.log('Registration successful');
+          this.router.navigate(['/login']);
         },
         (error) => {
           console.error('Registration failed: ', error);
