@@ -5,10 +5,12 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { TextIconComponent } from './components/text-icon/text-icon.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [LayoutComponent, TextIconComponent],
   imports: [
+    CommonModule,
     NavBarComponent,
     AppRoutingModule,
     MatProgressSpinnerModule,
