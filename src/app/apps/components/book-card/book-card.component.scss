@@ -64,6 +64,27 @@ mat-card-subtitle {
   font-size: 1.2em;
 }
 
+.heart {
+  width: 40px;
+  height: 40px;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.cart {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.cart:hover {
+  cursor: pointer;
+}
+
+
+
 @media screen and (max-width: 1200px) {
   .card-container {
     width: fill;
