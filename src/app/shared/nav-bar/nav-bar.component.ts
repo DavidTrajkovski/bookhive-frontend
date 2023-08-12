@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from '../../app-routing.module';
 import { RouteConstants } from '../RouteConstants';
-
+import {MatMenuModule} from '@angular/material/menu';
 @Component({
   selector: 'bh-sidenav',
   templateUrl: './nav-bar.component.html',
@@ -19,6 +19,7 @@ import { RouteConstants } from '../RouteConstants';
     MatButtonModule,
     MatIconModule,
     AppRoutingModule,
+    MatMenuModule
   ],
 })
 export class NavBarComponent {
@@ -27,4 +28,5 @@ export class NavBarComponent {
   bookshops: string = RouteConstants.BOOKSHOPS;
   login: string = RouteConstants.LOGIN;
   register: string = RouteConstants.REGISTER;
+  profile: string = RouteConstants.PROFILE;
 }
