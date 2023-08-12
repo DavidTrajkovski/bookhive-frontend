@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from '../../app-routing.module';
 import { RouteConstants } from '../RouteConstants';
-import { JwtService } from 'src/app/core/service/authorization/jwt.service';
+import { AuthService } from 'src/app/core/service/authentication/auth.service';
 
 @Component({
   selector: 'bh-sidenav',
@@ -31,7 +31,12 @@ export class NavBarComponent {
   login: string = RouteConstants.LOGIN;
   register: string = RouteConstants.REGISTER;
 
-  isUserLoggedIn: boolean = this.jwtService.isLoggedIn();
+  isUserLoggedIn: boolean = this.authService.isLoggedIn();
 
-  constructor(private jwtService: JwtService) {}
+  constructor(private authService: AuthService) {}
+
+  logout() {
+    this.authService.logout();
+    location.reload();
+  }
 }
