@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { LoginRequest } from '../../core/interface/authorization/login-request';
-import { LoginService } from '../../core/service/authorization/login.service';
-
+import { AuthService } from 'src/app/core/service/authentication/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'bh-login',
   templateUrl: './login-page.component.html',
@@ -15,7 +15,8 @@ export class LoginPage implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _loginService: LoginService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,8 +43,8 @@ export class LoginPage implements OnInit, OnDestroy {
       password: this.loginForm.value.password,
     };
 
-    this.loginSubscription = this._loginService.login(loginRequest).subscribe({
-      next: (data) => console.log('Login Successful'),
+    this.loginSubscription = this.authService.login(loginRequest).subscribe({
+      next: (_) => this.router.navigate(['/home']),
       error: (err) => console.log(err),
     });
   }
