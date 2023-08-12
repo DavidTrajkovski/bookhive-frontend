@@ -5,6 +5,7 @@ import { RegisterService } from '../../core/service/authorization/register.servi
 import { Subscription } from 'rxjs';
 
 @Component({
+  selector: 'bh-register',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss'],
 })

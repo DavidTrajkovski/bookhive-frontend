@@ -1,19 +1,29 @@
+import { Observable, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginRequest } from '../../interface/authorization/login-request';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { environment } from 'src/environments/environment.development';
+import { LoginResponse } from '../../interface/authorization/login-response';
+import { JwtService } from './jwt.service';
 
-import { Observable } from 'rxjs';
-import {RegisterRequest} from "../../interface/authorization/register-request";
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {LoginRequest} from "../../interface/authorization/login-request";
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  path = 'api/login';
-  constructor(private _http: HttpClient) {
-  }
+  baseUrl: string = `${environment.apiUrl}/login`;
+  constructor(
+    private _http: HttpClient,
+    private localStorageService: LocalStorageService,
+    private jwtService: JwtService
+  ) {}
 
-  register(loginRequest: LoginRequest): Observable<number> {
-    return this._http.post<number>(`${this.path}`, loginRequest);
+  login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this._http.post<LoginResponse>(`${this.baseUrl}`, loginRequest).pipe(
+      tap((data) => {
+        this.localStorageService.setItem('TOKEN', data.token);
+        this.jwtService.setToken(data.token);
+      })
+    );
   }
-
 }
