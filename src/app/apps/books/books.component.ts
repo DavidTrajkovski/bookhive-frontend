@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, filter, } from 'rxjs/operators';
 import {Subscription} from "rxjs";
-import {Component, OnInit} from '@angular/core';
 import {BookService} from "../../core/service/book/book.service";
 
 @Component({

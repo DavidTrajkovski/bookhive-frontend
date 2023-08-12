@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
@@ -34,34 +33,25 @@ import {RouterLink} from "@angular/router";
 
 @NgModule({
   imports: [
-    CommonModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatDividerModule,
-    MatListModule,
-    MatIconModule,
-    MatTableModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    RouterModule,
-    SharedModule,
-    imports: [
-        CommonModule,
-        MatInputModule,
-        MatButtonModule,
-        MatCardModule,
-        MatExpansionModule,
-        ReactiveFormsModule,
-        SharedModule,
-        MatIconModule,
-        MatSnackBarModule,
-        MatOptionModule,
-        MatSelectModule,
-        MatTooltipModule,
-        RouterLink,
-        NgOptimizedImage
+      CommonModule,
+      MatInputModule,
+      MatButtonModule,
+      MatCardModule,
+      MatExpansionModule,
+      MatDividerModule,
+      MatListModule,
+      MatIconModule,
+      MatTableModule,
+      MatFormFieldModule,
+      ReactiveFormsModule,
+      RouterModule,
+      SharedModule,
+      MatSnackBarModule,
+      MatOptionModule,
+      MatTooltipModule,
+      RouterLink,
+      NgOptimizedImage,
+      MatSelectModule
     ],
   declarations: [
     RegisterPage,
@@ -70,13 +60,7 @@ import {RouterLink} from "@angular/router";
     BookCardComponent,
     AuthorsComponent,
     AuthorDetailsComponent,
-    BookDetailsComponent
-  ],
-  declarations: [
-    RegisterPage,
-    LoginPage,
-    BooksComponent,
-    BookCardComponent,
+    BookDetailsComponent,
     BookshopsComponent,
     BookshopCardComponent,
     HomeComponent,
