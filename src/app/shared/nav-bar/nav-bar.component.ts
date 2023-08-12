@@ -24,6 +24,7 @@ import { RouteConstants } from '../RouteConstants';
 export class NavBarComponent {
   home: string = RouteConstants.HOME;
   books: string = RouteConstants.BOOKS;
+  bookshops: string = RouteConstants.BOOKSHOPS;
   login: string = RouteConstants.LOGIN;
   register: string = RouteConstants.REGISTER;
 }

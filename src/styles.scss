@@ -34,7 +34,12 @@ body {
 }
 
 .default-button {
+  font-size: 0.85em;
   font-family: "Roboto";
   text-transform: uppercase;
   font-weight: 600;
+}
+
+a {
+  color: map-get($bookhive-primary, 500) !important;
 }

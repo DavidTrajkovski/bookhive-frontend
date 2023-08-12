@@ -3,40 +3,59 @@
     <div class="create-account-div">
       <span class="create-account">Create an account</span>
     </div>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="register-form"
+    >
       <div class="form-field-wrapper">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" required>
-          <mat-error *ngIf="registerForm.get('firstName')?.invalid">First Name is required.</mat-error>
+          <input matInput formControlName="firstName" required />
+          <mat-error *ngIf="registerForm.get('firstName')?.invalid"
+            >First Name is required.</mat-error
+          >
         </mat-form-field>
       </div>
 
       <div class="form-field-wrapper">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Last Name</mat-label>
-          <input matInput formControlName="lastName" required>
-          <mat-error *ngIf="registerForm.get('lastName')?.invalid">Last Name is required.</mat-error>
+          <input matInput formControlName="lastName" required />
+          <mat-error *ngIf="registerForm.get('lastName')?.invalid"
+            >Last Name is required.</mat-error
+          >
         </mat-form-field>
       </div>
 
       <div class="form-field-wrapper">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" required>
-          <mat-error *ngIf="registerForm.get('email')?.invalid">Email is required and must be valid.</mat-error>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="registerForm.get('email')?.invalid"
+            >Email is required and must be valid.</mat-error
+          >
         </mat-form-field>
       </div>
 
       <div class="form-field-wrapper">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" required>
-          <mat-error *ngIf="registerForm.get('password')?.invalid">Password is required.</mat-error>
+          <input matInput type="password" formControlName="password" required />
+          <mat-error *ngIf="registerForm.get('password')?.invalid"
+            >Password is required.</mat-error
+          >
         </mat-form-field>
       </div>
 
-      <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">REGISTER</button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="registerForm.invalid"
+      >
+        REGISTER
+      </button>
     </form>
     <div>
       <p>Already have an account? Click <a href="/login">here</a> to login!</p>
@@ -50,10 +69,8 @@
       </div>
       <div class="paragraph-div">
         <p>A place buzzing with books</p>
-        <img src="/assets/bee.png" alt="bee_png">
+        <img src="/assets/bee.png" alt="bee_png" />
       </div>
     </div>
   </div>
 </div>
-
-

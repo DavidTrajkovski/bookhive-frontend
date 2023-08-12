@@ -1,3 +1,5 @@
+@import "styles";
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -15,4 +17,8 @@ mat-sidenav-container {
 
 mat-sidenav {
   width: 15em;
+}
+
+.active {
+  background-color: map-get($bookhive-primary, 100);
 }

@@ -1,0 +1,37 @@
+<mat-form-field class="w-100">
+  <mat-label>Search by book name</mat-label>
+  <input
+    matInput
+    (keyup)="queryBooksByName($event)"
+    placeholder="The Lord of The Rings"
+    #input
+  />
+</mat-form-field>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Authors</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of filteredBooks; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ book.name }}</td>
+      <td>{{ book.authors[0].name }} {{ book.authors[0].surname }}</td>
+      <td>{{ book.price }}</td>
+      <td class="text-center">
+        <button
+          class="default-button"
+          mat-stroked-button
+          [routerLink]="['../../books/', book?.id]"
+        >
+          View
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
