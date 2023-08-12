@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RegisterService } from './service/authorization/register.service';
-import { LoginService } from './service/authorization/login.service';
 import { BookshopService } from './service/bookshop.service';
+import { SharedModule } from '../shared/shared.module';
+import { AuthService } from './service/authentication/auth.service';
 
 @NgModule({
-  providers: [RegisterService, LoginService, BookshopService],
+  imports: [SharedModule],
+  providers: [AuthService, BookshopService],
 })
 export class CoreModule {}
