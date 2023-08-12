@@ -1,0 +1,119 @@
+<div class="container author-container">
+  <div>
+    <a class="btn text-white mb-3 add-author-button" >Add Author</a>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col" class="button-colons">Details</th>
+      <th scope="col" class="button-colons">Edit</th>
+      <th scope="col" class="button-colons">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor='let author of authors$ | async' id='{{author.id}}'>
+      <td>{{author.name}}</td>
+      <td>{{author.surname}}</td>
+      <td>
+        <a [routerLink]="['/authors/', author?.id]"><mat-icon matTooltip="Details" class="mat-buttons info">info</mat-icon></a>
+      </td>
+      <td>
+        <a><mat-icon matTooltip="Edit" class="mat-buttons edit ">edit</mat-icon></a>
+      </td>
+      <td>
+        <a><mat-icon matTooltip="Delete" class="mat-buttons delete">delete_outline</mat-icon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--routerLink='/authors/1'-->
+<!--[routerLink]="home"-->
+
+<!--<div class="container author-container">-->
+<!--  <div>-->
+<!--    <a class="btn text-white mb-3 add-author-button" >Add Author</a>-->
+<!--  </div>-->
+
+<!--  <table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">Name</th>-->
+<!--      <th scope="col">Surname</th>-->
+<!--      <th scope="col" class="button-colons">Details</th>-->
+<!--      <th scope="col" class="button-colons">Edit</th>-->
+<!--      <th scope="col" class="button-colons">Delete</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--      <td>Author1</td>-->
+<!--      <td>Author1</td>-->
+<!--      <td>-->
+<!--        <a><mat-icon routerLink='/authors/1' matTooltip="Details" class="mat-buttons info">info</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon matTooltip="Edit" class="mat-buttons edit ">edit</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon matTooltip="Delete" class="mat-buttons delete">delete_outline</mat-icon></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Author1</td>-->
+<!--      <td>Author1</td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons info">info</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons edit">edit</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons delete">delete_outline</mat-icon></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Author1</td>-->
+<!--      <td>Author1</td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons info">info</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons edit">edit</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons delete">delete_outline</mat-icon></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Author1</td>-->
+<!--      <td>Author1</td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons info">info</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons edit">edit</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons delete">delete_outline</mat-icon></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Author1</td>-->
+<!--      <td>Author1</td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons info">info</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons edit">edit</mat-icon></a>-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        <a><mat-icon class="mat-buttons delete">delete_outline</mat-icon></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->

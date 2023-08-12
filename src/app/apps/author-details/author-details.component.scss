@@ -1,0 +1,63 @@
+@import "styles";
+
+.container {
+  margin-top: 3em;
+}
+
+h2 {
+  margin-top: 1em;
+}
+
+h3 {
+  margin-top: 1em;
+}
+
+li {
+  font-size: 2em;
+}
+
+li:hover {
+  cursor: pointer;
+  color: map-get($bookhive-primary, 500);
+}
+
+.bio-author-img {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+
+.bio-div {
+  margin-top: 3em;
+  width: 60%;
+}
+
+.author-book {
+  margin-top: -10px;
+}
+
+.books-wrapper {
+  margin-top: -12em;
+}
+
+ul {
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 1000px) {
+  .bio-author-img {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .books-wrapper {
+    margin-top: -6em;
+  }
+
+  #avatar {
+    width: 9em;
+    height: 9em;
+    margin-bottom: 6em;
+    margin-left: 2em;
+  }
+}

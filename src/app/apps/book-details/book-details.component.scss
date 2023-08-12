@@ -1,0 +1,141 @@
+@import "styles";
+
+.image-resized {
+  display: none;
+}
+
+.div-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container {
+  margin-top: 3em;
+}
+
+h2 {
+  margin-top: 1em;
+}
+
+h3 {
+  margin-top: 1em;
+}
+
+li {
+  font-size: 1.5em;
+}
+
+.authors-genres-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+ul {
+  margin-left: 1em;
+}
+
+.mat-card-div {
+  margin-top: 1em;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 25px;
+}
+
+mat-card-actions img {
+  width: 35px;
+  height: 35px;
+}
+
+mat-card-actions div {
+  font-size: 1.2em;
+}
+
+.div-add-to-cart-wrapper {
+  cursor: pointer;
+  font-weight: bold;
+  background: map-get($bookhive-accent, 100);
+  color: black;
+  border-radius: 1.2em;
+  width: max-content;
+  padding: 0.625em;
+}
+
+.div-add-to-favourites-wrapper {
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 0.625em;
+  background: map-get($bookhive-accent, 100);
+  color: black;
+  border-radius: 1.2em;
+  width: max-content;
+  padding: 0.625em;
+}
+
+.bio-wrapper {
+  margin-top: 1em;
+  width: 90%;
+}
+
+.bio-wrapper p {
+  margin-left: 0.7em;
+}
+
+.authors-div-wrapper li {
+  cursor: pointer;
+}
+
+.authors-div-wrapper li:hover {
+  color: map-get($bookhive-primary, 500);
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+  .image-resized {
+    display: block;
+  }
+
+  .image-full {
+    display: none;
+  }
+
+  .div-wrapper {
+    align-items: center;
+    margin-left: 20%;
+  }
+
+  .authors-genres-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mat-card-div {
+    display: flex;
+    justify-content: start;
+  }
+
+  mat-card-actions div {
+    font-size: 1em;
+  }
+
+  mat-card-actions img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #avatar {
+    width: 15em;
+    height: 15em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+}

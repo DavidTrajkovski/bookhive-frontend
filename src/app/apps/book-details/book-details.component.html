@@ -1,0 +1,67 @@
+<div class="container div-wrapper">
+  <div>
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate"
+      *ngIf="bookIsLoading">
+    </mat-progress-spinner>
+    <h1>{{book?.name}}</h1>
+    <h5>ISBN: {{book?.isbn}}</h5>
+    <h5>Pages: {{book?.totalPages}}</h5>
+    <h5>Price: {{book?.price}}.00&euro;</h5>
+    <h5>Date published: {{toDateFormat(book?.datePublished)}}</h5>
+    <div class="authors-genres-div">
+      <div>
+        <div class="authors-div-wrapper">
+          <h3>Authors</h3>
+          <ul>
+            <li *ngFor="let author of book?.authors"
+                [routerLink]="['/authors/', author?.id]">
+              {{author.name}}&nbsp;{{author.surname}}
+            </li>
+          </ul>
+        </div>
+        <div class="genres-div-wrapper">
+          <h3>Genres</h3>
+          <ul>
+            <li *ngFor="let genre of book?.genres">
+              {{genre}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="image-resized">
+        <img *ngIf="book?.coverImageUrl" id="avatar" [ngSrc]="getBookUrl()" height="350" width="350"/>
+        <div class="mat-card-div">
+          <mat-card-actions align="end">
+            <div class="div-add-to-cart-wrapper">
+              Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart" (click)="openAddToCartDialog(book?.id!)">
+            </div>
+            <div class="div-add-to-favourites-wrapper">
+              &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart" (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </div>
+    <div class="bio-wrapper">
+      <h5>Book Description:</h5>
+      <p>{{book?.description}} asda sd asd asda sdas das das dasd asd asd asd asd asd asda sd asd asd asd asd asd asd asd </p>
+    </div>
+  </div>
+  <div class="image-full">
+    <img *ngIf="book?.coverImageUrl" id="avatar" [ngSrc]="getBookUrl()" height="350" width="350"/>
+    <div class="mat-card-div">
+      <mat-card-actions align="end">
+        <div class="div-add-to-cart-wrapper">
+          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart" (click)="openAddToCartDialog(book?.id!)">
+        </div>
+        <div class="div-add-to-favourites-wrapper">
+          &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart" (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+        </div>
+      </mat-card-actions>
+    </div>
+  </div>
+
+</div>
+
