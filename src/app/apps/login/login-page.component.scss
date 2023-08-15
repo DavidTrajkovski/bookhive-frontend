@@ -33,6 +33,10 @@ button {
   padding: 20px !important;
 }
 
+form button:hover {
+  cursor: pointer !important;
+}
+
 form button {
   height: 50px;
 }
@@ -103,8 +107,12 @@ h1 {
 img {
   width: 45px;
   height: 45px;
-  margin-top: 14px;
+  margin-top: 10px;
   margin-left: 8px;
+}
+
+.dont-have-account-div {
+  margin-top: 0.2em;
 }
 
 @media (max-width: 1200px) {
@@ -113,6 +121,9 @@ img {
     justify-content: center;
     align-items: center;
     background-color: map-get($bookhive-primary, 400);
+  }
+  .title-div {
+    margin-top: -100px;
   }
   .logo-div {
     order: 1;
@@ -135,11 +146,11 @@ img {
     align-items: center;
     flex-direction: column;
   }
-  .paragraph-div {
-    margin-top: -65px;
-  }
+  //.paragraph-div {
+  //  margin-top: -65px;
+  //}
   a {
-    color: white;
+    color: white !important;
   }
   button {
     background-color: map-get($bookhive-primary, 800) !important;

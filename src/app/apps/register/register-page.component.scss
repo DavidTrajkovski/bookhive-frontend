@@ -101,8 +101,12 @@ a:hover {
 img {
   width: 45px;
   height: 45px;
-  margin-top: 14px;
+  margin-top: 10px;
   margin-left: 8px;
+}
+
+.already-have-account-div {
+  margin-top: 0.2em;
 }
 
 h1 {
@@ -143,11 +147,11 @@ h1 {
     align-items: center;
     flex-direction: column;
   }
-  .paragraph-div {
-    margin-top: -65px;
-  }
+  //.paragraph-div {
+  //  margin-top: -65px;
+  //}
   a {
-    color: white;
+    color: white !important;
   }
   button {
     background-color: map-get($bookhive-primary, 800) !important;
