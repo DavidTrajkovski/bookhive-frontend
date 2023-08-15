@@ -9,4 +9,11 @@ export class RouteConstants {
   public static readonly BOOKS_ID = 'id';
   public static readonly AUTHORS = 'authors';
   public static readonly AUTHORS_ID = 'id';
+  public static readonly BOOKCLUBS = 'bookclubs';
+  public static readonly BOOKCLUB_ID = 'bookclubId';
+  public static readonly MEMBERS = 'members';
+  public static readonly INVITATIONS = 'invitations';
+  public static readonly REQUESTS = 'requests';
+  public static readonly TOPIC = 'topic';
+  public static readonly TOPIC_ID = 'topicId';
 }
