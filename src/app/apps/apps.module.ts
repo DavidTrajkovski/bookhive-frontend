@@ -30,6 +30,7 @@ import { AuthorDetailsComponent } from './author-details/author-details.componen
 import { BookDetailsComponent } from './book-details/book-details.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterLink} from "@angular/router";
+import { BookclubsModule } from './bookclubs/bookclubs.module';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import {RouterLink} from "@angular/router";
       MatTooltipModule,
       RouterLink,
       NgOptimizedImage,
-      MatSelectModule
+      MatSelectModule,
+      BookclubsModule,
     ],
   declarations: [
     RegisterPage,
