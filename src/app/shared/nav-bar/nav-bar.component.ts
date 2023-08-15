@@ -33,6 +33,8 @@ export class NavBarComponent {
   login: string = RouteConstants.LOGIN;
   register: string = RouteConstants.REGISTER;
   profile: string = RouteConstants.PROFILE;
+  bookclubs: string = RouteConstants.BOOKCLUBS;
+  invitations: string = RouteConstants.INVITATIONS;
 
   isUserLoggedIn: boolean = this.authService.isLoggedIn();
 

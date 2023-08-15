@@ -43,6 +43,13 @@
         routerLinkActive="active"
         >Bookshops</a
       >
+      <a
+        mat-list-item
+        [routerLink]="bookclubs"
+        (click)="sidenav.toggle()"
+        routerLinkActive="active"
+        >Book Clubs</a
+      >
       <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="login">Login</a>
       <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register">Register</a>
       <a *ngIf="isUserLoggedIn" (click)="logout()" mat-list-item>Logout</a>
