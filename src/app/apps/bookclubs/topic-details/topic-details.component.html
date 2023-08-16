@@ -1,1 +1,18 @@
-<p>topic-details works!</p>
+<div class="container mt-5">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../bookclubs">Bookclubs</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a [routerLink]="['../../bookclubs/', bookclub?.id]">
+            {{ bookclub?.name }}
+          </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Topic Name</li>
+      </ol>
+    </nav>
+  </div>
+</div>
