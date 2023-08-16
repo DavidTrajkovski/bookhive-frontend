@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { BookClub } from '../interface/bookclub/bookclub';
+import { Topic } from '../interface/bookclub/topic';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class BookclubService {
 
   getBookClubById(bookclubId: string): Observable<BookClub> {
     return this.http.get<BookClub>(`${this.baseUrl}/${bookclubId}`);
+  }
+
+  getTopicsForBookClub(bookclubId: string): Observable<Topic[]> {
+    return this.http.get<Topic[]>(`${this.baseUrl}/${bookclubId}/topics`);
   }
 }
