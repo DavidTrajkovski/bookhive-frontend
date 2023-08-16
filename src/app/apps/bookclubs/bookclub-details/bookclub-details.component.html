@@ -1,1 +1,55 @@
-<p>bookclub-details works!</p>
+<div class="container mt-5 d-flex flex-column gap-4">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../bookclubs">Bookclubs</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ bookclub?.name }}
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <mat-progress-spinner
+    class="align-self-center"
+    mode="indeterminate"
+    *ngIf="bookclubIsLoading && topicsAreLoading"
+  ></mat-progress-spinner>
+  <div *ngIf="!bookclubIsLoading && !topicsAreLoading">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title> {{ bookclub?.name }} </mat-card-title>
+          <mat-card-subtitle>
+            Owner: <strong>{{ bookclub?.owner }}</strong>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content class="mt-4 mb-2">
+        <p>{{ bookclub?.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent">Members</button>
+        <button mat-button color="accent">Invite</button>
+        <button mat-button color="accent">View Requests</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="!bookclubIsLoading && !topicsAreLoading">
+    <mat-card>
+      <mat-card-header>
+        <h5>Discussions:</h5>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list class="d-flex flex-column gap-4">
+          <bh-topic-card
+            *ngFor="let topic of topics"
+            [topic]="topic"
+          ></bh-topic-card>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
