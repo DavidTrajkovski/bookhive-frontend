@@ -16,7 +16,13 @@
         <button class="default-button" mat-stroked-button color="accent">
           Request
         </button>
-        <button class="default-button" mat-stroked-button>View</button>
+        <button
+          [routerLink]="[bookclub?.id]"
+          class="default-button"
+          mat-stroked-button
+        >
+          View
+        </button>
       </mat-card-actions>
     </div>
   </div>
