@@ -1,1 +1,23 @@
-<p>topic-card works!</p>
+<mat-list-item [routerLink]="['../../topic/', topic?.id]">
+  <div class="d-flex justify-content-between">
+    <div>
+      <strong>{{ topic?.title }}</strong>
+      <div>
+        <small>
+          Created by: {{ topic?.createdBy }},
+          {{ topic?.dateCreated | date : "shortDate" }}
+        </small>
+      </div>
+    </div>
+    <div class="d-none d-sm-block">
+      <button
+        [routerLink]="['../../topic/', topic?.id]"
+        mat-flat-button
+        color="accent"
+      >
+        Read
+      </button>
+    </div>
+  </div>
+</mat-list-item>
+<mat-divider></mat-divider>
