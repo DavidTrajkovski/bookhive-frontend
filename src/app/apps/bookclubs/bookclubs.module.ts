@@ -9,7 +9,7 @@ import { MembersComponent } from './members/members.component';
 import { InvitationsComponent } from './invitations/invitations.component';
 import { RequestsComponent } from './requests/requests.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { PostCardComponent } from './post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +31,13 @@ import { MatListModule } from '@angular/material/list';
     MembersComponent,
     InvitationsComponent,
     RequestsComponent,
+    PostCardComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     MatCardModule,
     MatButtonModule,
