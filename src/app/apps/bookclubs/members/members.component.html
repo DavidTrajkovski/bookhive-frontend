@@ -1,1 +1,50 @@
-<p>members works!</p>
+<div class="container mt-5">
+  <div
+    class="d-flex justify-content-center"
+    *ngIf="membersAreLoading && bookclubIsLoading"
+  >
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="!membersAreLoading && !bookclubIsLoading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../bookclubs">Bookclubs</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="../">{{ bookclub?.name }}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Members List</li>
+      </ol>
+    </nav>
+  </div>
+  <table class="table" *ngIf="!membersAreLoading && !bookclubIsLoading">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ member.firstName }}</td>
+        <td>{{ member.lastName }}</td>
+        <td>{{ member.email }}</td>
+        <td class="text-center">
+          <button
+            color="warn"
+            mat-button
+            (click)="kickMember(member.id, member.firstName, member.lastName)"
+          >
+            Kick
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
