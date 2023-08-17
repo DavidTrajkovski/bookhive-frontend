@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-content class="p-4">
+    {{ post?.content }}
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-footer class="mx-3 p-2">
+    <mat-card-subtitle>
+      Posted by: {{ post?.creator }}, on
+      {{ post?.dateCreated | date : "d/MM/yy, h:mm a" }}
+    </mat-card-subtitle>
+  </mat-card-footer>
+</mat-card>
