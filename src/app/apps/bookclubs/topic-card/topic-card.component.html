@@ -4,8 +4,8 @@
       <strong>{{ topic?.title }}</strong>
       <div>
         <small>
-          Created by: {{ topic?.createdBy }},
-          {{ topic?.dateCreated | date : "shortDate" }}
+          Created by: {{ topic?.createdBy }}, on
+          {{ topic?.date | date : "d/M/yyy" }}
         </small>
       </div>
     </div>
