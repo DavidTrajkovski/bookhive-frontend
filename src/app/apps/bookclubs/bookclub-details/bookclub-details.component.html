@@ -1,5 +1,10 @@
 <div class="container mt-5 d-flex flex-column gap-4">
-  <div>
+  <mat-progress-spinner
+    class="align-self-center"
+    mode="indeterminate"
+    *ngIf="bookclubIsLoading && topicsAreLoading"
+  ></mat-progress-spinner>
+  <div *ngIf="!bookclubIsLoading && !topicsAreLoading">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
@@ -12,11 +17,6 @@
       </ol>
     </nav>
   </div>
-  <mat-progress-spinner
-    class="align-self-center"
-    mode="indeterminate"
-    *ngIf="bookclubIsLoading && topicsAreLoading"
-  ></mat-progress-spinner>
   <div *ngIf="!bookclubIsLoading && !topicsAreLoading">
     <mat-card>
       <mat-card-header>
@@ -31,7 +31,7 @@
         <p>{{ bookclub?.description }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="accent">Members</button>
+        <button mat-button color="accent" routerLink="members">Members</button>
         <button mat-button color="accent">Invite</button>
         <button mat-button color="accent">View Requests</button>
       </mat-card-actions>
