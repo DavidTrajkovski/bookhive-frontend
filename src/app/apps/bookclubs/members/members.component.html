@@ -19,6 +19,9 @@
       </ol>
     </nav>
   </div>
+  <div class="my-4">
+    <h2>"{{ bookclub?.name }}" members:</h2>
+  </div>
   <table class="table" *ngIf="!membersAreLoading && !bookclubIsLoading">
     <thead>
       <tr>
@@ -26,7 +29,7 @@
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
-        <th scope="col"></th>
+        <th *ngIf="bookclub?.isOwner" scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +38,7 @@
         <td>{{ member.firstName }}</td>
         <td>{{ member.lastName }}</td>
         <td>{{ member.email }}</td>
-        <td class="text-center">
+        <td *ngIf="bookclub?.isOwner" class="text-center">
           <button
             color="warn"
             mat-button

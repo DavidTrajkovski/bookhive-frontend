@@ -29,8 +29,11 @@
     </mat-card>
   </div>
   <mat-divider class="my-4"></mat-divider>
-  <div class="d-flex flex-column gap-4">
+  <div *ngIf="posts" class="d-flex flex-column gap-4">
     <bh-post-card *ngFor="let post of posts" [post]="post"></bh-post-card>
+  </div>
+  <div *ngIf="posts.length <= 0" class="text-center">
+    <p>This topic doesn't have any posts yet.</p>
   </div>
   <mat-divider class="my-4"></mat-divider>
   <div class="d-flex flex-column">

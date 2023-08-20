@@ -18,7 +18,7 @@ export class TopicDetailsComponent {
   topicId: string = '';
   topic?: Topic;
   bookclub?: BookClub; // Needed for the breadcrumbs
-  posts?: Post[];
+  posts: Post[] = [];
   @ViewChild('newPostTextArea') newPostTextArea!: ElementRef;
   newPostContent: string = '';
 
