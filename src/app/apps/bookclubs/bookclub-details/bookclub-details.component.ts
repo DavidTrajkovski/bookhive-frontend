@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BookClub } from 'src/app/core/interface/bookclub/bookclub';
 import { Topic } from 'src/app/core/interface/bookclub/topic';
 import { BookclubService } from 'src/app/core/service/bookclub.service';
 import { RouteConstants } from 'src/app/shared/RouteConstants';
+import { SendInvitationDialog } from '../components/dialogues/send-invitation/send-invitation.component';
 
 @Component({
   selector: 'app-bookclub-details',
@@ -20,13 +22,21 @@ export class BookclubDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private bookclubService: BookclubService
+    private bookclubService: BookclubService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.getBookClubIdFromPath();
     this.getBookClubById();
     this.getTopicsForBookClub();
+  }
+
+  openSendInvitationDialog() {
+    const dialogRef = this.dialog.open(SendInvitationDialog, {
+      data: { bookclubId: this.bookclubId },
+    });
+    dialogRef.componentInstance.bookclubId = this.bookclubId;
   }
 
   getBookClubIdFromPath() {

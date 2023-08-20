@@ -32,8 +32,17 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button color="accent" routerLink="members">Members</button>
-        <button mat-button color="accent">Invite</button>
-        <button mat-button color="accent">View Requests</button>
+        <button mat-button color="accent" (click)="openSendInvitationDialog()">
+          Invite
+        </button>
+        <button
+          *ngIf="bookclub?.isOwner"
+          mat-button
+          color="accent"
+          routerLink="requests"
+        >
+          View Requests
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -43,12 +52,15 @@
         <h5>Discussions:</h5>
       </mat-card-header>
       <mat-card-content>
-        <mat-list class="d-flex flex-column gap-4">
+        <mat-list *ngIf="topics" class="d-flex flex-column gap-4">
           <bh-topic-card
             *ngFor="let topic of topics"
             [topic]="topic"
           ></bh-topic-card>
         </mat-list>
+        <p *ngIf="topics.length <= 0">
+          This book club doesn't have any topics, yet.
+        </p>
       </mat-card-content>
     </mat-card>
   </div>
