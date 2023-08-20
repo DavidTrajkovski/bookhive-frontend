@@ -50,8 +50,29 @@
         routerLinkActive="active"
         >Bookclubs</a
       >
+      <a
+        *ngIf="isUserLoggedIn"
+        mat-list-item
+        [routerLink]="invitations"
+        (click)="sidenav.toggle()"
+        routerLink="active"
+      >
+        <p
+          class="info-badge mt-3"
+          [matBadge]="invitationsCount"
+          [matBadgeHidden]="!invitationsCount"
+          matBadgePosition="after"
+          matBadgeOverlap="false"
+          matBadgeColor="accent"
+        >
+          Invitations
+        </p>
+      </a>
+
       <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="login">Login</a>
-      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register">Register</a>
+      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register"
+        >Register</a
+      >
       <a *ngIf="isUserLoggedIn" (click)="logout()" mat-list-item>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
