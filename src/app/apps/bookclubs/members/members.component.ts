@@ -34,6 +34,7 @@ export class MembersComponent {
       confirm(`Are you sure you want to kick member: ${firstName} ${lastName}?`)
     ) {
       this.bookclubService.removeMemberFromBookClub(this.bookclubId, memberId);
+      this.getMembersForBookClub();
     }
   }
 
