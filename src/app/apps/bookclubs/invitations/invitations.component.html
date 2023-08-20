@@ -10,6 +10,9 @@
       </ol>
     </nav>
   </div>
+  <div class="my-4">
+    <h2>Bookclub invitations:</h2>
+  </div>
   <table class="table" *ngIf="!invitationsAreLoading">
     <thead>
       <tr>
@@ -21,16 +24,31 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let member of invitations; let i = index">
+      <tr *ngFor="let invitation of invitations; let i = index">
         <th scope="row">{{ i + 1 }}</th>
-        <td>{{ member.senderEmail }}</td>
-        <td>{{ member.bookClubName }}</td>
-        <td>{{ member.message }}</td>
+        <td>{{ invitation.senderEmail }}</td>
+        <td>{{ invitation.bookClubName }}</td>
+        <td>{{ invitation.message }}</td>
         <td class="text-center">
-          <button color="accent" mat-button>Accept</button>
-          <button color="warn" mat-button>Decline</button>
+          <button
+            color="accent"
+            mat-button
+            (click)="acceptInvitation(invitation.id)"
+          >
+            Accept
+          </button>
+          <button
+            color="warn"
+            mat-button
+            (click)="declineInvitation(invitation.id)"
+          >
+            Decline
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="invitations.length <= 0" class="text-center">
+    <p>No bookclub invitations.</p>
+  </div>
 </div>

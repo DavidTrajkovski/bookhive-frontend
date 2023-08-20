@@ -13,10 +13,17 @@
     </mat-card-content>
     <div>
       <mat-card-actions align="end">
-        <button class="default-button" mat-stroked-button color="accent">
+        <button
+          *ngIf="!bookclub?.isMember && !bookclub?.isOwner"
+          class="default-button"
+          mat-stroked-button
+          color="accent"
+          (click)="requestBookClubMembership(bookclub?.id)"
+        >
           Request
         </button>
         <button
+          *ngIf="bookclub?.isMember || bookclub?.isOwner"
           [routerLink]="[bookclub?.id]"
           class="default-button"
           mat-stroked-button
