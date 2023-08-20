@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { PostCardComponent } from './post-card/post-card.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PostCardComponent } from './post-card/post-card.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    MatBadgeModule,
   ],
 })
 export class BookclubsModule {}

@@ -1,1 +1,36 @@
-<p>invitations works!</p>
+<div class="container mt-5">
+  <div class="d-flex justify-content-center" *ngIf="invitationsAreLoading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="!invitationsAreLoading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Invitations</li>
+      </ol>
+    </nav>
+  </div>
+  <table class="table" *ngIf="!invitationsAreLoading">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">From</th>
+        <th scope="col">Bookclub</th>
+        <th scope="col">Message</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of invitations; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ member.senderEmail }}</td>
+        <td>{{ member.bookClubName }}</td>
+        <td>{{ member.message }}</td>
+        <td class="text-center">
+          <button color="accent" mat-button>Accept</button>
+          <button color="warn" mat-button>Decline</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
