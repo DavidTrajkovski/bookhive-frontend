@@ -21,6 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { PostCardComponent } from './post-card/post-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatDividerModule,
     MatListModule,
     MatBadgeModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
 })
 export class BookclubsModule {}

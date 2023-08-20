@@ -1,1 +1,55 @@
-<p>requests works!</p>
+<div class="container mt-5">
+  <div
+    class="d-flex justify-content-center"
+    *ngIf="membershipRequestsAreLoading"
+  >
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="!membershipRequestsAreLoading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../bookclubs">Bookclubs</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="../">{{ bookclub?.name }}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Requests</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="my-4">
+    <h2>"{{ bookclub?.name }}" membership requests:</h2>
+  </div>
+  <table class="table" *ngIf="!membershipRequestsAreLoading">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">From</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of membershipRequests; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ request.senderEmail }}</td>
+        <td class="text-center">
+          <button
+            color="primary"
+            mat-button
+            (click)="acceptRequest(request.id)"
+          >
+            Accept
+          </button>
+          <button color="warn" mat-button (click)="declineRequest(request.id)">
+            Decline
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="membershipRequests.length <= 0" class="text-center">
+    <p>No membership requests.</p>
+  </div>
+</div>
