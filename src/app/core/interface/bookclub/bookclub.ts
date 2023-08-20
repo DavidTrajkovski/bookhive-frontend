@@ -3,4 +3,6 @@ export interface BookClub {
   owner: string;
   name: string;
   description: string;
+  isMember: boolean;
+  isOwner: boolean;
 }
