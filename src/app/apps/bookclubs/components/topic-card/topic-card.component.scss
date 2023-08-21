@@ -1,0 +1,10 @@
+button {
+  font-family: "Roboto";
+  font-weight: 500;
+}
+
+mat-list-item {
+  &:hover {
+    cursor: pointer;
+  }
+}

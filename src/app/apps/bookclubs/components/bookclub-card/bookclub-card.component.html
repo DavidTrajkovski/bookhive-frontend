@@ -1,0 +1,36 @@
+<mat-card class="card-container" appearance="raised">
+  <div class="card-content">
+    <div class="header-content">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title> {{ bookclub?.name }} </mat-card-title>
+          <mat-card-subtitle> Owner: {{ bookclub?.owner }} </mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+    </div>
+    <mat-card-content class="truncate">
+      {{ bookclub?.description }}
+    </mat-card-content>
+    <div>
+      <mat-card-actions align="end">
+        <button
+          *ngIf="!bookclub?.isMember && !bookclub?.isOwner"
+          class="default-button"
+          mat-stroked-button
+          color="accent"
+          (click)="requestBookClubMembership(bookclub?.id)"
+        >
+          Request
+        </button>
+        <button
+          *ngIf="bookclub?.isMember || bookclub?.isOwner"
+          [routerLink]="[bookclub?.id]"
+          class="default-button"
+          mat-stroked-button
+        >
+          View
+        </button>
+      </mat-card-actions>
+    </div>
+  </div>
+</mat-card>

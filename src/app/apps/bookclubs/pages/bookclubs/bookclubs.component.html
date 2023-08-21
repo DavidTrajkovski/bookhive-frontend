@@ -1,0 +1,23 @@
+<div
+  class="container d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="search-container">
+    <form>
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input
+          type="search"
+          matInput
+          placeholder="Harry Potter Fan Club"
+          (keyup)="queryBookClubsByName($event)"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-progress-spinner mode="indeterminate" *ngIf="bookclubsAreLoading">
+  </mat-progress-spinner>
+  <bh-bookclub-card
+    *ngFor="let bookclub of filteredBookclubs"
+    [bookclub]="bookclub"
+  ></bh-bookclub-card>
+</div>

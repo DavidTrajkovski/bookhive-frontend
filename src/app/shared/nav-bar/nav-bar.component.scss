@@ -22,3 +22,7 @@ mat-sidenav {
 .active {
   background-color: map-get($bookhive-primary, 100);
 }
+
+.info-badge {
+  display: inline-block;
+}

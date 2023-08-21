@@ -12,6 +12,12 @@ import {ProfileComponent} from "./apps/profile/profile.component";
 import {AuthorsComponent} from "./apps/authors/authors.component";
 import {AuthorDetailsComponent} from "./apps/author-details/author-details.component";
 import {BookDetailsComponent} from "./apps/book-details/book-details.component";
+import { BookclubDetailsComponent } from './apps/bookclubs/pages/bookclub-details/bookclub-details.component';
+import { BookclubsComponent } from './apps/bookclubs/pages/bookclubs/bookclubs.component';
+import { InvitationsComponent } from './apps/bookclubs/pages/invitations/invitations.component';
+import { MembersComponent } from './apps/bookclubs/pages/members/members.component';
+import { RequestsComponent } from './apps/bookclubs/pages/requests/requests.component';
+import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topic-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -27,7 +33,24 @@ const routes: Routes = [
       {path: `${RouteConstants.AUTHORS}/:${RouteConstants.AUTHORS_ID}`, component: AuthorDetailsComponent},
       {path: `${RouteConstants.BOOKSHOPS}/:${RouteConstants.BOOKSHOPS_ID}`, component: BookshopDetailsComponent,},
       {path: RouteConstants.PROFILE, component: ProfileComponent},
-
+      { path: RouteConstants.BOOKCLUBS, component: BookclubsComponent },
+      {
+        path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}`,
+        component: BookclubDetailsComponent,
+      },
+      {
+        path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}/${RouteConstants.MEMBERS}`,
+        component: MembersComponent,
+      },
+      {
+        path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}/${RouteConstants.REQUESTS}`,
+        component: RequestsComponent,
+      },
+      { path: RouteConstants.INVITATIONS, component: InvitationsComponent },
+      {
+        path: `${RouteConstants.TOPIC}/:${RouteConstants.TOPIC_ID}`,
+        component: TopicDetailsComponent,
+      },
     ],
   },
   {path: RouteConstants.REGISTER, component: RegisterPage},
