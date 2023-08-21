@@ -4,10 +4,10 @@ import { BookclubService } from 'src/app/core/service/bookclub.service';
 
 @Component({
   selector: 'app-bookclubs-page',
-  templateUrl: './bookclubs-page.component.html',
-  styleUrls: ['./bookclubs-page.component.scss'],
+  templateUrl: './bookclubs.component.html',
+  styleUrls: ['./bookclubs.component.scss'],
 })
-export class BookclubsPageComponent {
+export class BookclubsComponent {
   bookclubs: BookClub[] = [];
   filteredBookclubs: BookClub[] = [];
   bookclubsAreLoading: boolean = true;

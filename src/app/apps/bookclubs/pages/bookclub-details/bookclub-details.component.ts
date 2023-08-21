@@ -5,7 +5,7 @@ import { BookClub } from 'src/app/core/interface/bookclub/bookclub';
 import { Topic } from 'src/app/core/interface/bookclub/topic';
 import { BookclubService } from 'src/app/core/service/bookclub.service';
 import { RouteConstants } from 'src/app/shared/RouteConstants';
-import { SendInvitationDialog } from '../components/dialogues/send-invitation/send-invitation.component';
+import { SendInvitationDialog } from '../../components/dialogues/send-invitation/send-invitation.component';
 
 @Component({
   selector: 'app-bookclub-details',

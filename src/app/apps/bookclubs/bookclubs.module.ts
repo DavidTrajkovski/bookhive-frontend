@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BookclubsPageComponent } from './bookclubs-page/bookclubs-page.component';
-import { BookclubCardComponent } from './bookclub-card/bookclub-card.component';
-import { BookclubDetailsComponent } from './bookclub-details/bookclub-details.component';
-import { TopicDetailsComponent } from './topic-details/topic-details.component';
-import { TopicCardComponent } from './topic-card/topic-card.component';
-import { MembersComponent } from './members/members.component';
-import { InvitationsComponent } from './invitations/invitations.component';
-import { RequestsComponent } from './requests/requests.component';
+
+import { BookclubsComponent } from './pages/bookclubs/bookclubs.component';
+import { BookclubCardComponent } from './components/bookclub-card/bookclub-card.component';
+import { BookclubDetailsComponent } from './pages/bookclub-details/bookclub-details.component';
+import { TopicDetailsComponent } from './pages/topic-details/topic-details.component';
+import { TopicCardComponent } from './components/topic-card/topic-card.component';
+import { MembersComponent } from './pages/members/members.component';
+import { InvitationsComponent } from './pages/invitations/invitations.component';
+import { RequestsComponent } from './pages/requests/requests.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -19,14 +20,14 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { PostCardComponent } from './post-card/post-card.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    BookclubsPageComponent,
+    BookclubsComponent,
     BookclubCardComponent,
     BookclubDetailsComponent,
     TopicDetailsComponent,
