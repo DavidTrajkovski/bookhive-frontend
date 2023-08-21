@@ -53,6 +53,11 @@ export class AuthService {
     return jwt_decode(this.jwtToken ?? '');
   }
 
+  getUserId(): string | null {
+    this.decodeToken();
+    return this.decodedToken ? this.decodedToken['id'] : null;
+  }
+
   getUserName(): string | null {
     this.decodeToken();
     return this.decodedToken ? this.decodedToken['name'] : null;
