@@ -1,0 +1,61 @@
+<div class="author-dialog-wrapper">
+  <form
+    [formGroup]="authorForm"
+    (ngSubmit)="onSubmit()"
+    class="author-form">
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="authorForm.get('name')?.invalid">Name is required.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" required />
+        <mat-error *ngIf="authorForm.get('surname')?.invalid">Surname is required.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" required type="number"/>
+        <mat-error *ngIf="authorForm.get('age')?.invalid">Age is required and must be valid.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Biography</mat-label>
+        <textarea matInput type="text" formControlName="biography" required style="height: 100px;"></textarea>
+        <mat-error *ngIf="authorForm.get('biography')?.invalid"
+        >Biography is required.</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="buttons-div">
+      <button
+        type="submit"
+        mat-raised-button
+        color="warn"
+        (click)="onCancel()">
+        Cancel
+      </button>
+      <button
+        class="submit-button"
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="authorForm.invalid">
+        {{getSubmitButtonText()}}
+      </button>
+    </div>
+
+  </form>
+</div>
+
+
