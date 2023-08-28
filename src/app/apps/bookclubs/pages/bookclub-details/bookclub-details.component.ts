@@ -6,6 +6,8 @@ import { Topic } from 'src/app/core/interface/bookclub/topic';
 import { BookclubService } from 'src/app/core/service/bookclub.service';
 import { RouteConstants } from 'src/app/shared/RouteConstants';
 import { SendInvitationDialog } from '../../components/dialogues/send-invitation/send-invitation.component';
+import { BookclubDialog } from '../../components/dialogues/bookclub-dialog/bookclub-dialog.component';
+import { TopicDialog } from '../../components/dialogues/topic-dialog/topic-dialog.component';
 
 @Component({
   selector: 'app-bookclub-details',
@@ -39,6 +41,37 @@ export class BookclubDetailsComponent {
     dialogRef.componentInstance.bookclubId = this.bookclubId;
   }
 
+  openBookClubDialog() {
+    const dialog = this.dialog.open(BookclubDialog, {
+      data: {
+        bookclubId: this.bookclubId,
+      },
+      height: '600px',
+      width: '600px',
+      autoFocus: false,
+    });
+    dialog.afterClosed().subscribe((_) => {
+      this.bookclubIsLoading = true;
+      this.getBookClubById();
+    });
+  }
+
+  openTopicDialog() {
+    const dialog = this.dialog.open(TopicDialog, {
+      data: {
+        topicId: null,
+        bookclubId: this.bookclubId,
+      },
+      height: '600px',
+      width: '600px',
+      autoFocus: false,
+    });
+    dialog.afterClosed().subscribe((_) => {
+      this.topicsAreLoading = true;
+      this.getTopicsForBookClub();
+    });
+  }
+
   getBookClubIdFromPath() {
     this.route.params.subscribe((params) => {
       this.bookclubId = params[RouteConstants.BOOKCLUB_ID];
@@ -60,7 +93,6 @@ export class BookclubDetailsComponent {
       next: (data) => {
         this.topics = data;
         this.topicsAreLoading = false;
-        console.log(this.topics);
       },
       error: (err) => console.error(err),
     });

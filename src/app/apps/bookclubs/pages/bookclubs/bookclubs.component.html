@@ -1,23 +1,40 @@
-<div
-  class="container d-flex flex-column justify-content-center align-items-center"
->
-  <div class="search-container">
-    <form>
-      <mat-form-field>
-        <mat-label>Search</mat-label>
-        <input
-          type="search"
-          matInput
-          placeholder="Harry Potter Fan Club"
-          (keyup)="queryBookClubsByName($event)"
-        />
-      </mat-form-field>
-    </form>
+<div class="container mt-5 d-flex flex-column gap-4">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Bookclubs</li>
+      </ol>
+    </nav>
   </div>
-  <mat-progress-spinner mode="indeterminate" *ngIf="bookclubsAreLoading">
-  </mat-progress-spinner>
-  <bh-bookclub-card
-    *ngFor="let bookclub of filteredBookclubs"
-    [bookclub]="bookclub"
-  ></bh-bookclub-card>
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center"
+  >
+    <div class="search-container">
+      <form>
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input
+            type="search"
+            matInput
+            placeholder="Harry Potter Fan Club"
+            (keyup)="queryBookClubsByName($event)"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+    <mat-progress-spinner mode="indeterminate" *ngIf="bookclubsAreLoading">
+    </mat-progress-spinner>
+    <div class="mb-3" *ngIf="!bookclubsAreLoading">
+      <button mat-stroked-button (click)="openBookClubDialog()">
+        Create your bookclub
+        <mat-icon iconPositionEnd>create</mat-icon>
+      </button>
+    </div>
+    <bh-bookclub-card
+      *ngFor="let bookclub of filteredBookclubs"
+      [bookclub]="bookclub"
+      (refetchBookClubsEvent)="getAllBookClubs()"
+    ></bh-bookclub-card>
+  </div>
 </div>

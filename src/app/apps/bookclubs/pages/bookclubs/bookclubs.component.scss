@@ -1,7 +1,5 @@
 .search-container {
-  margin-bottom: 5em;
   width: 32em;
-  margin-top: 2em;
   mat-form-field {
     width: fill;
   }
@@ -10,7 +8,6 @@
 @media screen and (max-width: 600px) {
   .search-container {
     width: 18em;
-    margin-top: 2em;
     mat-form-field {
       width: fill;
     }
