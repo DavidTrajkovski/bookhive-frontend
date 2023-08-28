@@ -38,6 +38,7 @@ export class NavBarComponent {
   profile: string = RouteConstants.PROFILE;
   bookclubs: string = RouteConstants.BOOKCLUBS;
   invitations: string = RouteConstants.INVITATIONS;
+  authors: string = RouteConstants.AUTHORS
 
   isUserLoggedIn: boolean = false;
   invitationsCount: number = 0;

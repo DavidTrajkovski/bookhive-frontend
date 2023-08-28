@@ -31,6 +31,13 @@
       >
       <a
         mat-list-item
+        [routerLink]="authors"
+        (click)="sidenav.toggle()"
+        routerLinkActive="active"
+      >Authors</a
+      >
+      <a
+        mat-list-item
         [routerLink]="books"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
