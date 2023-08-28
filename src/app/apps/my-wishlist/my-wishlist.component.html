@@ -1,0 +1,43 @@
+<div class="container cont1">
+  <h2>My Wishlist</h2>
+  <div class="wishlist-spinner" *ngIf="isLoading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="my-wishlist-cont" *ngIf="!isLoading && myBooks.length > 0">
+    <div *ngFor="let book of myBooks">
+      <mat-card class="card-container" appearance="raised">
+        <div class="cover-image">
+          <img
+            mat-card-lg-image
+            src="{{book.coverImageUrl}}"
+          />
+        </div>
+        <div class="card-content">
+          <div class="header-content">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{book.name}}</mat-card-title>
+                <mat-card-subtitle *ngFor="let author of book.authors">{{author.name}}&nbsp;{{author.surname}}</mat-card-subtitle>
+              </mat-card-title-group>
+            </mat-card-header>
+          </div>
+          <div class="footer-content">
+            <mat-card-actions align="end">
+              <div class="act-button-div"><a [routerLink]="['/books/', book?.id]" class="details-link">Details</a></div>
+              <div class="act-button-div"><a (click)="removeBookFromMyWishList(book.id)" class="remove-link">Remove</a></div>
+            </mat-card-actions>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="my-wishlist-cont" *ngIf="!isLoading && myBooks.length == 0">
+    <h5>There are no books in your wishlist.</h5>
+  </div>
+</div>
+<notifier-container></notifier-container>
+
+

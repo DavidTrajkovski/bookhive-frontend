@@ -39,6 +39,7 @@ export class NavBarComponent {
   bookclubs: string = RouteConstants.BOOKCLUBS;
   invitations: string = RouteConstants.INVITATIONS;
   authors: string = RouteConstants.AUTHORS
+  mywishlist: string = RouteConstants.MY_WISHLIST
 
   isUserLoggedIn: boolean = false;
   invitationsCount: number = 0;

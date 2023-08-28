@@ -32,6 +32,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterLink} from "@angular/router";
 import { BookclubsModule } from './bookclubs/bookclubs.module';
 import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
+import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
 
 /**
@@ -116,7 +117,8 @@ const customNotifierOptions: NotifierOptions = {
     BookshopDetailsComponent,
     BookshopBooksTableComponent,
     ProfileComponent,
-    AuthorDialog
+    AuthorDialog,
+    MyWishlistComponent
   ],
   providers: [],
 })

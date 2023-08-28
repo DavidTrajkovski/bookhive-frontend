@@ -1,0 +1,115 @@
+@import "styles";
+
+.cont1 {
+  margin-top: 3%;
+}
+
+.wishlist-spinner {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.details-link {
+  color: map-get($bookhive-accent, 400) !important;
+}
+
+.remove-link {
+  color: map-get($bookhive-warn, 500) !important;
+}
+
+.act-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.my-wishlist-cont {
+  margin-top: 2%;
+  margin-left: 4%;
+}
+
+.card-container {
+  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 1em;
+  padding: 1.5em;
+  width: 50em;
+}
+
+.cover-image img {
+  height: 100%;
+  box-shadow: 2px 2px 7px gray;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-content {
+  flex-grow: 1;
+}
+
+.footer-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 1.3em;
+  margin-right: 1em;
+}
+
+mat-card-header {
+  display: block;
+}
+
+mat-card-title {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+}
+
+mat-card-subtitle {
+  font-size: 1.2em;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  padding-top: 1.5em;
+}
+
+@media screen and (max-width: 1200px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: fill;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
