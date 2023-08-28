@@ -7,9 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { TextIconComponent } from './components/text-icon/text-icon.component';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/local-storage.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [LayoutComponent, TextIconComponent],
+  declarations: [LayoutComponent, TextIconComponent, NotFoundComponent],
   providers: [LocalStorageService],
   imports: [
     CommonModule,
