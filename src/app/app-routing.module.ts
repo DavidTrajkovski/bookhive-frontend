@@ -20,6 +20,7 @@ import { RequestsComponent } from './apps/bookclubs/pages/requests/requests.comp
 import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topic-details.component';
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
+import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -55,6 +56,10 @@ const routes: Routes = [
         path: `${RouteConstants.TOPIC}/:${RouteConstants.TOPIC_ID}`,
         component: TopicDetailsComponent,
       },
+      {
+        path: `${RouteConstants.MY_WISHLIST}`,
+        component: MyWishlistComponent
+      }
     ],
   },
   {path: RouteConstants.REGISTER, component: RegisterPage},

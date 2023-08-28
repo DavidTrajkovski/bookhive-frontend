@@ -68,6 +68,14 @@
       <a
         *ngIf="isUserLoggedIn"
         mat-list-item
+        [routerLink]="mywishlist"
+        (click)="sidenav.toggle()"
+        routerLinkActive="active"
+      >My Wishlist</a
+      >
+      <a
+        *ngIf="isUserLoggedIn"
+        mat-list-item
         [routerLink]="bookclubs"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
