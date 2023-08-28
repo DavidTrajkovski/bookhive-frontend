@@ -4,7 +4,7 @@ import {BookAuthorInfoDto} from "../../core/interface/author/book-author-info-dt
 import {AuthorService} from "../../core/service/author/author.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {AuthorDialog} from "../dialog/author/author.dialog";
+import {AuthorDialog} from "./dialogs/author-dialog/author.dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
   selector: 'app-authors',

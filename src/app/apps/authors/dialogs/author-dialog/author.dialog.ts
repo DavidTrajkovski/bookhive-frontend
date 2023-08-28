@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AuthorDetails} from "../../../core/interface/author/author-details";
-import {AuthorService} from "../../../core/service/author/author.service";
+import {AuthorDetails} from "../../../../core/interface/author/author-details";
+import {AuthorService} from "../../../../core/service/author/author.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
-import {CreateAuthorRequest} from "../../../core/interface/author/create-author-request";
+import {CreateAuthorRequest} from "../../../../core/interface/author/create-author-request";
 
 @Component({
   selector: 'AuthorDialog',
@@ -13,9 +13,10 @@ import {CreateAuthorRequest} from "../../../core/interface/author/create-author-
 })
 export class AuthorDialog implements OnInit {
 
-  author: AuthorDetails | null  = null
-  authorForm: FormGroup = this.initializeForm() ;
+  author: AuthorDetails | null  = null;
+  authorForm: FormGroup = this.initializeForm();
   authorSubscription = new Subscription();
+  isLoading: boolean = false;
 
   constructor(
     private _dialogRef: MatDialogRef<AuthorDialog>,
@@ -27,6 +28,7 @@ export class AuthorDialog implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true
     this.initLogic()
   }
 
@@ -34,12 +36,17 @@ export class AuthorDialog implements OnInit {
     if (this.data.authorId != null) {
       this._authorService.getAuthorById(this.data.authorId).subscribe({
         next: value => {
+          this.isLoading = false
           this.author = value
           this.prepopulateAuthorForm(this.author);
         },
-        error: err => {console.log(err)}
+        error: err => {
+          //this.isLoading = false
+          console.log(err)
+        }
       })
     } else {
+      this.isLoading = false
       this.initializeForm()
     }
   }

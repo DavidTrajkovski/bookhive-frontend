@@ -1,5 +1,12 @@
 <div class="author-dialog-wrapper">
-  <form
+  <div class="author-spinner">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate"
+      *ngIf="isLoading">
+    </mat-progress-spinner>
+  </div>
+  <form *ngIf="!isLoading"
     [formGroup]="authorForm"
     (ngSubmit)="onSubmit()"
     class="author-form">

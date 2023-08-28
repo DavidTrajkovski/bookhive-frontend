@@ -31,7 +31,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterLink} from "@angular/router";
 import { BookclubsModule } from './bookclubs/bookclubs.module';
-import {AuthorDialog} from "./dialog/author/author.dialog";
+import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
 
 @NgModule({
   imports: [
