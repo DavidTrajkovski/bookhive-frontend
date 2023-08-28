@@ -4,4 +4,5 @@ export interface Topic {
   createdBy: string;
   date: Date;
   bookclubId: string;
+  isCreator: boolean;
 }

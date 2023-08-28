@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BookClub } from 'src/app/core/interface/bookclub/bookclub';
 import { BookclubService } from 'src/app/core/service/bookclub.service';
+import { BookclubDialog } from '../../components/dialogues/bookclub-dialog/bookclub-dialog.component';
 
 @Component({
   selector: 'app-bookclubs-page',
@@ -12,10 +14,13 @@ export class BookclubsComponent {
   filteredBookclubs: BookClub[] = [];
   bookclubsAreLoading: boolean = true;
 
-  constructor(private bookclubService: BookclubService) {}
+  constructor(
+    private bookclubService: BookclubService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.getAllBookshops();
+    this.getAllBookClubs();
   }
 
   queryBookClubsByName(event: Event) {
@@ -29,7 +34,7 @@ export class BookclubsComponent {
     }
   }
 
-  getAllBookshops() {
+  getAllBookClubs() {
     this.bookclubService.getAllBookClubs().subscribe({
       next: (data) => {
         this.bookclubs = data;
@@ -37,6 +42,21 @@ export class BookclubsComponent {
         this.bookclubsAreLoading = false;
       },
       error: (err) => console.error(err),
+    });
+  }
+
+  openBookClubDialog() {
+    const dialog = this.dialog.open(BookclubDialog, {
+      data: {
+        bookclubId: null,
+      },
+      height: '600px',
+      width: '600px',
+      autoFocus: false,
+    });
+    dialog.afterClosed().subscribe((_) => {
+      this.bookclubsAreLoading = true;
+      this.getAllBookClubs();
     });
   }
 }

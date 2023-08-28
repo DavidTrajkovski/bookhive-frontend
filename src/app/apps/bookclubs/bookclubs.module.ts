@@ -24,6 +24,8 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BookclubDialog } from './components/dialogues/bookclub-dialog/bookclub-dialog.component';
+import { TopicDialog } from './components/dialogues/topic-dialog/topic-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     InvitationsComponent,
     RequestsComponent,
     PostCardComponent,
+    BookclubDialog,
+    TopicDialog,
   ],
   imports: [
     CommonModule,

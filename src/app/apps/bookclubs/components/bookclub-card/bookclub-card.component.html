@@ -30,6 +30,15 @@
         >
           View
         </button>
+        <button
+          *ngIf="bookclub?.isOwner"
+          class="default-button"
+          mat-stroked-button
+          (click)="openBookClubDialog()"
+        >
+          Edit
+          <mat-icon iconPositionEnd>create</mat-icon>
+        </button>
       </mat-card-actions>
     </div>
   </div>

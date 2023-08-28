@@ -1,6 +1,6 @@
-<mat-list-item [routerLink]="['../../topic/', topic?.id]">
+<mat-list-item>
   <div class="d-flex justify-content-between">
-    <div>
+    <div [routerLink]="['../../topic/', topic?.id]">
       <strong>{{ topic?.title }}</strong>
       <div>
         <small>
@@ -10,6 +10,15 @@
       </div>
     </div>
     <div class="d-none d-sm-block">
+      <button
+        *ngIf="topic?.isCreator"
+        class="me-1"
+        mat-flat-button
+        (click)="openTopicDialog()"
+      >
+        Edit
+        <mat-icon iconPositionEnd>create</mat-icon>
+      </button>
       <button
         [routerLink]="['../../topic/', topic?.id]"
         mat-flat-button

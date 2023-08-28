@@ -1,0 +1,52 @@
+<div class="bookclub-dialog-wrapper">
+  <div>
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate"
+      *ngIf="isLoading"
+    >
+    </mat-progress-spinner>
+  </div>
+  <form *ngIf="!isLoading" [formGroup]="bookclubForm" (ngSubmit)="onSubmit()">
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="bookclubForm.get('name')?.invalid"
+          >Name is required.</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-wrapper">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          type="text"
+          formControlName="description"
+          required
+          style="height: 100px"
+        ></textarea>
+        <mat-error *ngIf="bookclubForm.get('description')?.invalid"
+          >Description is required.</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="buttons-div">
+      <button type="button" mat-raised-button color="warn" (click)="onCancel()">
+        Cancel
+      </button>
+      <button
+        class="submit-button"
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="bookclubForm.invalid"
+      >
+        {{ getSubmitButtonText() }}
+      </button>
+    </div>
+  </form>
+</div>
