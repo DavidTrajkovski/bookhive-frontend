@@ -34,6 +34,8 @@ import { BookclubsModule } from './bookclubs/bookclubs.module';
 import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
 import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {NgxPaginationModule} from "ngx-pagination";
 
 /**
  * Custom angular notifier options
@@ -101,7 +103,9 @@ const customNotifierOptions: NotifierOptions = {
     NgOptimizedImage,
     MatSelectModule,
     BookclubsModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
+    MatProgressSpinnerModule,
+    NgxPaginationModule
   ],
   declarations: [
     RegisterPage,

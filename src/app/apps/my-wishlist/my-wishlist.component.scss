@@ -14,6 +14,10 @@ a {
   text-decoration: none !important;
 }
 
+a:hover {
+  font-weight: bold;
+}
+
 .details-link {
   color: map-get($bookhive-accent, 400) !important;
 }
