@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { BookClub } from '../interface/bookclub/bookclub';
 import { Topic } from '../interface/bookclub/topic';
 import { Member } from '../interface/bookclub/member';
+import { CreateBookclubRequest } from '../interface/bookclub/create-bookclub-request';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,22 @@ export class BookclubService {
 
   getMembersForBookClub(bookclubId: string): Observable<Member[]> {
     return this.http.get<Member[]>(`${this.baseUrl}/${bookclubId}/members`);
+  }
+
+  createBookClub(
+    createBookClubRequest: CreateBookclubRequest
+  ): Observable<BookClub> {
+    return this.http.post<BookClub>(this.baseUrl, createBookClubRequest);
+  }
+
+  editBookClub(
+    bookclubId: string,
+    createBookClubRequest: CreateBookclubRequest
+  ): Observable<BookClub> {
+    return this.http.put<BookClub>(
+      `${this.baseUrl}/${bookclubId}`,
+      createBookClubRequest
+    );
   }
 
   removeMemberFromBookClub(bookclubId: string, memberId: string): void {
