@@ -5,6 +5,7 @@ import {AuthorService} from "../../../../core/service/author/author.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {CreateAuthorRequest} from "../../../../core/interface/author/create-author-request";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'AuthorDialog',
@@ -17,14 +18,16 @@ export class AuthorDialog implements OnInit {
   authorForm: FormGroup = this.initializeForm();
   authorSubscription = new Subscription();
   isLoading: boolean = false;
+  private readonly notifier: NotifierService;
 
   constructor(
     private _dialogRef: MatDialogRef<AuthorDialog>,
     @Inject(MAT_DIALOG_DATA) public data: {authorId: string | null},
     private _authorService: AuthorService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private notifierService: NotifierService
   ) {
-
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
@@ -92,9 +95,11 @@ export class AuthorDialog implements OnInit {
       .subscribe(
         (next) => {
           this._dialogRef.close()
+          this.notifier.notify('success', 'New author has been created!');
         },
         (error) => {
           console.error('Author creation failed: ', error);
+          this.notifier.notify('error', 'Author creation failed: \n', error);
         }
       );
   }
@@ -104,9 +109,11 @@ export class AuthorDialog implements OnInit {
       .subscribe(
         (next) => {
           this._dialogRef.close()
+          this.notifier.notify('success', 'Author has been successfully edited!');
         },
         (error) => {
           console.error('Author editing failed: ', error);
+          this.notifier.notify('error', 'Author editing failed: \n', error);
         }
       );
   }
