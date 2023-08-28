@@ -26,6 +26,12 @@
           {{ topic?.date | date : "d/MM/yyy, h:mm a" }}
         </mat-card-subtitle>
       </mat-card-header>
+      <mat-card-actions *ngIf="topic?.isCreator">
+        <button class="ms-1" mat-button (click)="openTopicDialog()">
+          Edit
+          <mat-icon iconPositionEnd>create</mat-icon>
+        </button>
+      </mat-card-actions>
     </mat-card>
   </div>
   <mat-divider class="my-4"></mat-divider>

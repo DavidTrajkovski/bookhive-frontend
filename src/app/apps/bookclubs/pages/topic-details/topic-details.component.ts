@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BookClub } from 'src/app/core/interface/bookclub/bookclub';
 import { CreateNewPost } from 'src/app/core/interface/bookclub/create-new-post';
@@ -8,6 +9,7 @@ import { AuthService } from 'src/app/core/service/authentication/auth.service';
 import { BookclubService } from 'src/app/core/service/bookclub.service';
 import { TopicService } from 'src/app/core/service/topic.service';
 import { RouteConstants } from 'src/app/shared/RouteConstants';
+import { TopicDialog } from '../../components/dialogues/topic-dialog/topic-dialog.component';
 
 @Component({
   selector: 'bh-topic-details',
@@ -26,7 +28,8 @@ export class TopicDetailsComponent {
     private route: ActivatedRoute,
     private topicService: TopicService,
     private bookclubService: BookclubService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +57,21 @@ export class TopicDetailsComponent {
     this.topicService.addPostToTopic(this.topicId, newPost).subscribe({
       next: (_) => this.getPostsForTopic(),
       error: (err) => console.error(err),
+    });
+  }
+
+  openTopicDialog() {
+    const dialog = this.dialog.open(TopicDialog, {
+      data: {
+        topicId: this.topic?.id,
+        bookclubId: this.topic?.bookclubId,
+      },
+      height: '600px',
+      width: '600px',
+      autoFocus: false,
+    });
+    dialog.afterClosed().subscribe((_) => {
+      this.getTopicById();
     });
   }
 

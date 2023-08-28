@@ -1,0 +1,25 @@
+.topic-dialog-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15%;
+}
+
+form {
+  width: 70%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  color: white !important;
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
