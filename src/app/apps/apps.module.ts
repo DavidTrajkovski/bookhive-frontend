@@ -33,6 +33,7 @@ import {RouterLink} from "@angular/router";
 import { BookclubsModule } from './bookclubs/bookclubs.module';
 import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
+import { ShoppingCartDetailsComponent } from './shopping-cart/shopping-cart-details/shopping-cart-details.component';
 
 /**
  * Custom angular notifier options
@@ -116,7 +117,8 @@ const customNotifierOptions: NotifierOptions = {
     BookshopDetailsComponent,
     BookshopBooksTableComponent,
     ProfileComponent,
-    AuthorDialog
+    AuthorDialog,
+    ShoppingCartDetailsComponent
   ],
   providers: [],
 })

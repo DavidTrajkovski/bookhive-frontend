@@ -2,20 +2,35 @@
   <button (click)="sidenav.toggle()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <span id="logo">BookHive</span>
+  <span id="logo" routerLink="home">BookHive</span>
   <span class="spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="profile">
+    <button *ngIf="isUserLoggedIn" mat-menu-item [routerLink]="profile">
       <mat-icon>manage_accounts</mat-icon>
       <span>Profile</span>
     </button>
 
-    <button mat-menu-item>
+    <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="shopping-cart">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Shopping Cart</span>
+    </button>
+
+    <button *ngIf="isUserLoggedIn" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Log out</span>
+    </button>
+
+    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="login">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
+
+    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="register">
+      <mat-icon>fingerprint</mat-icon>
+      <span>Register</span>
     </button>
   </mat-menu>
 </mat-toolbar>
@@ -34,7 +49,7 @@
         [routerLink]="authors"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-      >Authors</a
+        >Authors</a
       >
       <a
         mat-list-item

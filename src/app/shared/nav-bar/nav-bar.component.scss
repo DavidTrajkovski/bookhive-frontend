@@ -9,6 +9,10 @@
   font-family: var(--bookhive-logo-font);
   font-size: x-large;
   font-weight: 500;
+  
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 mat-sidenav-container {

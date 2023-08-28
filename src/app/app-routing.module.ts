@@ -19,6 +19,7 @@ import { MembersComponent } from './apps/bookclubs/pages/members/members.compone
 import { RequestsComponent } from './apps/bookclubs/pages/requests/requests.component';
 import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topic-details.component';
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
+import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {path: RouteConstants.SHOPPING_CART, component: ShoppingCartDetailsComponent},
       {path: RouteConstants.NOT_FOUND, component: NotFoundComponent},
       {path: RouteConstants.HOME, component: HomeComponent},
       {path: RouteConstants.BOOKS, component: BooksComponent},
