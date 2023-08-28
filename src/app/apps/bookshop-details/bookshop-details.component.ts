@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Bookshop } from 'src/app/core/interface/bookshop';
 import { BookshopBook } from 'src/app/core/interface/bookshop-book';
 import { BookshopService } from 'src/app/core/service/bookshop.service';
@@ -20,7 +20,8 @@ export class BookshopDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private bookshopService: BookshopService
+    private bookshopService: BookshopService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +42,10 @@ export class BookshopDetailsComponent {
         this.bookshop = data;
         this.bookshopIsLoading = false;
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        console.error(err)
+        this._router.navigate([RouteConstants.NOT_FOUND])
+      },
     });
   }
 

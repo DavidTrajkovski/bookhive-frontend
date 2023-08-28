@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BookDto} from "../../core/interface/book/book-dto";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../../core/service/author/author.service";
 import {BookService} from "../../core/service/book/book.service";
 import {RouteConstants} from "../../shared/RouteConstants";
@@ -18,7 +18,8 @@ export class BookDetailsComponent implements OnInit{
   constructor(
     private _route: ActivatedRoute,
     private _authorService: AuthorService,
-    private _bookService: BookService
+    private _bookService: BookService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,10 @@ export class BookDetailsComponent implements OnInit{
         this.book = data;
         this.bookIsLoading = false;
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        this._router.navigate([RouteConstants.NOT_FOUND])
+        console.error(err)
+      },
     });
   }
 

@@ -18,6 +18,7 @@ import { InvitationsComponent } from './apps/bookclubs/pages/invitations/invitat
 import { MembersComponent } from './apps/bookclubs/pages/members/members.component';
 import { RequestsComponent } from './apps/bookclubs/pages/requests/requests.component';
 import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topic-details.component';
+import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {path: RouteConstants.NOT_FOUND, component: NotFoundComponent},
       {path: RouteConstants.HOME, component: HomeComponent},
       {path: RouteConstants.BOOKS, component: BooksComponent},
       {path: RouteConstants.BOOKSHOPS, component: BookshopsComponent},
@@ -55,6 +57,7 @@ const routes: Routes = [
   },
   {path: RouteConstants.REGISTER, component: RegisterPage},
   {path: RouteConstants.LOGIN, component: LoginPage},
+  {path: "**", pathMatch: 'full', component: NotFoundComponent},
 ];
 
 @NgModule({

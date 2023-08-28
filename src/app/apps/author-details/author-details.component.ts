@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../../core/service/author/author.service";
 import {RouteConstants} from "../../shared/RouteConstants";
 import {AuthorDetails} from "../../core/interface/author/author-details";
@@ -19,7 +19,8 @@ export class AuthorDetailsComponent implements OnInit{
 
   constructor(
     private _route: ActivatedRoute,
-    private _authorService: AuthorService
+    private _authorService: AuthorService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +41,11 @@ export class AuthorDetailsComponent implements OnInit{
         this.author = data;
         this.authorIsLoading = false;
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        console.error(err)
+        this.authorIsLoading = false
+        this._router.navigate([RouteConstants.NOT_FOUND])
+      },
     });
   }
 
