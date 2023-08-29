@@ -22,7 +22,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './profile/profile.component';
 import { MatIconModule } from "@angular/material/icon";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
 import { AuthorsComponent } from './authors/authors.component';
@@ -41,7 +40,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 /**
  * Custom angular notifier options
  */
-const customNotifierOptions: NotifierOptions = {
+export const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
       position: 'right',
@@ -97,7 +96,6 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    MatSnackBarModule,
     MatOptionModule,
     MatTooltipModule,
     RouterLink,
