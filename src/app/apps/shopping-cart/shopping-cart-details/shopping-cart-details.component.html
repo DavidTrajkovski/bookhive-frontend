@@ -63,7 +63,7 @@
           <strong>{{ shoppingCartInfo?.totalPrice | currency : "EUR" }}</strong>
         </td>
         <td colspan="2">
-          <button mat-button class="default-button" color="primary">
+          <button mat-button class="default-button" color="primary" (click)="checkout()">
             Checkout
           </button>
         </td>

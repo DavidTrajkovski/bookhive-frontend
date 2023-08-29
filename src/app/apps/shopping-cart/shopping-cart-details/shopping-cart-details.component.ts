@@ -34,6 +34,10 @@ export class ShoppingCartDetailsComponent {
     location.reload();
   }
 
+  checkout() {
+    alert('AAAAAAAAA');
+  }
+
   goBack() {
     this._location.back();
   }
