@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { ShoppingCartInfo } from '../interface/shopping-cart/shopping-cart-info';
-import { AddToCard } from '../interface/shopping-cart/add-to-cart';
+import { AddToCart } from '../interface/shopping-cart/add-to-cart';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class ShoppingCartService {
     return this.http.get<ShoppingCartInfo>(this.baseUrl);
   }
 
-  addBookToShoppingCart(addBookToShoppingCart: AddToCard): Observable<boolean> {
+  addBookToShoppingCart(addBookToShoppingCart: AddToCart): Observable<boolean> {
     return this.http.post<boolean>(
       `${this.baseUrl}/add`,
       addBookToShoppingCart
