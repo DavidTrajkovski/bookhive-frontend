@@ -28,7 +28,7 @@ import { TopicDialog } from './components/dialogues/topic-dialog/topic-dialog.co
 import { NotifierModule } from 'angular-notifier';
 import { SendInvitationDialog } from './components/dialogues/send-invitation/send-invitation.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { customNotifierOptions } from '../apps.module';
+import { customNotifierOptions } from '../configs/custom-notifier-options';
 
 @NgModule({
   declarations: [
