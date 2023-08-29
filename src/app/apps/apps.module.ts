@@ -31,6 +31,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterLink} from "@angular/router";
 import { BookclubsModule } from './bookclubs/bookclubs.module';
+import {BookshopGeolocationComponent} from "./bookshop-geolocation/bookshop-geolocation.component";
+import {AuthorDialog} from "./dialog/author/author.dialog";
+import { BooksAddComponent } from './books-add/books-add.component';
 import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
 import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
 import {NotifierModule, NotifierOptions} from "angular-notifier";
@@ -81,6 +84,27 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
   imports: [
+      CommonModule,
+      MatInputModule,
+      MatButtonModule,
+      MatCardModule,
+      MatExpansionModule,
+      MatDividerModule,
+      MatListModule,
+      MatIconModule,
+      MatTableModule,
+      MatFormFieldModule,
+      ReactiveFormsModule,
+      RouterModule,
+      SharedModule,
+      MatSnackBarModule,
+      MatOptionModule,
+      MatTooltipModule,
+      RouterLink,
+      NgOptimizedImage,
+      MatSelectModule,
+      BookclubsModule
+    ],
     CommonModule,
     MatInputModule,
     MatButtonModule,
@@ -118,6 +142,9 @@ const customNotifierOptions: NotifierOptions = {
     BookshopBooksTableComponent,
     ProfileComponent,
     AuthorDialog,
+    ProfileComponent,
+    BookshopGeolocationComponent,
+    BooksAddComponent,
     MyWishlistComponent
   ],
   providers: [],

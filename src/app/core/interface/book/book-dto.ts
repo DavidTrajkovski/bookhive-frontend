@@ -11,5 +11,6 @@ export interface BookDto {
   totalPages: number,
   isValid: boolean,
   genres: string[],
-  authors: BookAuthorInfoDto[]
+  authors: BookAuthorInfoDto[],
+  authorIds: string[]
 }

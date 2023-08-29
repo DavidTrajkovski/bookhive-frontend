@@ -27,4 +27,11 @@ export class BookService {
     return this._http.get<string[]>(`${this.baseUrl}/genres`)
   }
 
+  addBook(bookDto: BookDto): Observable<BookDto> {
+    return this._http.post<BookDto>(`${this.baseUrl}`, bookDto)
+  }
+  updateBook(bookDto: BookDto): Observable<BookDto> {
+    return this._http.put<BookDto>(`${this.baseUrl}/${bookDto.id}`, bookDto)
+  }
+
 }
