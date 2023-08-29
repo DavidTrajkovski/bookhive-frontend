@@ -23,7 +23,7 @@ export class BookDetailsComponent implements OnInit{
     private _route: ActivatedRoute,
     private _authorService: AuthorService,
     private _bookService: BookService,
-    private bookshopService: BookshopService
+    private bookshopService: BookshopService,
     private _router: Router
   ) {}
 
