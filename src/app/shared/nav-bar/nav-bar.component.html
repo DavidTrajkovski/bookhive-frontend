@@ -13,6 +13,11 @@
       <span>Profile</span>
     </button>
 
+    <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="mywishlist">
+      <mat-icon>list_alt</mat-icon>
+      <span>My Wishlist</span>
+    </button>
+
     <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="shopping-cart">
       <mat-icon>shopping_cart</mat-icon>
       <span>Shopping Cart</span>
@@ -42,45 +47,57 @@
         [routerLink]="home"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-        >Home</a
       >
+        <div class="text-icon">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </div>
+      </a>
       <a
         mat-list-item
         [routerLink]="authors"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-        >Authors</a
       >
+        <div class="text-icon">
+          <mat-icon>face</mat-icon>
+          <span>Authors</span>
+        </div>
+      </a>
       <a
         mat-list-item
         [routerLink]="books"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-        >Books</a
       >
+        <div class="text-icon">
+          <mat-icon>library_books</mat-icon>
+          <span>Books</span>
+        </div>
+      </a>
       <a
         mat-list-item
         [routerLink]="bookshops"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-        >Bookshops</a
       >
-      <a
-        *ngIf="isUserLoggedIn"
-        mat-list-item
-        [routerLink]="mywishlist"
-        (click)="sidenav.toggle()"
-        routerLinkActive="active"
-      >My Wishlist</a
-      >
+        <div class="text-icon">
+          <mat-icon>business</mat-icon>
+          <span>Bookshops</span>
+        </div>
+      </a>
       <a
         *ngIf="isUserLoggedIn"
         mat-list-item
         [routerLink]="bookclubs"
         (click)="sidenav.toggle()"
         routerLinkActive="active"
-        >Bookclubs</a
       >
+        <div class="text-icon">
+          <mat-icon>settings_accessibility</mat-icon>
+          <span>Bookclubs</span>
+        </div>
+      </a>
       <a
         *ngIf="isUserLoggedIn"
         mat-list-item
@@ -88,23 +105,39 @@
         (click)="sidenav.toggle()"
         routerLink="active"
       >
-        <p
-          class="info-badge mt-3"
-          [matBadge]="invitationsCount"
-          [matBadgeHidden]="!invitationsCount"
-          matBadgePosition="after"
-          matBadgeOverlap="false"
-          matBadgeColor="accent"
-        >
-          Invitations
-        </p>
+        <div class="text-icon">
+          <mat-icon>email</mat-icon>
+          <p
+            class="info-badge mt-3"
+            [matBadge]="invitationsCount"
+            [matBadgeHidden]="!invitationsCount"
+            matBadgePosition="after"
+            matBadgeOverlap="false"
+            matBadgeColor="accent"
+          >
+            Invitations
+          </p>
+        </div>
       </a>
-
-      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="login">Login</a>
-      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register"
-        >Register</a
-      >
-      <a *ngIf="isUserLoggedIn" (click)="logout()" mat-list-item>Logout</a>
+      <mat-divider></mat-divider>
+      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="login">
+        <div class="text-icon">
+          <mat-icon>login</mat-icon>
+          <span>Log in</span>
+        </div>
+      </a>
+      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register">
+        <div class="text-icon">
+          <mat-icon>fingerprint</mat-icon>
+          <span>Register</span>
+        </div>
+      </a>
+      <a *ngIf="isUserLoggedIn" (click)="logout()" mat-list-item>
+        <div class="text-icon">
+          <mat-icon>logout</mat-icon>
+          <span>Log out</span>
+        </div>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
