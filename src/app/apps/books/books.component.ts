@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup} from "@angular/forms";
-import {debounceTime, distinctUntilChanged, filter, } from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter, map, pairwise, throttleTime,} from 'rxjs/operators';
 import {Subscription} from "rxjs";
 import {BookService} from "../../core/service/book/book.service";
+import {BookDto} from "../../core/interface/book/book-dto";
 
 @Component({
   selector: 'app-books',
@@ -12,21 +13,41 @@ import {BookService} from "../../core/service/book/book.service";
 export class BooksComponent implements  OnInit, OnDestroy {
   searchAndFilterForm: FormGroup = this.initializeForm();
   searchAndFilterFormSubscription = new Subscription();
-  queryParamsMap: Map<string, any> = new Map<string, any>();
-  genres: string[]
+  genres: string[] = [];
+  loading: boolean = false;
+  books: BookDto[] = [];
+  page: number = 1;
+  total: number = 0
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _bookService: BookService
+    private _bookService: BookService,
   ) {
-    this.genres = []
   }
 
   ngOnInit(): void {
     this.loadGenres()
     this.initializeForm()
     this.subscribeToFormChanges()
+    this.callGetBooks()
   }
+
+  pageChangeEvent(event: number){
+    this.page = event;
+    this.callGetBooks();
+  }
+
+  callGetBooks() {
+    this.loading = true
+    const searchValue = this.searchAndFilterForm.get('searchAndFilter.searchValue')!.value;
+    const genre = this.searchAndFilterForm.get('searchAndFilter.sortValue')!.value;
+    this._bookService.getPageableBooks(this.page, searchValue, genre).subscribe((data) => {
+      this.books = data
+      this.total = data.length
+      this.loading = false
+    });
+  }
+
 
   loadGenres() {
     this._bookService.getAllGenres().subscribe({
@@ -46,6 +67,7 @@ export class BooksComponent implements  OnInit, OnDestroy {
   }
 
   subscribeToFormChanges() {
+    this.loading = true
     this.searchAndFilterFormSubscription = this.searchAndFilterForm.valueChanges
       .pipe(
         debounceTime(500),
@@ -53,31 +75,8 @@ export class BooksComponent implements  OnInit, OnDestroy {
         filter((value) => value)
       )
       .subscribe(() => {
-        this.loadBooks();
+        this.callGetBooks()
       });
-  }
-
-  loadBooks() {
-    const searchValue = this.searchAndFilterForm.get('searchAndFilter.searchValue')!.value;
-    const sortValue = this.searchAndFilterForm.get('searchAndFilter.sortValue')!.value;
-    this.fillQueryParamsMap(searchValue, sortValue)
-  }
-
-  fillQueryParamsMap(searchValue: string, sortValue: string) {
-    if (searchValue != null) {
-      this.queryParamsMap.set('searchValue', searchValue)
-    }
-    if (sortValue != null) {
-      this.queryParamsMap.set('sortValue', sortValue)
-    }
-  }
-
-  get filterRequest() {
-    const request = {} as any
-    this.queryParamsMap.forEach(function(value,key){
-      request[key] = value
-    })
-    return { ...request }
   }
 
   ngOnDestroy(): void {

@@ -17,10 +17,7 @@
             <mat-label>Genres</mat-label>
             <mat-select formControlName="sortValue">
               <mat-option value="">Filter by genre</mat-option>
-              <mat-option value="ratingLowToHigh">1</mat-option>
-              <mat-option value="ratingHighToLow">2</mat-option>
-              <mat-option value="distanceClosestToFurthest">3</mat-option>
-              <mat-option value="distanceFurthestToClosest">4</mat-option>
+              <mat-option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -29,18 +26,16 @@
 
     </form>
   </div>
-  <div class="books-wrapper">
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-    <bh-book-card></bh-book-card>
-
+  <div class="author-spinner" *ngIf="loading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
   </div>
+  <div class="books-wrapper" *ngIf="!loading">
+    <div class="book-div" *ngFor="let book of books | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total }" >
+      <bh-book-card [book]="book"></bh-book-card>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="pageChangeEvent($event)" *ngIf="!loading"></pagination-controls>
 </div>

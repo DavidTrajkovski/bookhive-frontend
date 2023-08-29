@@ -1,9 +1,11 @@
+@import "styles";
+
 .container1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden !important;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
@@ -19,9 +21,11 @@
 }
 
 .books-wrapper {
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-top: -50px;
 }
 
 bh-book-card {
@@ -45,6 +49,15 @@ mat-form-field {
 .sort-div {
   width: 45%;
   margin-right: 10px;
+}
+
+::ng-deep ul > li:not(.active) > a {
+  color: map-get($bookhive-accent, 400) !important;
+  border-color: black !important;
+}
+
+::ng-deep ul > li.current {
+  background-color: map-get($bookhive-accent, 200) !important;
 }
 
 @media screen and (max-width: 1200px) {
