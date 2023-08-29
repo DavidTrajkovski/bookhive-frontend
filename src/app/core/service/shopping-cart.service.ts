@@ -25,7 +25,7 @@ export class ShoppingCartService {
   }
 
   removeBookFromShoppingCart(bookId: string) {
-    this.http.delete(this.baseUrl, { params: { bookId: bookId } });
+    this.http.delete(this.baseUrl, { params: { bookId: bookId } }).subscribe();
   }
 
   payNow() {
