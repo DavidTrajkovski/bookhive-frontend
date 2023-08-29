@@ -1,0 +1,37 @@
+@import "styles";
+
+.button-columns {
+  text-align: center;
+  width: 5%;
+}
+
+.mat-buttons {
+  margin-left: 0.5em;
+}
+
+mat-icon {
+  color: black;
+}
+
+mat-icon:hover {
+  font-size: 26px;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.delete:hover {
+  color: map-get($bookhive-warn, 400);
+}
+
+.info:hover {
+  color: map-get($bookhive-primary, 400);
+}
+
+.cover-image {
+  height: 12em;
+}

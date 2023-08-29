@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ShoppingCartInfo } from 'src/app/core/interface/shopping-cart/shopping-cart-info';
 import { ShoppingCartService } from 'src/app/core/service/shopping-cart.service';
+import { CurrencyPipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-cart-details',
@@ -11,7 +12,7 @@ export class ShoppingCartDetailsComponent {
   shoppingCartInfo?: ShoppingCartInfo;
   isLoading: boolean = true;
 
-  constructor(private _shoppingCartService: ShoppingCartService) {}
+  constructor(private _shoppingCartService: ShoppingCartService, private _location: Location) {}
 
   ngOnInit() {
     this.getShoppingCartInfo();
@@ -21,10 +22,19 @@ export class ShoppingCartDetailsComponent {
     this._shoppingCartService.getShoppingCartInfo().subscribe({
       next: (data) => {
         this.shoppingCartInfo = data;
-        console.log(this.shoppingCartInfo);
         this.isLoading = false;
       },
       error: (err) => console.error(err),
     });
+  }
+
+  removeBook(bookId: string) {
+    this._shoppingCartService.removeBookFromShoppingCart(bookId);
+    this.getShoppingCartInfo();
+    location.reload();
+  }
+
+  goBack() {
+    this._location.back();
   }
 }
