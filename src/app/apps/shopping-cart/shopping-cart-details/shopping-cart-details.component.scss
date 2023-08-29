@@ -35,3 +35,9 @@ a {
 .cover-image {
   height: 12em;
 }
+
+#checkout-button:hover {
+  mat-icon {
+    color: map-get($bookhive-primary, 400);
+  }
+}
