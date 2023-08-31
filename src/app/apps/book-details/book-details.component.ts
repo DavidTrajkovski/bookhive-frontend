@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../../core/service/author/author.service";
 import {BookService} from "../../core/service/book/book.service";
 import {RouteConstants} from "../../shared/RouteConstants";
+import {BookshopService} from "../../core/service/bookshop.service";
+import {Bookshop} from "../../core/interface/bookshop";
 
 @Component({
   selector: 'app-book-details',
@@ -13,18 +15,22 @@ import {RouteConstants} from "../../shared/RouteConstants";
 export class BookDetailsComponent implements OnInit{
   bookId: string = '';
   book?: BookDto;
+  bookshops: Bookshop[] = [];
   bookIsLoading: boolean = true;
+  bookshopsAreLoading: boolean = true;
 
   constructor(
     private _route: ActivatedRoute,
     private _authorService: AuthorService,
     private _bookService: BookService,
+    private bookshopService: BookshopService,
     private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.getBookIdFromPath();
     this.getBookById();
+    this.getBookshopsForBook();
   }
 
   getBookIdFromPath() {
@@ -71,5 +77,16 @@ export class BookDetailsComponent implements OnInit{
 
   addToFavourites(id: string) {
 
+  }
+
+  private getBookshopsForBook() {
+      this.bookshopService.getBookshopsForBook(this.bookId).subscribe({
+        next: (data) => {
+          this.bookshops = data;
+          this.bookshopsAreLoading = false;
+          console.log(this.bookshops + "     TESTTEST")
+        },
+        error: (err) => console.error(err),
+      });
   }
 }

@@ -1,0 +1,25 @@
+@import "styles";
+
+.body {
+  background-color: #FC766A;
+  font-family: 'IBM Plex Sans', sans-serif;
+  min-height: 100vh;
+}
+
+#map {
+  width: auto;
+  height: 500px;
+}
+.geolocation-wrapper {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 0.625em;
+  background: map-get($bookhive-accent, 100);
+  border-radius: 1.2em;
+  width: max-content;
+  padding: 1em;
+  color: black !important;
+  text-decoration: none;
+
+}

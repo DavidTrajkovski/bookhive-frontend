@@ -23,4 +23,7 @@ export class BookshopService {
   getBooksForBookshop(bookshopId: string): Observable<BookshopBook[]> {
     return this.http.get<BookshopBook[]>(`${this.baseUrl}/${bookshopId}/books`);
   }
+  getBookshopsForBook(bookId: string): Observable<Bookshop[]> {
+    return this.http.get<Bookshop[]>(`${this.baseUrl}/book/${bookId}`);
+  }
 }
