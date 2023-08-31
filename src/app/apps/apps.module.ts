@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RegisterPage } from './register/register-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,22 +21,27 @@ import { BookshopBooksTableComponent } from './components/bookshop-books-table/b
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './profile/profile.component';
-import { MatIconModule } from "@angular/material/icon";
-import { MatOptionModule } from "@angular/material/core";
-import { MatSelectModule } from "@angular/material/select";
+import { MatIconModule } from '@angular/material/icon';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorDetailsComponent } from './author-details/author-details.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {RouterLink} from "@angular/router";
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
 import { BookclubsModule } from './bookclubs/bookclubs.module';
-import {AuthorDialog} from "./authors/dialogs/author-dialog/author.dialog";
+import { AuthorDialog } from './authors/dialogs/author-dialog/author.dialog';
 import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
-import {NotifierModule, NotifierOptions} from "angular-notifier";
+import { NotifierModule } from 'angular-notifier';
 import { ShoppingCartDetailsComponent } from './shopping-cart/shopping-cart-details/shopping-cart-details.component';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {NgxPaginationModule} from "ngx-pagination";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { customNotifierOptions } from './configs/custom-notifier-options';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentDialog } from './shopping-cart/payment-dialog/payment-dialog/payment-dialog.component';
+import { AppModule } from '../app.module';
+import { StripeVariables } from './configs/stripe-options';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   imports: [
@@ -61,7 +66,9 @@ import { customNotifierOptions } from './configs/custom-notifier-options';
     BookclubsModule,
     NotifierModule.withConfig(customNotifierOptions),
     MatProgressSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDialogModule,
+    NgxStripeModule.forRoot(StripeVariables.publishableKey),
   ],
   declarations: [
     RegisterPage,
@@ -79,7 +86,8 @@ import { customNotifierOptions } from './configs/custom-notifier-options';
     ProfileComponent,
     AuthorDialog,
     ShoppingCartDetailsComponent,
-    MyWishlistComponent
+    MyWishlistComponent,
+    PaymentDialog,
   ],
   providers: [],
 })
