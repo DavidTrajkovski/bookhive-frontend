@@ -3,7 +3,7 @@
     <mat-progress-spinner mode="indeterminate" *ngIf="isLoading">
     </mat-progress-spinner>
   </div>
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="!isLoading">
     <button mat-stroked-button class="default-button" (click)="goBack()">
       <mat-icon style="transform: rotate(180deg)">arrow_right_alt</mat-icon>
       Back
@@ -55,6 +55,18 @@
           </a>
         </td>
       </tr>
+      <tr
+        *ngIf="
+          shoppingCartInfo?.books === undefined ||
+          shoppingCartInfo!.books.length <= 0
+        "
+        align="center"
+        style="vertical-align: middle"
+      >
+        <td colspan="6" class="text-secondary">
+          Your shopping cart is empty, go buy some cool books!
+        </td>
+      </tr>
       <tr *ngIf="shoppingCartInfo?.books" style="vertical-align: middle">
         <td></td>
         <td></td>
@@ -63,19 +75,26 @@
           <strong>{{ shoppingCartInfo?.totalPrice | currency : "EUR" }}</strong>
         </td>
         <td colspan="2">
-          <button id="checkout-button" mat-button class="default-button" color="primary" (click)="checkout()">
-            <mat-icon>shopping_cart_checkout</mat-icon>
+          <button
+            id="checkout-button"
+            mat-button
+            class="default-button"
+            color="primary"
+            (click)="checkout()"
+            [disabled]="
+              shoppingCartInfo?.books === undefined ||
+              shoppingCartInfo!.books.length <= 0
+            "
+          >
+            <mat-icon
+              *ngIf="
+                shoppingCartInfo?.books && shoppingCartInfo!.books.length > 0
+              "
+            >
+              shopping_cart_checkout
+            </mat-icon>
             Checkout
           </button>
-        </td>
-      </tr>
-      <tr
-        *ngIf="!shoppingCartInfo?.books"
-        align="center"
-        style="vertical-align: middle"
-      >
-        <td colspan="6" class="text-secondary">
-          Your shopping cart is empty, go buy some cool books!
         </td>
       </tr>
     </tbody>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ShoppingCartInfo } from 'src/app/core/interface/shopping-cart/shopping-cart-info';
 import { ShoppingCartService } from 'src/app/core/service/shopping-cart.service';
 import { CurrencyPipe, Location } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentDialog } from '../payment-dialog/payment-dialog/payment-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart-details',
@@ -12,7 +14,11 @@ export class ShoppingCartDetailsComponent {
   shoppingCartInfo?: ShoppingCartInfo;
   isLoading: boolean = true;
 
-  constructor(private _shoppingCartService: ShoppingCartService, private _location: Location) {}
+  constructor(
+    private _shoppingCartService: ShoppingCartService,
+    private _location: Location,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getShoppingCartInfo();
@@ -30,12 +36,18 @@ export class ShoppingCartDetailsComponent {
 
   removeBook(bookId: string) {
     this._shoppingCartService.removeBookFromShoppingCart(bookId);
+    this.isLoading = true;
+    console.log(this.shoppingCartInfo);
     this.getShoppingCartInfo();
     location.reload();
   }
 
   checkout() {
-    alert('AAAAAAAAA');
+    this.dialog.open(PaymentDialog, {
+      data: {
+        totalAmountToPay: this.shoppingCartInfo?.totalPrice,
+      },
+    });
   }
 
   goBack() {

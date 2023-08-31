@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { ShoppingCartInfo } from '../interface/shopping-cart/shopping-cart-info';
 import { AddToCart } from '../interface/shopping-cart/add-to-cart';
+import { PaymentIntent } from '@stripe/stripe-js';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +25,20 @@ export class ShoppingCartService {
     );
   }
 
+  createPaymentIntent(amount: number): Observable<PaymentIntent> {
+    return this.http.post<PaymentIntent>(
+      `${this.baseUrl}/create-payment-intent`,
+      {
+        amount: amount,
+      }
+    );
+  }
+
   removeBookFromShoppingCart(bookId: string) {
     this.http.delete(this.baseUrl, { params: { bookId: bookId } }).subscribe();
   }
 
-  payNow() {
-    // TODO: Impl
+  clearShoppingCart() {
+    this.http.delete(`${this.baseUrl}/clear`).subscribe();
   }
 }
