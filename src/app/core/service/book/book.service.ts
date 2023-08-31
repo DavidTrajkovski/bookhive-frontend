@@ -2,9 +2,7 @@ import {Injectable} from "@angular/core";
 import {environment} from "../../../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BookAuthorInfoDto} from "../../interface/author/book-author-info-dto";
 import {BookDto} from "../../interface/book/book-dto";
-import {AuthorDetails} from "../../interface/author/author-details";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +15,13 @@ export class BookService {
 
   getAllBooks(): Observable<BookDto[]> {
     return this._http.get<BookDto[]>(`${this.baseUrl}`);
+  }
+
+  getPageableBooks(page: number, nameSearch: string, genre: string): Observable<BookDto[]> {
+    let genres = []
+    genres.push(genre)
+    return this._http.get<BookDto[]>(`${this.baseUrl}/filter`,
+      {params: {page: page, pageSize: 10, nameSearch: nameSearch, genres: genres} });
   }
 
   getBookById(id: string): Observable<BookDto> {

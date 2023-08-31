@@ -2,23 +2,24 @@
   <div class="cover-image">
     <img
       mat-card-lg-image
-      src="https://cdn.waterstones.com/bookjackets/large/9780/0083/9780008334840.jpg"
+      src="{{book!.coverImageUrl}}"
     />
   </div>
   <div class="card-content">
     <div class="header-content">
       <mat-card-header>
         <mat-card-title-group>
-          <mat-card-title> Book Title</mat-card-title>
-          <mat-card-subtitle> Author Name & Surname</mat-card-subtitle>
+          <mat-card-title>{{book!.name}}</mat-card-title>
+          <mat-card-subtitle *ngFor="let author of book?.authors">{{author.name}}&nbsp;{{author.surname}}</mat-card-subtitle>
         </mat-card-title-group>
       </mat-card-header>
     </div>
     <div class="footer-content">
       <mat-card-actions align="end">
-        <img src="/assets/cart.png" alt="cart" class="cart" (click)="openAddToCartDialog()">
-        <img src="/assets/love.png" alt="favourite" class="heart" (click)="addToFavourites()">
+        <div class="add-to-cart-div"><a (click)="openAddToCartDialog(book?.id!)"><mat-icon matTooltip="Add to shopping cart" class="mat-buttons add_shopping_cart ">add_shopping_cart</mat-icon></a></div>
+        <div class="add-to-wl-div"><a (click)="addBookToMyWishList(book?.id!)"><mat-icon matTooltip="Add to wishlist" class="mat-buttons favorite_border ">favorite_border</mat-icon></a></div>
       </mat-card-actions>
     </div>
   </div>
 </mat-card>
+<notifier-container></notifier-container>

@@ -39,24 +39,6 @@ export class MyWishlistComponent implements OnInit{
     })
   }
 
-  // todo: prefrli ova vo /books i /bookdetails logika
-  addBookToMyWishList(bookId: string) {
-    if (this.userId != null) {
-      const wishlistDto = {
-        userId: this.userId,
-        bookId: bookId
-      } as WishlistDto;
-      this._wishlistService.addBookToMyWishList(wishlistDto).subscribe({
-        next: () => {
-          // todo: notifier success
-        },
-        error: (err) => {
-          // todo: notifier error
-        }
-      })
-    }
-  }
-
   removeBookFromMyWishList(bookId: string) {
     if (this.userId != null) {
       const wishlistDto = {
