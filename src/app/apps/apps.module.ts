@@ -62,7 +62,7 @@ import { MyLibraryComponent } from './my-library/my-library.component';
     SharedModule,
     MatOptionModule,
     MatTooltipModule,
-    RouterLink,
+    RouterModule,
     NgOptimizedImage,
     MatSelectModule,
     BookclubsModule,
