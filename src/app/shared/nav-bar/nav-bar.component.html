@@ -13,7 +13,12 @@
       <span>Profile</span>
     </button>
 
-    <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="mywishlist">
+    <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="my-library">
+      <mat-icon>local_library</mat-icon>
+      <span>My Library</span>
+    </button>
+
+    <button *ngIf="isUserLoggedIn" mat-menu-item routerLink="my-wishlist">
       <mat-icon>list_alt</mat-icon>
       <span>My Wishlist</span>
     </button>
