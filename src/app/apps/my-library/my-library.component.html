@@ -1,0 +1,113 @@
+<div class="container cont1">
+  <h2>My Library</h2>
+  <!-- <div class="wishlist-spinner" *ngIf="isLoading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div> -->
+  <div class="my-wishlist-cont">
+    <div *ngFor="let libraryBook of books">
+      <mat-card class="card-container" appearance="raised">
+        <div class="cover-image">
+          <img mat-card-lg-image src="{{ libraryBook.book.coverImageUrl }}" />
+        </div>
+        <div class="card-content">
+          <div class="header-content">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{ libraryBook.book.name }}</mat-card-title>
+                <mat-card-subtitle
+                  *ngFor="let author of libraryBook.book.authors"
+                  >{{ author.name }}&nbsp;{{
+                    author.surname
+                  }}</mat-card-subtitle
+                >
+              </mat-card-title-group>
+            </mat-card-header>
+            <div>
+              <mat-card-content class="my-2">
+                <mat-form-field style="width: 55%">
+                  <mat-label>Last Page Read</mat-label>
+                  <input
+                    id="lastPageReadId{{ libraryBook.book.id }}"
+                    matInput
+                    name="lastPageReadId{{ libraryBook.book.id }}"
+                    type="number"
+                    placeholder="{{ libraryBook.lastPageRead }}"
+                    value="{{ libraryBook.lastPageRead || 0 }}"
+                  />
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+          </div>
+          <div class="footer-content">
+            <mat-card-actions align="end">
+              <div class="act-button-div">
+                <a
+                  [routerLink]="['/books/', libraryBook.book.id]"
+                  class="details-link"
+                  >Details</a
+                >
+              </div>
+              <div class="act-button-div">
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="editLastPageRead(libraryBook.book.id)"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </mat-card-actions>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <!-- <div class="my-wishlist-cont" *ngIf="!isLoading && myBooks.length == 0">
+    <h5>There are no books in your wishlist.</h5>
+  </div> -->
+</div>
+<notifier-container></notifier-container>
+
+<!-- <div class="container mt-3">
+  <div class="d-flex justify-content-center">
+    <mat-progress-spinner mode="indeterminate" *ngIf="!books$">
+    </mat-progress-spinner>
+  </div>
+  <div class="mb-3">
+    <button mat-stroked-button class="default-button" (click)="goBack()">
+      <mat-icon style="transform: rotate(180deg)">arrow_right_alt</mat-icon>
+      Back
+    </button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Last Page Read</th>
+        <th scope="col" class="button-columns">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let libraryBook of books$ | async"
+        id="{{ libraryBook.book.id }}"
+      >
+        <td>{{ libraryBook.book.name }}</td>
+        <td>
+          <a [routerLink]="['/books/', libraryBook.book.id]" target="_blank">
+            <mat-icon matTooltip="Details" class="mat-buttons info">
+              info
+            </mat-icon>
+          </a>
+        </td>
+      </tr>
+      <tr align="center" style="vertical-align: middle">
+        <td colspan="6" class="text-secondary">Your library is empty.</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<notifier-container></notifier-container>
