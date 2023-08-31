@@ -1,0 +1,130 @@
+@import "styles";
+
+.home-font {
+  font-family: var(--bookhive-logo-font);
+}
+
+.main-cont {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: linear-gradient(map-get($bookhive-primary, 500),map-get($bookhive-primary, 200));
+}
+
+.title-div {
+
+}
+
+title-div-2 {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+}
+
+.welcome {
+  font-size: 1.8em;
+}
+
+.bookhive {
+  font-size: 10em;
+  margin-top: -0.25em;
+  margin-bottom: 0.2em;
+  color: rgb(2 73 25); //rgb(6 83 31);//map-get($bookhive-accent, 800); //#045143
+}
+
+.container-wrapper {
+  margin-top: 5%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.image-div {
+  display: flex;
+  justify-content: end;
+}
+
+.image {
+  resize: both;
+  height: 800px;
+  width: 600px;
+  border-top-left-radius: 25px;
+}
+
+.bullets {
+  margin-bottom: 0.5em;
+  margin-left: 0.2em;
+}
+
+@media screen and (max-width: 1600px) {
+  .image {
+    width: 500px;
+  }
+  .bookhive {
+    font-size: 9em;
+  }
+  .bullets {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .image {
+    width: 400px;
+  }
+  .bookhive {
+    font-size: 8em;
+  }
+  .bullets {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .image {
+    width: 350px;
+  }
+  .bookhive {
+    font-size: 7em;
+  }
+  .bullets {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .image {
+    width: 300px;
+  }
+  .bookhive {
+    font-size: 6em;
+  }
+  .bullets {
+    font-size: 1.2em;
+  }
+  .welcome {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .image {
+    width: 250px;
+  }
+  .bookhive {
+    font-size: 4.5em;
+  }
+  .bullets {
+    font-size: 1.2em;
+  }
+  .welcome {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container-image {
+    display: none;
+  }
+}
