@@ -101,7 +101,7 @@ const customNotifierOptions: NotifierOptions = {
     MatSnackBarModule,
     MatOptionModule,
     MatTooltipModule,
-    RouterLink,
+    RouterModule,
     NgOptimizedImage,
     MatSelectModule,
     BookclubsModule,
