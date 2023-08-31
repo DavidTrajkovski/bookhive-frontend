@@ -18,6 +18,8 @@ import { InvitationsComponent } from './apps/bookclubs/pages/invitations/invitat
 import { MembersComponent } from './apps/bookclubs/pages/members/members.component';
 import { RequestsComponent } from './apps/bookclubs/pages/requests/requests.component';
 import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topic-details.component';
+import {BookshopGeolocationComponent} from "./apps/bookshop-geolocation/bookshop-geolocation.component";
+import {BooksAddComponent} from "./apps/books-add/books-add.component";
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
@@ -33,6 +35,9 @@ const routes: Routes = [
       {path: RouteConstants.HOME, component: HomeComponent},
       {path: RouteConstants.BOOKS, component: BooksComponent},
       {path: RouteConstants.BOOKSHOPS, component: BookshopsComponent},
+      {path: `${RouteConstants.BOOKS}/add`, component: BooksAddComponent},
+      {path: `${RouteConstants.BOOKS}/edit/:${RouteConstants.BOOK_ID}`, component: BooksAddComponent},
+
       {path: `${RouteConstants.BOOKS}/:${RouteConstants.BOOKS_ID}`, component: BookDetailsComponent},
       {path: RouteConstants.AUTHORS, component: AuthorsComponent},
       {path: `${RouteConstants.AUTHORS}/:${RouteConstants.AUTHORS_ID}`, component: AuthorDetailsComponent},
@@ -65,6 +70,7 @@ const routes: Routes = [
   {path: RouteConstants.REGISTER, component: RegisterPage},
   {path: RouteConstants.LOGIN, component: LoginPage},
   {path: "**", pathMatch: 'full', component: NotFoundComponent},
+  { path: `${RouteConstants.GEOLOCATION}/:${RouteConstants.BOOK_ID}`, component: BookshopGeolocationComponent },
 ];
 
 @NgModule({

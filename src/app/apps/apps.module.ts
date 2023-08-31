@@ -39,9 +39,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { customNotifierOptions } from './configs/custom-notifier-options';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentDialog } from './shopping-cart/payment-dialog/payment-dialog/payment-dialog.component';
-import { AppModule } from '../app.module';
 import { StripeVariables } from './configs/stripe-options';
 import { NgxStripeModule } from 'ngx-stripe';
+import { BookshopGeolocationComponent } from './bookshop-geolocation/bookshop-geolocation.component';
+import { BooksAddComponent } from './books-add/books-add.component';
 
 @NgModule({
   imports: [
@@ -88,6 +89,10 @@ import { NgxStripeModule } from 'ngx-stripe';
     ShoppingCartDetailsComponent,
     MyWishlistComponent,
     PaymentDialog,
+    ProfileComponent,
+    BookshopGeolocationComponent,
+    BooksAddComponent,
+    MyWishlistComponent,
   ],
   providers: [],
 })

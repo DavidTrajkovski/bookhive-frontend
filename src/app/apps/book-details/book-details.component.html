@@ -35,10 +35,12 @@
         <div class="mat-card-div">
           <mat-card-actions align="end">
             <div class="div-add-to-cart-wrapper">
-              Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart" (click)="openAddToCartDialog(book?.id!)">
+              Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart"
+                                        (click)="openAddToCartDialog(book?.id!)">
             </div>
             <div class="div-add-to-favourites-wrapper">
-              &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart" (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
+                                                             (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
             </div>
           </mat-card-actions>
         </div>
@@ -46,7 +48,7 @@
     </div>
     <div class="bio-wrapper">
       <h5>Book Description:</h5>
-      <p>{{book?.description}} asda sd asd asda sdas das das dasd asd asd asd asd asd asda sd asd asd asd asd asd asd asd </p>
+      <p>{{book?.description}}</p>
     </div>
   </div>
   <div class="image-full">
@@ -54,14 +56,52 @@
     <div class="mat-card-div">
       <mat-card-actions align="end">
         <div class="div-add-to-cart-wrapper">
-          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart" (click)="openAddToCartDialog(book?.id!)">
+          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart"
+                                    (click)="openAddToCartDialog(book?.id!)">
         </div>
         <div class="div-add-to-favourites-wrapper">
-          &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart" (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
+                                                         (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
         </div>
       </mat-card-actions>
     </div>
   </div>
+</div>
+<div class="container">
+  <h2 style="text-align: center; margin-bottom: 20px;">Bookshops where you can find this book:</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bookshop of bookshops; let i = index;">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ bookshop.name }}</td>
+      <td class="text-center">
+        <a
+          class="default-button"
+          style="text-decoration: none; color: black !important;"
+
+          mat-stroked-button
+          [href]="'/bookshops/' + bookshop.id"
+        >
+          View
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div style="display: flex; justify-content: center; margin-bottom: 20px;">
+
+
+
+  <a class="geolocation-wrapper" [href]="'/geolocation/' + book?.id">&nbsp;&nbsp;&nbsp;Open map to view location of the bookshops that have this
+    book&nbsp;&nbsp;&nbsp;</a>
 
 </div>
 
