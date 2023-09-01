@@ -1,4 +1,10 @@
 <div class="register-container">
+  <div class="spinner-div" *ngIf="loading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
   <div class="register-form-div">
     <div class="create-account-div">
       <span class="create-account">Create an account</span>
@@ -74,3 +80,4 @@
     </div>
   </div>
 </div>
+<notifier-container></notifier-container>

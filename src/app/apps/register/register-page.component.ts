@@ -4,6 +4,7 @@ import { RegisterRequest } from '../../core/interface/authorization/register-req
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/service/authentication/auth.service';
 import { Router } from '@angular/router';
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'bh-register',
@@ -13,10 +14,12 @@ import { Router } from '@angular/router';
 export class RegisterPage implements OnInit, OnDestroy {
   registerForm: FormGroup = this.initializeRegisterForm();
   registerSubscription = new Subscription();
+  loading: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
     private authService: AuthService,
+    private _notifierService: NotifierService,
     private router: Router
   ) {}
 
@@ -43,15 +46,20 @@ export class RegisterPage implements OnInit, OnDestroy {
       password: this.registerForm.value.password,
     };
 
+    this.loading = true;
     this.registerSubscription = this.authService
       .register(registerRequest)
       .subscribe(
         (next) => {
+          this.loading = false;
           console.log('Registration successful');
           this.router.navigate(['/login']);
         },
         (error) => {
+          this.loading = false;
           console.error('Registration failed: ', error);
+          debugger
+          this._notifierService.notify('error', 'Registration failed: \n'+ error.error)
         }
       );
   }

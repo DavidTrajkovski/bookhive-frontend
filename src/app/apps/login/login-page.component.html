@@ -1,5 +1,12 @@
 <div class="login-container">
-  <div class="login-form-div">
+
+  <div class="spinner-div" *ngIf="loading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="login-form-div" >
     <div class="login-div">
       <span class="login">LOGIN</span>
     </div>
@@ -51,3 +58,4 @@
     </div>
   </div>
 </div>
+<notifier-container></notifier-container>
