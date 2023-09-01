@@ -43,11 +43,14 @@ export class ShoppingCartDetailsComponent {
   }
 
   checkout() {
-    this.dialog.open(PaymentDialog, {
-      data: {
-        totalAmountToPay: this.shoppingCartInfo?.totalPrice,
-      },
-    });
+    this.dialog
+      .open(PaymentDialog, {
+        data: {
+          totalAmountToPay: this.shoppingCartInfo?.totalPrice,
+        },
+      })
+      .afterClosed()
+      .subscribe((_) => location.reload());
   }
 
   goBack() {

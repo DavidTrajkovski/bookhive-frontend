@@ -23,6 +23,7 @@ import {BooksAddComponent} from "./apps/books-add/books-add.component";
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
+import { MyLibraryComponent } from './apps/my-library/my-library.component';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {path: RouteConstants.MY_LIBRARY, component: MyLibraryComponent},
       {path: RouteConstants.SHOPPING_CART, component: ShoppingCartDetailsComponent},
       {path: RouteConstants.NOT_FOUND, component: NotFoundComponent},
       {path: RouteConstants.HOME, component: HomeComponent},
