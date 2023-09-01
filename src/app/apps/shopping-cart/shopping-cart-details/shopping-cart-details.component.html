@@ -1,0 +1,103 @@
+<div class="container mt-3">
+  <div class="d-flex justify-content-center">
+    <mat-progress-spinner mode="indeterminate" *ngIf="isLoading">
+    </mat-progress-spinner>
+  </div>
+  <div class="mb-3" *ngIf="!isLoading">
+    <button mat-stroked-button class="default-button" (click)="goBack()">
+      <mat-icon style="transform: rotate(180deg)">arrow_right_alt</mat-icon>
+      Back
+    </button>
+  </div>
+  <table class="table" *ngIf="!isLoading">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 15%">Cover Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Price</th>
+        <th scope="col" class="button-columns">Details</th>
+        <th scope="col" class="button-columns">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let cartItem of shoppingCartInfo?.books"
+        id="{{ cartItem.book.id }}"
+      >
+        <td>
+          <div class="cover-image">
+            <img class="h-100" [src]="cartItem.book.coverImageUrl" />
+          </div>
+        </td>
+        <td>{{ cartItem.book.name }}</td>
+        <td>
+          {{ cartItem.book.authors[0].name }}
+          {{ cartItem.book.authors[0].surname }}
+        </td>
+        <td>{{ cartItem.book.price | currency : "EUR" }}</td>
+        <td>
+          <a [routerLink]="['/books/', cartItem.book.id]" target="_blank">
+            <mat-icon matTooltip="Details" class="mat-buttons info">
+              info
+            </mat-icon>
+          </a>
+        </td>
+        <td>
+          <a>
+            <mat-icon
+              matTooltip="Remove"
+              class="mat-buttons delete"
+              (click)="removeBook(cartItem.book.id)"
+            >
+              delete_outline
+            </mat-icon>
+          </a>
+        </td>
+      </tr>
+      <tr
+        *ngIf="
+          shoppingCartInfo?.books === undefined ||
+          shoppingCartInfo!.books.length <= 0
+        "
+        align="center"
+        style="vertical-align: middle"
+      >
+        <td colspan="6" class="text-secondary">
+          Your shopping cart is empty, go buy some cool books!
+        </td>
+      </tr>
+      <tr *ngIf="shoppingCartInfo?.books" style="vertical-align: middle">
+        <td></td>
+        <td></td>
+        <td><strong>Total Price:</strong></td>
+        <td>
+          <strong>{{ shoppingCartInfo?.totalPrice | currency : "EUR" }}</strong>
+        </td>
+        <td colspan="2">
+          <button
+            id="checkout-button"
+            mat-button
+            class="default-button"
+            color="primary"
+            (click)="checkout()"
+            [disabled]="
+              shoppingCartInfo?.books === undefined ||
+              shoppingCartInfo!.books.length <= 0
+            "
+          >
+            <mat-icon
+              *ngIf="
+                shoppingCartInfo?.books && shoppingCartInfo!.books.length > 0
+              "
+            >
+              shopping_cart_checkout
+            </mat-icon>
+            Checkout
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<notifier-container></notifier-container>

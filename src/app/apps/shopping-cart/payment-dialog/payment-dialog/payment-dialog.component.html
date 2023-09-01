@@ -1,0 +1,42 @@
+<div class="container p-5">
+  <div class="d-flex justify-content-center align-items-center">
+    <mat-progress-spinner
+      mode="indeterminate"
+      *ngIf="isProcessing"
+      [diameter]="50"
+    >
+    </mat-progress-spinner>
+  </div>
+  <div
+    ngxStripeCardGroup
+    [formGroup]="stripeTest!"
+    [elementsOptions]="elementsOptions"
+    [hidden]="isProcessing"
+  >
+    <mat-form-field class="w-100">
+      <mat-label>Cardholder Full Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <div class="mb-2">Card number:</div>
+    <ngx-stripe-card-number [options]="cardOptions"></ngx-stripe-card-number>
+    <div class="my-2">Expiration date:</div>
+    <ngx-stripe-card-expiry [options]="cardOptions"></ngx-stripe-card-expiry>
+    <div class="my-2">CVC number:</div>
+    <ngx-stripe-card-cvc [options]="cardOptions"></ngx-stripe-card-cvc>
+    <mat-divider class="my-2"></mat-divider>
+    <div class="text-center">
+      <strong>
+        Total amount: {{ this.data.totalAmountToPay | currency : "EUR" }}
+      </strong>
+    </div>
+    <button
+      class="mt-3 w-100"
+      type="submit"
+      mat-flat-button
+      color="accent"
+      (click)="pay()"
+    >
+      PAY
+    </button>
+  </div>
+</div>

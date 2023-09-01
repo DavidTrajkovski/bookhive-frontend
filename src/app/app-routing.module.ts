@@ -21,6 +21,7 @@ import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topi
 import {BookshopGeolocationComponent} from "./apps/bookshop-geolocation/bookshop-geolocation.component";
 import {BooksAddComponent} from "./apps/books-add/books-add.component";
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
+import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {path: RouteConstants.SHOPPING_CART, component: ShoppingCartDetailsComponent},
       {path: RouteConstants.NOT_FOUND, component: NotFoundComponent},
       {path: RouteConstants.HOME, component: HomeComponent},
       {path: RouteConstants.BOOKS, component: BooksComponent},

@@ -10,7 +10,7 @@
   <div
     class="container d-flex flex-column justify-content-center align-items-center"
   >
-    <div class="search-container">
+    <div class="search-container" *ngIf="!bookclubsAreLoading">
       <form>
         <mat-form-field>
           <mat-label>Search</mat-label>
