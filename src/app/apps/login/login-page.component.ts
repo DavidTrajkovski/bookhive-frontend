@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { LoginRequest } from '../../core/interface/authorization/login-request';
 import { AuthService } from 'src/app/core/service/authentication/auth.service';
 import { Router } from '@angular/router';
+import {NotifierService} from "angular-notifier";
 @Component({
   selector: 'bh-login',
   templateUrl: './login-page.component.html',
@@ -12,10 +13,12 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit, OnDestroy {
   loginForm: FormGroup = this.initializeLoginForm();
   loginSubscription = new Subscription();
+  loading: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
     private authService: AuthService,
+    private _notifierService: NotifierService,
     private router: Router
   ) {}
 
@@ -43,9 +46,18 @@ export class LoginPage implements OnInit, OnDestroy {
       password: this.loginForm.value.password,
     };
 
+    this.loading = true;
     this.loginSubscription = this.authService.login(loginRequest).subscribe({
-      next: (_) => this.router.navigate(['/home']),
-      error: (err) => console.log(err),
+      next: (_) => {
+        this.router.navigate(['/home'])
+        this.loading = false;
+      },
+      error: (err) => {
+        console.log(err)
+        this.loading = false;
+        debugger
+        this._notifierService.notify('error', 'Login failed: \n'+ err.message)
+      },
     });
   }
 

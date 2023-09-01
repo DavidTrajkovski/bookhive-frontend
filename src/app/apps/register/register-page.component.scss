@@ -1,5 +1,15 @@
 @import "styles";
 
+.spinner-div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+  margin-left: 25%;
+  z-index: 1;
+}
+
 form div {
   margin-bottom: 20px;
 }
@@ -155,5 +165,14 @@ h1 {
   }
   button {
     background-color: map-get($bookhive-primary, 800) !important;
+  }
+  .spinner-div {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -0.5%;
+    margin-left: -0.5%;
+    z-index: 1;
   }
 }
