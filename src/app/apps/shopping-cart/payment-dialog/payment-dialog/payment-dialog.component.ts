@@ -13,6 +13,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ShoppingCartService } from 'src/app/core/service/shopping-cart.service';
 import { StripeVariables } from 'src/app/apps/configs/stripe-options';
 import { CurrencyPipe } from '@angular/common';
+import { LibraryService } from 'src/app/core/service/library.service';
 
 @Component({
   selector: 'bh-payment-dialog',
@@ -42,7 +43,8 @@ export class PaymentDialog implements OnInit {
     private formBuilder: FormBuilder,
     private stripeService: StripeService,
     private authService: AuthService,
-    private notifierService: NotifierService
+    private notifierService: NotifierService,
+    private libraryService: LibraryService
   ) {}
 
   ngOnInit(): void {
@@ -78,10 +80,19 @@ export class PaymentDialog implements OnInit {
                 'success',
                 'Payment accepted! New books added to your library.'
               );
-              this.shoppingCartService.clearShoppingCart();
+
+              this.shoppingCartService
+                .getShoppingCartInfo()
+                .subscribe((data) => {
+                  const bookIds = data.books.map((book) => book.book.id);
+                  this.libraryService
+                    .addBooksToLibrary(bookIds)
+                    .subscribe((_) => {
+                      this.shoppingCartService.clearShoppingCart();
+                    });
+                });
             }
             this._dialogRef.close();
-            this.isProcessing = false;
           },
           error: (result) => {
             console.error(result);

@@ -43,6 +43,7 @@ import { StripeVariables } from './configs/stripe-options';
 import { NgxStripeModule } from 'ngx-stripe';
 import { BookshopGeolocationComponent } from './bookshop-geolocation/bookshop-geolocation.component';
 import { BooksAddComponent } from './books-add/books-add.component';
+import { MyLibraryComponent } from './my-library/my-library.component';
 
 @NgModule({
   imports: [
@@ -61,7 +62,7 @@ import { BooksAddComponent } from './books-add/books-add.component';
     SharedModule,
     MatOptionModule,
     MatTooltipModule,
-    RouterLink,
+    RouterModule,
     NgOptimizedImage,
     MatSelectModule,
     BookclubsModule,
@@ -93,6 +94,7 @@ import { BooksAddComponent } from './books-add/books-add.component';
     BookshopGeolocationComponent,
     BooksAddComponent,
     MyWishlistComponent,
+    MyLibraryComponent,
   ],
   providers: [],
 })
