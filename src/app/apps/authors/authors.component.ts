@@ -5,7 +5,7 @@ import {AuthorService} from "../../core/service/author/author.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {AuthorDialog} from "./dialogs/author-dialog/author.dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -17,7 +17,7 @@ export class AuthorsComponent implements OnInit {
   constructor(private _authorService: AuthorService,
               private router: Router,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar) {
+              private _notifierService: NotifierService) {
     this.authors$ = null
   }
 
@@ -40,17 +40,10 @@ export class AuthorsComponent implements OnInit {
   deleteAuthor(id: string) {
     this._authorService.deleteAuthor(id).subscribe({
       next: value => {
-        this.openSnackbar()
+        this._notifierService.notify('success', 'Author deleted.');
         this.authors$ = this._authorService.getAllAuthors()
       },
       error: err => {this.authors$ = this._authorService.getAllAuthors()}
     })
   }
-
-  openSnackbar() {
-    this.snackBar.open('Author Deleted', 'Close', {
-      duration: 2000,
-    });
-  }
-
 }

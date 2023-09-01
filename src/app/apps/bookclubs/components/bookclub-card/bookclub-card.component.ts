@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookClub } from 'src/app/core/interface/bookclub/bookclub';
 import { InvitationService } from 'src/app/core/service/invitation.service';
 import { BookclubDialog } from '../dialogues/bookclub-dialog/bookclub-dialog.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'bh-bookclub-card',
@@ -16,25 +16,18 @@ export class BookclubCardComponent {
 
   constructor(
     private invitationService: InvitationService,
-    private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _notifierService: NotifierService
   ) {}
 
   requestBookClubMembership(bookclubId: string | undefined) {
     if (bookclubId) {
       this.invitationService.requestBookClubMembership(bookclubId);
-      this.openSnackBar();
+      this._notifierService.notify(
+        'success',
+        `Successfully requested to join "${this.bookclub?.name}"`
+      );
     }
-  }
-
-  openSnackBar() {
-    this.snackBar.open(
-      `Successfully requested to join "${this.bookclub?.name}"`,
-      'Close',
-      {
-        duration: 5 * 1000,
-      }
-    );
   }
 
   openBookClubDialog() {

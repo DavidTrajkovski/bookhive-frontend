@@ -22,10 +22,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BookclubDialog } from './components/dialogues/bookclub-dialog/bookclub-dialog.component';
 import { TopicDialog } from './components/dialogues/topic-dialog/topic-dialog.component';
+import { NotifierModule } from 'angular-notifier';
+import { SendInvitationDialog } from './components/dialogues/send-invitation/send-invitation.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { customNotifierOptions } from '../configs/custom-notifier-options';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { TopicDialog } from './components/dialogues/topic-dialog/topic-dialog.co
     PostCardComponent,
     BookclubDialog,
     TopicDialog,
+    SendInvitationDialog,
   ],
   imports: [
     CommonModule,
@@ -55,8 +59,9 @@ import { TopicDialog } from './components/dialogues/topic-dialog/topic-dialog.co
     MatDividerModule,
     MatListModule,
     MatBadgeModule,
-    MatSnackBarModule,
     MatDialogModule,
+    MatAutocompleteModule,
+    NotifierModule.withConfig(customNotifierOptions),
   ],
 })
 export class BookclubsModule {}

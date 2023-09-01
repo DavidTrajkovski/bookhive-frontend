@@ -9,6 +9,8 @@ import { AppsModule } from './apps/apps.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { NgxStripeModule } from 'ngx-stripe';
+import { StripeVariables } from './apps/configs/stripe-options';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
     AppsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxStripeModule.forRoot(StripeVariables.publishableKey),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

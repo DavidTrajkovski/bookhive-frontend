@@ -19,5 +19,6 @@ export class RouteConstants {
   public static readonly GEOLOCATION = 'geolocation';
   public static readonly BOOK_ID = 'bookId'
   public static readonly NOT_FOUND = 'not-found';
+  public static readonly SHOPPING_CART = 'shopping-cart';
   public static readonly MY_WISHLIST = 'my-wishlist'
 }

@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AuthService } from 'src/app/core/service/authentication/auth.service';
 import { InvitationService } from 'src/app/core/service/invitation.service';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'bh-sidenav',
@@ -27,6 +28,7 @@ import { InvitationService } from 'src/app/core/service/invitation.service';
     AppRoutingModule,
     MatMenuModule,
     MatBadgeModule,
+    MatDividerModule
   ],
 })
 export class NavBarComponent {
