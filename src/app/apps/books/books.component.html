@@ -35,9 +35,9 @@
     </mat-progress-spinner>
   </div>
   <div class="books-wrapper" *ngIf="!loading">
-    <div class="book-div" *ngFor="let book of books | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total }" >
+    <div class="book-div" *ngFor="let book of books | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: total }" >
       <bh-book-card [book]="book"></bh-book-card>
     </div>
   </div>
-  <pagination-controls (pageChange)="pageChangeEvent($event)" *ngIf="!loading"></pagination-controls>
+  <pagination-controls [responsive]="true" (pageChange)="pageChangeEvent($event)" *ngIf="!loading"></pagination-controls>
 </div>
