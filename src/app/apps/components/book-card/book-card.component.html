@@ -9,7 +9,7 @@
     <div class="header-content">
       <mat-card-header>
         <mat-card-title-group>
-          <mat-card-title>{{book!.name}}</mat-card-title>
+          <mat-card-title> <a class="book-id-link" [routerLink]="['/books/', book?.id]">{{book!.name}}</a></mat-card-title>
           <mat-card-subtitle *ngFor="let author of book?.authors">{{author.name}}&nbsp;{{author.surname}}</mat-card-subtitle>
         </mat-card-title-group>
       </mat-card-header>
