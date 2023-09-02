@@ -38,11 +38,22 @@
                     value="{{ libraryBook.lastPageRead || 0 }}"
                   />
                 </mat-form-field>
+
               </mat-card-content>
             </div>
+
           </div>
           <div class="footer-content">
             <mat-card-actions align="end">
+              <div>
+                <button
+                  [routerLink]="['/books/', libraryBook.book.id, 'preview']"
+                  mat-raised-button
+                  class="details-link"
+                  target="_blank"
+                >Preview
+                </button>
+              </div>
               <div class="act-button-div">
                 <a
                   [routerLink]="['/books/', libraryBook.book.id]"

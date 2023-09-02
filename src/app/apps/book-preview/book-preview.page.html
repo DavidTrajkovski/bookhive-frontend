@@ -1,0 +1,46 @@
+<div class=" main-cont">
+  <div class="spinner-div" *ngIf="loading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="div-controls">
+    <div class="page-div-controls">
+      <button class="page-buttons" mat-button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+      <mat-form-field>
+        <input matInput class="input-page" [(ngModel)]="page" (input)="setPage($event)" type="number" [min]="1" [max]=totalPages [value]="page">
+      </mat-form-field>/ {{ totalPages }}
+        <button class="page-buttons" mat-button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+    </div>
+    <div class="zoom-div-controls">
+      <button class="zoom-buttons" mat-button (click)="decreaseZoom()" [disabled]="page === 2">Zoom -</button>
+      <mat-form-field>
+        <input matInput class="input-page" [value]="zoom">
+      </mat-form-field>
+      <button class="zoom-buttons" mat-button (click)="increaseZoom()" [disabled]="page === totalPages">Zoom +</button>
+    </div>
+  </div>
+  <div class="pdf-container" *ngIf="bookPdfUrl != '' && !loading">
+    <pdf-viewer
+      [src]="{
+        url: bookPdfUrl,
+        withCredentials: false
+      }"
+      [rotation]="0"
+      [original-size]="false"
+      [show-all]="true"
+      [fit-to-page]="false"
+      [zoom]="zoom"
+      [page]="page"
+      [zoom-scale]="'page-width'"
+      [stick-to-page]="false"
+      [render-text]="true"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="true"
+      (after-load-complete)="afterLoadComplete($event)"
+      style="width: 80%; height: 670px;"
+    ></pdf-viewer>
+  </div>
+</div>

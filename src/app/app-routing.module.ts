@@ -24,6 +24,7 @@ import {NotFoundComponent} from "./shared/components/not-found/not-found.compone
 import {UnauthorizedComponent} from "./shared/components/unauthorized/unauthorized.component"
 import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
+import {BookPreviewPage} from "./apps/book-preview/book-preview.page";
 import { MyLibraryComponent } from './apps/my-library/my-library.component';
 import { authGuard } from './core/guards/auth.guard';
 import { adminRoleGuard } from './core/guards/admin-role.guard';
@@ -74,13 +75,18 @@ const routes: Routes = [
         path: `${RouteConstants.MY_WISHLIST}`,
         component: MyWishlistComponent,
         canActivate: [authGuard]
-      }
+      },
+      {
+        path: `${RouteConstants.BOOKS}/:${RouteConstants.BOOK_ID}/preview`,
+        component: BookPreviewPage
+      },
     ],
   },
   {path: RouteConstants.REGISTER, component: RegisterPage},
   {path: RouteConstants.LOGIN, component: LoginPage},
-  {path: "**", pathMatch: 'full', component: NotFoundComponent},
   { path: `${RouteConstants.GEOLOCATION}/:${RouteConstants.BOOK_ID}`, component: BookshopGeolocationComponent },
+  {path: "**", pathMatch: 'full', component: NotFoundComponent},
+
 ];
 
 @NgModule({

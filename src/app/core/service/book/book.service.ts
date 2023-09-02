@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BookDto} from "../../interface/book/book-dto";
+import {BookPdfUrl} from "../../interface/book/BookPdfUrl";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,10 @@ export class BookService {
   }
   updateBook(bookDto: BookDto): Observable<BookDto> {
     return this._http.put<BookDto>(`${this.baseUrl}/${bookDto.id}`, bookDto)
+  }
+
+  getBookPdfUrl(bookId: string): Observable<BookPdfUrl> {
+    return this._http.get<BookPdfUrl>(`${this.baseUrl}/${bookId}/preview`)
   }
 
 }
