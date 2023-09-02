@@ -1,0 +1,64 @@
+@import "\styles";
+
+.main-cont {
+  margin-top: 1%;
+}
+
+.spinner-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.pdf-container {
+  display: flex;
+  justify-content: center;
+
+}
+
+pdf-viewer {
+}
+
+.div-controls {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.page-div-controls {
+  text-align: center;
+}
+
+.zoom-div-controls {
+  text-align: center;
+}
+
+.input-page {
+  margin-left: 10px;
+  align-content: center;
+  text-align: center;
+}
+
+.page-buttons  {
+  color: map-get($bookhive-accent, 500) !important;
+}
+
+.zoom-buttons {
+  color: map-get($bookhive-accent, 500) !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  width: 50px !important;
+}
+
+:host ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  align-content: start !important;
+  text-align: start !important;
+  width: 70px !important;
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+  height: 50px !important;
+  margin-right: 5px;
+}
+

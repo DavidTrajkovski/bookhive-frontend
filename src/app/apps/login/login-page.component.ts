@@ -56,7 +56,7 @@ export class LoginPage implements OnInit, OnDestroy {
         console.log(err)
         this.loading = false;
         debugger
-        this._notifierService.notify('error', 'Login failed: \n'+ err.message)
+        this._notifierService.notify('error', 'Login failed: \n'+ 'Non-matching credentials provided.')
       },
     });
   }

@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
 import { BooksComponent } from './books/books.component';
@@ -43,7 +43,9 @@ import { StripeVariables } from './configs/stripe-options';
 import { NgxStripeModule } from 'ngx-stripe';
 import { BookshopGeolocationComponent } from './bookshop-geolocation/bookshop-geolocation.component';
 import { BooksAddComponent } from './books-add/books-add.component';
+import {BookPreviewPage} from "./book-preview/book-preview.page";
 import { MyLibraryComponent } from './my-library/my-library.component';
+import {PdfViewerModule} from "ng2-pdf-viewer";
 
 @NgModule({
   imports: [
@@ -71,6 +73,8 @@ import { MyLibraryComponent } from './my-library/my-library.component';
     NgxPaginationModule,
     MatDialogModule,
     NgxStripeModule.forRoot(StripeVariables.publishableKey),
+    PdfViewerModule,
+    FormsModule,
   ],
   declarations: [
     RegisterPage,
@@ -94,6 +98,7 @@ import { MyLibraryComponent } from './my-library/my-library.component';
     BookshopGeolocationComponent,
     BooksAddComponent,
     MyWishlistComponent,
+    BookPreviewPage,
     MyLibraryComponent,
   ],
   providers: [],
