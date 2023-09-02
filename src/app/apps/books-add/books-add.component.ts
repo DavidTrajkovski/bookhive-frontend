@@ -4,7 +4,7 @@ import {Book} from "../../core/interface/book";
 import {BookService} from "../../core/service/book/book.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterRequest} from "../../core/interface/authorization/register-request";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../../core/service/author/author.service";
 import {BookAuthorInfoDto} from "../../core/interface/author/book-author-info-dto";
 
@@ -25,7 +25,8 @@ export class BooksAddComponent {
     private _formBuilder: FormBuilder,
     private bookService: BookService,
     private authorService: AuthorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -66,6 +67,7 @@ export class BooksAddComponent {
       description: ['', Validators.required],
       datePublished: [null, Validators.required],
       coverImageUrl: ['', Validators.required],
+      pdfUrl: ['', Validators.required],
       price: [0, Validators.required],
       totalPages: [0, Validators.required],
       isValid: [false, Validators.required],
@@ -99,6 +101,7 @@ export class BooksAddComponent {
         description: this.book.description,
         datePublished: datePublished.toISOString().substring(0, 10),
         coverImageUrl: this.book.coverImageUrl,
+        pdfUrl: this.book.pdfUrl,
         price: this.book.price,
         totalPages: this.book.totalPages,
       });
@@ -130,6 +133,7 @@ export class BooksAddComponent {
       description: this.addBookForm.value.description,
       datePublished: this.addBookForm.value.datePublished,
       coverImageUrl: this.addBookForm.value.coverImageUrl,
+      pdfUrl: this.addBookForm.value.pdfUrl,
       price: this.addBookForm.value.price,
       totalPages: this.addBookForm.value.totalPages,
       isValid: true,
@@ -142,6 +146,7 @@ export class BooksAddComponent {
 
     this.bookService.addBook(this.book).subscribe(response => {
       console.log('Book added:', response);
+      this.router.navigate(['/books', response.id]);
     });
   }
 
@@ -153,6 +158,7 @@ export class BooksAddComponent {
       description: this.addBookForm.value.description,
       datePublished: this.addBookForm.value.datePublished,
       coverImageUrl: this.addBookForm.value.coverImageUrl,
+      pdfUrl: this.addBookForm.value.pdfUrl,
       price: this.addBookForm.value.price,
       totalPages: this.addBookForm.value.totalPages,
       isValid: true,
@@ -162,7 +168,9 @@ export class BooksAddComponent {
     };
     this.bookService.updateBook(this.book).subscribe(response => {
       console.log('Book edited:', response);
+      this.router.navigate(['/books', response.id]);
     });
+
   }
 
 
