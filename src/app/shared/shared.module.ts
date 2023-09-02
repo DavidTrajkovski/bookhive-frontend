@@ -8,9 +8,15 @@ import { TextIconComponent } from './components/text-icon/text-icon.component';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/local-storage.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
-  declarations: [LayoutComponent, TextIconComponent, NotFoundComponent],
+  declarations: [
+    LayoutComponent,
+    TextIconComponent,
+    NotFoundComponent,
+    UnauthorizedComponent,
+  ],
   providers: [LocalStorageService],
   imports: [
     CommonModule,
