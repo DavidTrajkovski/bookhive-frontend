@@ -1,5 +1,12 @@
 @import "styles";
 
+.register_buttons{
+  color: rgb(2 73 25);
+}
+.register_buttons:hover{
+  font-weight: 500;
+}
+
 .home-font {
   font-family: var(--bookhive-logo-font);
 }

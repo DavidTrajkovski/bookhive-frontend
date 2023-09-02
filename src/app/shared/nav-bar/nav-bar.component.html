@@ -4,7 +4,7 @@
   </button>
   <span id="logo" routerLink="home">BookHive</span>
   <span class="spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <button *ngIf="isUserLoggedIn" mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -31,16 +31,6 @@
     <button *ngIf="isUserLoggedIn" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Log out</span>
-    </button>
-
-    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="login">
-      <mat-icon>login</mat-icon>
-      <span>Login</span>
-    </button>
-
-    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="register">
-      <mat-icon>fingerprint</mat-icon>
-      <span>Register</span>
     </button>
   </mat-menu>
 </mat-toolbar>
@@ -122,25 +112,6 @@
           >
             Invitations
           </p>
-        </div>
-      </a>
-      <mat-divider></mat-divider>
-      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="login">
-        <div class="text-icon">
-          <mat-icon>login</mat-icon>
-          <span>Log in</span>
-        </div>
-      </a>
-      <a *ngIf="!isUserLoggedIn" mat-list-item [routerLink]="register">
-        <div class="text-icon">
-          <mat-icon>fingerprint</mat-icon>
-          <span>Register</span>
-        </div>
-      </a>
-      <a *ngIf="isUserLoggedIn" (click)="logout()" mat-list-item>
-        <div class="text-icon">
-          <mat-icon>logout</mat-icon>
-          <span>Log out</span>
         </div>
       </a>
     </mat-nav-list>
