@@ -7,6 +7,7 @@ export interface BookDto {
   description: string,
   datePublished: Date,
   coverImageUrl: string,
+  pdfUrl: string,
   price: number,
   totalPages: number,
   isValid: boolean,
