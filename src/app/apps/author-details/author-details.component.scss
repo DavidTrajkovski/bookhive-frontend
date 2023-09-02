@@ -13,7 +13,8 @@ h3 {
 }
 
 li {
-  font-size: 2em;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 li:hover {
@@ -23,21 +24,17 @@ li:hover {
 
 .bio-author-img {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   font-size: 1.2em;
 }
 
 .bio-div {
   margin-top: 3em;
-  width: 60%;
 }
 
 .author-book {
-  margin-top: -10px;
-}
-
-.books-wrapper {
-  margin-top: -12em;
+  margin-top: 10px;
 }
 
 ul {
@@ -45,19 +42,30 @@ ul {
 }
 
 @media screen and (max-width: 1000px) {
+
+  #author-name{
+    display: flex; justify-content: center; align-items: center;
+  }
+  #author-age{
+    display: flex; justify-content: center; align-items: center;
+  }
+
   .bio-author-img {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .bio-div{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .books-wrapper {
-    margin-top: -6em;
+    margin-top: 6em;
   }
 
   #avatar {
     width: 9em;
     height: 9em;
-    margin-bottom: 6em;
-    margin-left: 2em;
   }
 }
