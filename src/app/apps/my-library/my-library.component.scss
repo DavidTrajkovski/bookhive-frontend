@@ -22,6 +22,14 @@ a:hover {
   color: map-get($bookhive-accent, 400) !important;
 }
 
+.title-link {
+  color: map-get($bookhive-accent, 300) !important;
+}
+
+.title-link:hover {
+  color: map-get($bookhive-accent, 500) !important;
+}
+
 .remove-link {
   color: map-get($bookhive-warn, 500) !important;
 }
