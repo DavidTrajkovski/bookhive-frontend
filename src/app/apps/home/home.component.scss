@@ -22,11 +22,11 @@ title-div-2 {
 }
 
 .welcome {
-  font-size: 1.8em;
+  font-size: 1.5em;
 }
 
 .bookhive {
-  font-size: 10em;
+  font-size: 8em;
   margin-top: -0.25em;
   margin-bottom: 0.2em;
   color: rgb(2 73 25); //rgb(6 83 31);//map-get($bookhive-accent, 800); //#045143
@@ -47,7 +47,7 @@ title-div-2 {
 
 .image {
   resize: both;
-  height: 800px;
+  height: 100%;
   width: 600px;
   border-top-left-radius: 25px;
 }
@@ -55,6 +55,7 @@ title-div-2 {
 .bullets {
   margin-bottom: 0.5em;
   margin-left: 0.2em;
+  font-size: 2em;
 }
 
 @media screen and (max-width: 1600px) {

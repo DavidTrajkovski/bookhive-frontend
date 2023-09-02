@@ -17,9 +17,10 @@ export class RouteConstants {
   public static readonly TOPIC = 'topic';
   public static readonly TOPIC_ID = 'topicId';
   public static readonly GEOLOCATION = 'geolocation';
-  public static readonly BOOK_ID = 'bookId'
+  public static readonly BOOK_ID = 'bookId';
   public static readonly NOT_FOUND = 'not-found';
   public static readonly SHOPPING_CART = 'shopping-cart';
   public static readonly MY_WISHLIST = 'my-wishlist';
+  public static readonly BOOK_PREVIEW = 'book-preview';
   public static readonly MY_LIBRARY = 'my-library';
 }
