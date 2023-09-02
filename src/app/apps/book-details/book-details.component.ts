@@ -6,6 +6,12 @@ import {BookService} from "../../core/service/book/book.service";
 import {RouteConstants} from "../../shared/RouteConstants";
 import {BookshopService} from "../../core/service/bookshop.service";
 import {Bookshop} from "../../core/interface/bookshop";
+import {AddToCart} from "../../core/interface/shopping-cart/add-to-cart";
+import {NotifierService} from "angular-notifier";
+import {WishlistService} from "../../core/service/wishlist.service";
+import {AuthService} from "../../core/service/authentication/auth.service";
+import {ShoppingCartService} from "../../core/service/shopping-cart.service";
+import {WishlistDto} from "../../core/interface/my-wishlist/wishlist-dto";
 
 @Component({
   selector: 'app-book-details',
@@ -18,14 +24,21 @@ export class BookDetailsComponent implements OnInit{
   bookshops: Bookshop[] = [];
   bookIsLoading: boolean = true;
   bookshopsAreLoading: boolean = true;
+  userId: string | null;
 
   constructor(
     private _route: ActivatedRoute,
     private _authorService: AuthorService,
     private _bookService: BookService,
     private bookshopService: BookshopService,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private _notifierService: NotifierService,
+    private _wishlistService: WishlistService,
+    private _authService: AuthService,
+    private _shoppingCartService: ShoppingCartService
+  ) {
+    this.userId = _authService.getUserId();
+  }
 
   ngOnInit(): void {
     this.getBookIdFromPath();
@@ -72,11 +85,51 @@ export class BookDetailsComponent implements OnInit{
 
 
   openAddToCartDialog(id: string) {
-
+    const addToCardObj: AddToCart = {
+      bookId: id,
+      quantity: 1,
+    };
+    this._shoppingCartService.addBookToShoppingCart(addToCardObj).subscribe({
+      next: (bookAddedToCart) => {
+        if (bookAddedToCart) {
+          this._notifierService.notify(
+            'success',
+            `"${this.book?.name}" added to cart!`
+          );
+        } else {
+          this._notifierService.notify(
+            'error',
+            `"${this.book?.name}" is already in your cart!`
+          );
+        }
+      },
+      error: (_) => {
+        this._notifierService.notify('error', 'Error adding book to cart!');
+      },
+    });
   }
 
-  addToFavourites(id: string) {
-
+  addToWishlist(id: string) {
+    if (this.userId != null) {
+      const wishlistDto = {
+        userId: this.userId,
+        bookId: id,
+      } as WishlistDto;
+      this._wishlistService.addBookToMyWishList(wishlistDto).subscribe({
+        next: () => {
+          this._notifierService.notify(
+            'success',
+            'Successfully added to wishlist!'
+          );
+        },
+        error: (_) => {
+          this._notifierService.notify(
+            'error',
+            'Error adding book to wishlist!'
+          );
+        },
+      });
+    }
   }
 
   private getBookshopsForBook() {
