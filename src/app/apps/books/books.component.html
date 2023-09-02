@@ -1,6 +1,8 @@
 <div class="container1">
+  <div style="width: 100%; display: flex; justify-content: end;">
+    <a *ngIf="authService.isAdmin()" [href]="'/books/add'" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Add new book</a>
+  </div>
 
-  <a *ngIf="authService.isAdmin()" [href]="'/books/add'">Add new book</a>
   <div class="search-container">
     <form [formGroup]="searchAndFilterForm" >
 

@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.getUserRole() === 'Admin';
+    return this.getUserRole() === 'Administrator';
   }
 
   getExpiryTime(): string | null {
