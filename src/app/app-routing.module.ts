@@ -21,10 +21,13 @@ import { TopicDetailsComponent } from './apps/bookclubs/pages/topic-details/topi
 import {BookshopGeolocationComponent} from "./apps/bookshop-geolocation/bookshop-geolocation.component";
 import {BooksAddComponent} from "./apps/books-add/books-add.component";
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
+import {UnauthorizedComponent} from "./shared/components/unauthorized/unauthorized.component"
 import { ShoppingCartDetailsComponent } from './apps/shopping-cart/shopping-cart-details/shopping-cart-details.component';
 import {MyWishlistComponent} from "./apps/my-wishlist/my-wishlist.component";
 import {BookPreviewPage} from "./apps/book-preview/book-preview.page";
 import { MyLibraryComponent } from './apps/my-library/my-library.component';
+import { authGuard } from './core/guards/auth.guard';
+import { adminRoleGuard } from './core/guards/admin-role.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteConstants.HOME, pathMatch: 'full'},
@@ -32,40 +35,46 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: RouteConstants.MY_LIBRARY, component: MyLibraryComponent},
-      {path: RouteConstants.SHOPPING_CART, component: ShoppingCartDetailsComponent},
+      {path: RouteConstants.MY_LIBRARY, component: MyLibraryComponent, canActivate: [authGuard]},
+      {path: RouteConstants.SHOPPING_CART, component: ShoppingCartDetailsComponent, canActivate: [authGuard]},
       {path: RouteConstants.NOT_FOUND, component: NotFoundComponent},
+      {path: RouteConstants.UNAUTHORIZED, component: UnauthorizedComponent},
       {path: RouteConstants.HOME, component: HomeComponent},
       {path: RouteConstants.BOOKS, component: BooksComponent},
       {path: RouteConstants.BOOKSHOPS, component: BookshopsComponent},
-      {path: `${RouteConstants.BOOKS}/add`, component: BooksAddComponent},
-      {path: `${RouteConstants.BOOKS}/edit/:${RouteConstants.BOOK_ID}`, component: BooksAddComponent},
+      {path: `${RouteConstants.BOOKS}/add`, component: BooksAddComponent, canActivate: [authGuard, adminRoleGuard]},
+      {path: `${RouteConstants.BOOKS}/edit/:${RouteConstants.BOOK_ID}`, component: BooksAddComponent, canActivate: [authGuard, adminRoleGuard]},
       {path: `${RouteConstants.BOOKS}/:${RouteConstants.BOOKS_ID}`, component: BookDetailsComponent},
       {path: RouteConstants.AUTHORS, component: AuthorsComponent},
       {path: `${RouteConstants.AUTHORS}/:${RouteConstants.AUTHORS_ID}`, component: AuthorDetailsComponent},
       {path: `${RouteConstants.BOOKSHOPS}/:${RouteConstants.BOOKSHOPS_ID}`, component: BookshopDetailsComponent,},
-      {path: RouteConstants.PROFILE, component: ProfileComponent},
-      { path: RouteConstants.BOOKCLUBS, component: BookclubsComponent },
+      {path: RouteConstants.PROFILE, component: ProfileComponent, canActivate: [authGuard]},
+      { path: RouteConstants.BOOKCLUBS, component: BookclubsComponent, canActivate: [authGuard] },
       {
         path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}`,
         component: BookclubDetailsComponent,
+        canActivate: [authGuard]
       },
       {
         path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}/${RouteConstants.MEMBERS}`,
         component: MembersComponent,
+        canActivate: [authGuard]
       },
       {
         path: `${RouteConstants.BOOKCLUBS}/:${RouteConstants.BOOKCLUB_ID}/${RouteConstants.REQUESTS}`,
         component: RequestsComponent,
+        canActivate: [authGuard]
       },
-      { path: RouteConstants.INVITATIONS, component: InvitationsComponent },
+      { path: RouteConstants.INVITATIONS, component: InvitationsComponent, canActivate: [authGuard] },
       {
         path: `${RouteConstants.TOPIC}/:${RouteConstants.TOPIC_ID}`,
         component: TopicDetailsComponent,
+        canActivate: [authGuard]
       },
       {
         path: `${RouteConstants.MY_WISHLIST}`,
-        component: MyWishlistComponent
+        component: MyWishlistComponent,
+        canActivate: [authGuard]
       },
       {
         path: `${RouteConstants.BOOKS}/:${RouteConstants.BOOK_ID}/preview`,

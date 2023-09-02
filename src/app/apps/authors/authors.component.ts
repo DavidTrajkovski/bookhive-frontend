@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {AuthorDialog} from "./dialogs/author-dialog/author.dialog";
 import { NotifierService } from 'angular-notifier';
+import { AuthService } from 'src/app/core/service/authentication/auth.service';
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -17,7 +18,8 @@ export class AuthorsComponent implements OnInit {
   constructor(private _authorService: AuthorService,
               private router: Router,
               private dialog: MatDialog,
-              private _notifierService: NotifierService) {
+              private _notifierService: NotifierService,
+              public authService: AuthService) {
     this.authors$ = null
   }
 

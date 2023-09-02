@@ -6,10 +6,11 @@
     </mat-progress-spinner>
   </div>
   <div class="register-form-div">
-    <div class="create-account-div">
+    <div class="create-account-div" *ngIf="!loading">
       <span class="create-account">Create an account</span>
     </div>
     <form
+      *ngIf="!loading"
       [formGroup]="registerForm"
       (ngSubmit)="onSubmit()"
       class="register-form"
@@ -63,7 +64,7 @@
         REGISTER
       </button>
     </form>
-    <div class="already-have-account-div">
+    <div class="already-have-account-div" *ngIf="!loading">
       <p>Already have an account? Click <a href="/login">here</a> to login!</p>
     </div>
   </div>

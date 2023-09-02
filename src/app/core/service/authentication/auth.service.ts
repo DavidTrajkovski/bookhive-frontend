@@ -68,6 +68,15 @@ export class AuthService {
     return this.decodedToken ? this.decodedToken['email'] : null;
   }
 
+  getUserRole(): string | null {
+    this.decodeToken();
+    return this.decodedToken ? this.decodedToken['role'] : null;
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRole() === 'Admin';
+  }
+
   getExpiryTime(): string | null {
     this.decodeToken();
     return this.decodedToken ? this.decodedToken['exp'] : null;
@@ -86,7 +95,7 @@ export class AuthService {
     return !this.isLoggedIn();
   }
 
-  getExpiration(): moment.Moment {
+  private getExpiration(): moment.Moment {
     this.decodeToken();
     const expiresAt = JSON.parse(this.decodedToken['exp']);
     return moment(new Date(expiresAt * 1000));

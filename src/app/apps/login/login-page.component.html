@@ -6,11 +6,11 @@
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
-  <div class="login-form-div" >
-    <div class="login-div">
+  <div class="login-form-div">
+    <div class="login-div" *ngIf="!loading">
       <span class="login">LOGIN</span>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <form *ngIf="!loading" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="form-field-wrapper">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Email</mat-label>
@@ -39,7 +39,7 @@
         Login
       </button>
     </form>
-    <div class="dont-have-account-div">
+    <div class="dont-have-account-div" *ngIf="!loading">
       <p>
         Don't have an account? Click <a href="/register">here</a> to register!
       </p>

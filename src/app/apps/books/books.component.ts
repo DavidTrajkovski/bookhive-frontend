@@ -4,6 +4,7 @@ import {debounceTime, distinctUntilChanged, filter, map, pairwise, throttleTime,
 import {Subscription} from "rxjs";
 import {BookService} from "../../core/service/book/book.service";
 import {BookDto} from "../../core/interface/book/book-dto";
+import { AuthService } from 'src/app/core/service/authentication/auth.service';
 
 @Component({
   selector: 'app-books',
@@ -22,6 +23,7 @@ export class BooksComponent implements  OnInit, OnDestroy {
   constructor(
     private _formBuilder: FormBuilder,
     private _bookService: BookService,
+    public authService: AuthService
   ) {
   }
 
