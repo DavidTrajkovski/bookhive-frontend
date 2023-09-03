@@ -37,7 +37,7 @@
     <h1>{{ book?.name }}</h1>
     <h5>ISBN: {{ book?.isbn }}</h5>
     <h5>Pages: {{ book?.totalPages }}</h5>
-    <h5>Price: {{ book?.price }}.00&euro;</h5>
+    <h5>Price: &euro;{{ book?.price }}</h5>
     <h5>Date published: {{ toDateFormat(book?.datePublished) }}</h5>
     <div class="authors-genres-div">
       <div>
