@@ -35,11 +35,13 @@ export class ShoppingCartDetailsComponent {
   }
 
   removeBook(bookId: string) {
-    this._shoppingCartService.removeBookFromShoppingCart(bookId);
-    this.isLoading = true;
-    console.log(this.shoppingCartInfo);
-    this.getShoppingCartInfo();
-    location.reload();
+    if (confirm('Are you sure you want to remove the item from your cart?')) {
+      this._shoppingCartService.removeBookFromShoppingCart(bookId);
+      this.isLoading = true;
+      console.log(this.shoppingCartInfo);
+      this.getShoppingCartInfo();
+      location.reload();
+    }
   }
 
   checkout() {

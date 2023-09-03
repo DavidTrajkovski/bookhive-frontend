@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { switchMap } from 'rxjs/operators';
+import { mergeMap, switchMap } from 'rxjs/operators';
 
 import { StripeService, StripeCardNumberComponent } from 'ngx-stripe';
 import {
@@ -85,11 +85,7 @@ export class PaymentDialog implements OnInit {
                 .getShoppingCartInfo()
                 .subscribe((data) => {
                   const bookIds = data.books.map((book) => book.book.id);
-                  this.libraryService
-                    .addBooksToLibrary(bookIds)
-                    .subscribe((_) => {
-                      this.shoppingCartService.clearShoppingCart();
-                    });
+                  this.libraryService.addBooksToLibrary(bookIds).subscribe();
                 });
             }
             this._dialogRef.close();
