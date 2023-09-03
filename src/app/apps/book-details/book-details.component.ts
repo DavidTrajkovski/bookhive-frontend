@@ -34,10 +34,10 @@ export class BookDetailsComponent implements OnInit{
     private _router: Router,
     private _notifierService: NotifierService,
     private _wishlistService: WishlistService,
-    public _authService: AuthService,
+    public authService: AuthService,
     private _shoppingCartService: ShoppingCartService,
   ) {
-    this.userId = _authService.getUserId();
+    this.userId = authService.getUserId();
   }
 
   ngOnInit(): void {

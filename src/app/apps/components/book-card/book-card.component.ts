@@ -18,10 +18,10 @@ export class BookCardComponent {
   constructor(
     private _notifierService: NotifierService,
     private _wishlistService: WishlistService,
-    private _authService: AuthService,
+    public authService: AuthService,
     private _shoppingCartService: ShoppingCartService
   ) {
-    this.userId = _authService.getUserId();
+    this.userId = authService.getUserId();
   }
   addBookToMyWishList(bookId: string) {
     if (this.userId != null) {

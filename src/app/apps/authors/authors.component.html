@@ -16,7 +16,7 @@
     </mat-progress-spinner>
   </div>
   <div *ngIf="!loading">
-    <a *ngIf="authService.isAdmin()" class="btn text-white mb-3 add-author-button" (click)="openAuthorDialog(null)">Add Author</a>
+    <a *ngIf="authService.isLoggedIn() && authService.isAdmin()" class="btn text-white mb-3 add-author-button" (click)="openAuthorDialog(null)">Add Author</a>
   </div>
   <table class="table" *ngIf="!loading">
     <thead>
@@ -24,7 +24,7 @@
       <th scope="col">Name</th>
       <th scope="col">Surname</th>
       <th scope="col" class="button-colons">Details</th>
-      <th *ngIf="authService.isAdmin()" scope="col" class="button-colons">Edit</th>
+      <th *ngIf="authService.isLoggedIn() && authService.isAdmin()" scope="col" class="button-colons">Edit</th>
 <!--      <th *ngIf="authService.isAdmin()" scope="col" class="button-colons">Delete</th>-->
     </tr>
     </thead>
@@ -35,7 +35,7 @@
       <td>
         <a [routerLink]="['/authors/', author?.id]"><mat-icon matTooltip="Details" class="mat-buttons info">info</mat-icon></a>
       </td>
-      <td *ngIf="authService.isAdmin()">
+      <td *ngIf="authService.isLoggedIn() && authService.isAdmin()">
         <a (click)="openAuthorDialog(author.id)"><mat-icon matTooltip="Edit" class="mat-buttons edit ">edit</mat-icon></a>
       </td>
 <!--      <td *ngIf="authService.isAdmin()">-->

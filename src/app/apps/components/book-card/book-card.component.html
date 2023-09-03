@@ -14,7 +14,7 @@
         </mat-card-title-group>
       </mat-card-header>
     </div>
-    <div class="footer-content">
+    <div *ngIf="authService.isLoggedIn()" class="footer-content">
       <mat-card-actions align="end">
         <div class="add-to-cart-div"><a (click)="addBookToShoppingCart()"><mat-icon matTooltip="Add to shopping cart" class="mat-buttons add_shopping_cart ">add_shopping_cart</mat-icon></a></div>
         <div class="add-to-wl-div"><a (click)="addBookToMyWishList(book?.id!)"><mat-icon matTooltip="Add to wishlist" class="mat-buttons favorite_border ">favorite_border</mat-icon></a></div>
