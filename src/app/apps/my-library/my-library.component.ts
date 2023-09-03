@@ -14,7 +14,6 @@ import { NotifierService } from 'angular-notifier';
 })
 export class MyLibraryComponent {
   books: LibraryBook[] = [];
-  isLoading: boolean = false;
 
   constructor(
     private _libraryService: LibraryService,
@@ -27,17 +26,12 @@ export class MyLibraryComponent {
   }
 
   getLibraryBooks() {
-    this.isLoading = true;
     this._libraryService.getLibraryBooks().subscribe({
       next: (data) => {
         this.books = data;
         console.log(this.books);
-        this.isLoading = false;
       },
-      error: (err) => {
-        console.log(err)
-        this.isLoading = false;
-      },
+      error: (err) => console.log(err),
     });
   }
 

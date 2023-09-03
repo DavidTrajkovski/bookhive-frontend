@@ -49,13 +49,13 @@ export class LoginPage implements OnInit, OnDestroy {
     this.loading = true;
     this.loginSubscription = this.authService.login(loginRequest).subscribe({
       next: (_) => {
-        this._notifierService.notify('success', 'Login success');
         this.router.navigate(['/home'])
         this.loading = false;
       },
       error: (err) => {
         console.log(err)
         this.loading = false;
+        debugger
         this._notifierService.notify('error', 'Login failed: \n'+ 'Non-matching credentials provided.')
       },
     });

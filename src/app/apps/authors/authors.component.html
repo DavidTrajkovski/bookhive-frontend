@@ -9,23 +9,17 @@
       </ol>
     </nav>
   </div>
-  <div class="spinner-div" *ngIf="loading">
-    <mat-progress-spinner
-      class="align-self-center"
-      mode="indeterminate">
-    </mat-progress-spinner>
-  </div>
-  <div *ngIf="!loading">
+  <div>
     <a *ngIf="authService.isAdmin()" class="btn text-white mb-3 add-author-button" (click)="openAuthorDialog(null)">Add Author</a>
   </div>
-  <table class="table" *ngIf="!loading">
+  <table class="table">
     <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Surname</th>
       <th scope="col" class="button-colons">Details</th>
       <th *ngIf="authService.isAdmin()" scope="col" class="button-colons">Edit</th>
-<!--      <th *ngIf="authService.isAdmin()" scope="col" class="button-colons">Delete</th>-->
+      <th *ngIf="authService.isAdmin()" scope="col" class="button-colons">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -38,9 +32,9 @@
       <td *ngIf="authService.isAdmin()">
         <a (click)="openAuthorDialog(author.id)"><mat-icon matTooltip="Edit" class="mat-buttons edit ">edit</mat-icon></a>
       </td>
-<!--      <td *ngIf="authService.isAdmin()">-->
-<!--        <a (click)="deleteAuthor(author.id)"><mat-icon matTooltip="Delete" class="mat-buttons delete">delete_outline</mat-icon></a>-->
-<!--      </td>-->
+      <td *ngIf="authService.isAdmin()">
+        <a (click)="deleteAuthor(author.id)"><mat-icon matTooltip="Delete" class="mat-buttons delete">delete_outline</mat-icon></a>
+      </td>
     </tr>
     </tbody>
   </table>
