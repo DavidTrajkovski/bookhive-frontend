@@ -1,5 +1,15 @@
 <div class="container author-container">
   <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <span>Authors</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div>
     <a *ngIf="authService.isAdmin()" class="btn text-white mb-3 add-author-button" (click)="openAuthorDialog(null)">Add Author</a>
   </div>
   <table class="table">

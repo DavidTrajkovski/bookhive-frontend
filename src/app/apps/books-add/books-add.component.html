@@ -1,4 +1,17 @@
-<div class="container">
+<div class="container my-5">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item">
+          <a [href]="'/books'">Books</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <span>Add</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
   <div class="d-flex flex-column align-items-center justify-content-center my-5">
     <h2>{{ editMode ? 'Edit' : 'Add a New' }} Book</h2>
     <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()" class="mb-4">

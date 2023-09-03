@@ -7,7 +7,7 @@
       <h1 class="bullets">Find comfort within the realm of e-reading</h1>
       <h1 class="bullets">Socialize with fellow bookworms in our bookclubs</h1>
       <br>
-      <div style="width: 90%; display: flex; justify-content: center">
+      <div *ngIf="!authService.isLoggedIn()" style="width: 90%; display: flex; justify-content: center">
         <a style="font-size: 30px; margin-right: 40px; text-decoration: none;" class="" [href]="'/login'">
           <span class="register_buttons" style="color: rgb(2 73 25);" >Login</span>
         </a>
@@ -23,6 +23,4 @@
       </div>
     </div>
   </div>
-
 </div>
-

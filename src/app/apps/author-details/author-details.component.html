@@ -1,4 +1,17 @@
 <div class="container">
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li style="font-size: 16px;" class="breadcrumb-item"><a style="text-decoration: none;" routerLink="../../home">Home</a></li>
+        <li style="font-size: 16px;" class="breadcrumb-item">
+          <a style="text-decoration: none;" [href]="'/authors'">Authors</a>
+        </li>
+        <li style="font-size: 16px;" class="breadcrumb-item active" aria-current="page">
+          <span>Preview</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
   <mat-progress-spinner
     class="align-self-center"
     mode="indeterminate"
