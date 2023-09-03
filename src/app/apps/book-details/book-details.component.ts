@@ -9,9 +9,9 @@ import {Bookshop} from "../../core/interface/bookshop";
 import {AddToCart} from "../../core/interface/shopping-cart/add-to-cart";
 import {NotifierService} from "angular-notifier";
 import {WishlistService} from "../../core/service/wishlist.service";
-import {AuthService} from "../../core/service/authentication/auth.service";
 import {ShoppingCartService} from "../../core/service/shopping-cart.service";
 import {WishlistDto} from "../../core/interface/my-wishlist/wishlist-dto";
+import {AuthService} from "../../core/service/authentication/auth.service";
 
 @Component({
   selector: 'app-book-details',
@@ -34,8 +34,8 @@ export class BookDetailsComponent implements OnInit{
     private _router: Router,
     private _notifierService: NotifierService,
     private _wishlistService: WishlistService,
-    private _authService: AuthService,
-    private _shoppingCartService: ShoppingCartService
+    public _authService: AuthService,
+    private _shoppingCartService: ShoppingCartService,
   ) {
     this.userId = _authService.getUserId();
   }

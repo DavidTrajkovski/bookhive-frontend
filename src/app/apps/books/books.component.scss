@@ -53,8 +53,6 @@ mat-form-field {
 }
 
 .add-book-button {
-  display: flex;
-  float: right;
   background-color: map-get($bookhive-primary, 400);
   color: white !important;
 }

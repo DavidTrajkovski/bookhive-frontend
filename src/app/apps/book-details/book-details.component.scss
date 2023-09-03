@@ -94,7 +94,10 @@ mat-card-actions div {
 .div-add-to-favourites-wrapper:hover {
   background: map-get($bookhive-accent, 200) !important;
 }
-
+.add-book-button {
+  background-color: map-get($bookhive-primary, 400);
+  color: white !important;
+}
 
 .geolocation-wrapper {
   cursor: pointer;
