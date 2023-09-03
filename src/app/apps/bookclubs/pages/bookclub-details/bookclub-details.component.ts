@@ -92,6 +92,7 @@ export class BookclubDetailsComponent {
     this.bookclubService.getTopicsForBookClub(this.bookclubId).subscribe({
       next: (data) => {
         this.topics = data;
+        console.log(this.topics);
         this.topicsAreLoading = false;
       },
       error: (err) => console.error(err),

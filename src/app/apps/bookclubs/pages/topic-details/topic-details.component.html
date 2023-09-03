@@ -20,18 +20,17 @@
   <div>
     <mat-card class="pt-2 pb-3">
       <mat-card-header>
-        <mat-card-title class="fs-3">{{ topic?.title }}</mat-card-title>
+        <mat-card-title class="fs-3">
+          {{ topic?.title }}
+          <button *ngIf="topic?.isCreator" mat-icon-button (click)="openTopicDialog()" color="accent">
+            <mat-icon>create</mat-icon>
+          </button>
+        </mat-card-title>
         <mat-card-subtitle>
           Created by: {{ topic?.createdBy }}, on
           {{ topic?.date | date : "d/MM/yyy, h:mm a" }}
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-actions *ngIf="topic?.isCreator">
-        <button class="ms-1" mat-button (click)="openTopicDialog()">
-          Edit
-          <mat-icon iconPositionEnd>create</mat-icon>
-        </button>
-      </mat-card-actions>
     </mat-card>
   </div>
   <mat-divider class="my-4"></mat-divider>

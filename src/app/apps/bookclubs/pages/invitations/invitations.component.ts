@@ -29,12 +29,14 @@ export class InvitationsComponent {
   acceptInvitation(invitationId: string) {
     this.invitationService.acceptInvtitation(invitationId);
     this.getInvitations();
+    location.reload();
   }
 
   declineInvitation(invitationId: string) {
     if (confirm('Are you sure you want to decline this invitation?')) {
       this.invitationService.declineInvitation(invitationId);
       this.getInvitations();
+      location.reload();
     }
   }
 }
