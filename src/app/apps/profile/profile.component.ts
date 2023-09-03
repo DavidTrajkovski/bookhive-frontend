@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {ProfileService} from "../../core/service/authorization/profile.service";
 import {ProfileRequest} from "../../core/interface/authorization/profile-request";
+import {User} from "../../core/interface/user";
 
 @Component({
   selector: 'bh-profile',
@@ -12,22 +13,38 @@ import {ProfileRequest} from "../../core/interface/authorization/profile-request
 export class ProfileComponent {
   profileForm: FormGroup = this.initializeProfileForm();
   profileSubscription = new Subscription();
-
+  user: User = { id: '', firstName: '', lastName: '', address: '' };
   constructor(
     private _formBuilder: FormBuilder,
     private _profileService: ProfileService
   ) {}
 
+  ngOnInit(): void {
+    this.getAuthenticatedUserDetails();
+  }
+
+  getAuthenticatedUserDetails(){
+    this._profileService.getAuthenticatedUserDetails().subscribe(response => {
+      this.user = response;
+      this.populateForm();
+    });
+  }
   initializeProfileForm() {
     return (this.profileForm = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required],
       address: ['', [Validators.required]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-
+      password: [''],
+      confirmPassword: [''],
     }));
+  }
+
+  populateForm() {
+      this.profileForm.patchValue({
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        address: this.user.address,
+      });
   }
 
   onSubmit() {

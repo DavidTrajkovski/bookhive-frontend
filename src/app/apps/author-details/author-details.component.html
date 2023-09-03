@@ -4,26 +4,30 @@
     mode="indeterminate"
     *ngIf="authorIsLoading">
   </mat-progress-spinner>
-  <h1>{{author?.name}}&nbsp;{{author?.surname}}</h1>
-  <h2>Age: {{author?.age}}</h2>
-  <div class="bio-author-img">
+  <div id="author-name">
+    <h2>{{author?.name}}&nbsp;{{author?.surname}}</h2>
+  </div>
+  <div id="author-age">
+    <h4>Age: {{author?.age}}</h4>
+  </div>
+  <div class="bio-author-img" style="width: 100%">
     <div class="bio-div">
       <h5>Biography</h5>
       <p>{{author?.biography}}</p>
+      <div class="books-wrapper">
+        <h3>Some of his books</h3>
+        <ul>
+          <li *ngFor="let authorBook of authorBooks"
+              [ngStyle]="{'list-style-image': 'url(\'' + '/assets/book_resized.png' + '\')'}"
+              [routerLink]="['/books/', authorBook?.id]">
+            <div class="author-book">{{authorBook.bookName}}</div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div>
+    <div style="width: auto; margin-left: auto; margin-right: auto">
       <img id="avatar" ngSrc="/assets/writer.png" height="350" width="350"/>
     </div>
-  </div>
-  <div class="books-wrapper">
-    <h3>Some of his books</h3>
-    <ul>
-      <li *ngFor="let authorBook of authorBooks"
-          [ngStyle]="{'list-style-image': 'url(\'' + '/assets/book_resized.png' + '\')'}"
-          [routerLink]="['/books/', authorBook?.id]">
-        <div class="author-book">{{authorBook.bookName}}</div>
-      </li>
-    </ul>
   </div>
 </div>
 
