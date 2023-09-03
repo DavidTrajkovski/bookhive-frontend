@@ -10,6 +10,9 @@
       </li>
     </ol>
   </nav>
+  <div style="width: 100%; display: flex; justify-content: start;">
+    <a *ngIf="_authService.isAdmin()" [href]="'/books/edit/' + book?.id" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Edit book</a>
+  </div>
 </div>
 <div class="container div-wrapper">
   <div>

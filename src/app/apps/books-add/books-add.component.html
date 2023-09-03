@@ -2,12 +2,12 @@
   <div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="../../home">Home</a></li>
+        <li class="breadcrumb-item"><a style="text-decoration: none" routerLink="../../../home">Home</a></li>
         <li class="breadcrumb-item">
-          <a [href]="'/books'">Books</a>
+          <a style="text-decoration: none" [href]="'/books'">Books</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <span>Add</span>
+          <span>{{ editMode ? 'Edit' : 'Add' }}</span>
         </li>
       </ol>
     </nav>

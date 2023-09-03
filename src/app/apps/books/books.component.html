@@ -1,4 +1,14 @@
 <div class="container1">
+  <div style="width: 85%; margin-top: 20px;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a style="text-decoration: none" routerLink="../home">Home</a></li>
+        <li class="breadcrumb-item active">
+          <span style="text-decoration: none">Books</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
   <div style="width: 100%; display: flex; justify-content: end;">
     <a *ngIf="authService.isAdmin()" [href]="'/books/add'" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Add new book</a>
   </div>
