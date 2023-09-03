@@ -12,16 +12,12 @@
   </div>
 
   <h2>My Library</h2>
-  <div class="spinner-div" *ngIf="isLoading">
+  <!-- <div class="wishlist-spinner" *ngIf="isLoading">
     <mat-progress-spinner
       class="align-self-center"
       mode="indeterminate">
     </mat-progress-spinner>
-  </div>
-
-  <div class="my-wishlist-cont" *ngIf="!isLoading && books.length === 0">
-    <h5>There are no books in your library.</h5>
-  </div>
+  </div> -->
 
   <div class="my-wishlist-cont">
     <div *ngFor="let libraryBook of books">

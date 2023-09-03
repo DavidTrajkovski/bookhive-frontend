@@ -4,7 +4,6 @@ import { ShoppingCartService } from 'src/app/core/service/shopping-cart.service'
 import { CurrencyPipe, Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentDialog } from '../payment-dialog/payment-dialog/payment-dialog.component';
-import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-shopping-cart-details',
@@ -18,8 +17,7 @@ export class ShoppingCartDetailsComponent {
   constructor(
     private _shoppingCartService: ShoppingCartService,
     private _location: Location,
-    public dialog: MatDialog,
-    private _notifierService: NotifierService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -39,7 +37,6 @@ export class ShoppingCartDetailsComponent {
   removeBook(bookId: string) {
     this._shoppingCartService.removeBookFromShoppingCart(bookId);
     this.isLoading = true;
-    this._notifierService.notify('success', 'Book removed successfully');
     console.log(this.shoppingCartInfo);
     this.getShoppingCartInfo();
     location.reload();
