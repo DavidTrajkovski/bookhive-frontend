@@ -36,7 +36,6 @@ export class BooksComponent implements  OnInit, OnDestroy {
   }
 
   pageChangeEvent(event: number){
-    debugger
     this.page = event;
     this.callGetBooks();
   }
@@ -46,7 +45,6 @@ export class BooksComponent implements  OnInit, OnDestroy {
     const searchValue = this.searchAndFilterForm.get('searchAndFilter.searchValue')!.value;
     const genre = this.searchAndFilterForm.get('searchAndFilter.sortValue')!.value;
     this._bookService.getPageableBooks(this.page, searchValue, genre).subscribe((data) => {
-      debugger
       this.books = data.bookDtos
       this.total = data.totalBooksCount
       this.loading = false

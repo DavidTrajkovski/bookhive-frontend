@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LoginPage } from './login/login-page.component';
 import { BooksComponent } from './books/books.component';
@@ -28,7 +28,6 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AuthorDetailsComponent } from './author-details/author-details.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterLink } from '@angular/router';
 import { BookclubsModule } from './bookclubs/bookclubs.module';
 import { AuthorDialog } from './authors/dialogs/author-dialog/author.dialog';
 import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
@@ -43,9 +42,10 @@ import { StripeVariables } from './configs/stripe-options';
 import { NgxStripeModule } from 'ngx-stripe';
 import { BookshopGeolocationComponent } from './bookshop-geolocation/bookshop-geolocation.component';
 import { BooksAddComponent } from './books-add/books-add.component';
-import {BookPreviewPage} from "./book-preview/book-preview.page";
+import { BookPreviewPage } from './book-preview/book-preview.page';
 import { MyLibraryComponent } from './my-library/my-library.component';
-import {PdfViewerModule} from "ng2-pdf-viewer";
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -75,6 +75,7 @@ import {PdfViewerModule} from "ng2-pdf-viewer";
     NgxStripeModule.forRoot(StripeVariables.publishableKey),
     PdfViewerModule,
     FormsModule,
+    MatProgressBarModule,
   ],
   declarations: [
     RegisterPage,

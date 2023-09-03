@@ -22,13 +22,15 @@ export class LibraryService {
     });
   }
 
-  editLastPageRead(userId: string, bookId: string, lastPageRead: number) {
-    return this.http
-      .put(this.baseUrl, {
-        userId: userId,
-        bookId: bookId,
-        lastPageRead: lastPageRead,
-      })
-      .subscribe();
+  editLastPageRead(
+    userId: string,
+    bookId: string,
+    lastPageRead: number
+  ): Observable<any> {
+    return this.http.put(this.baseUrl, {
+      userId: userId,
+      bookId: bookId,
+      lastPageRead: lastPageRead,
+    });
   }
 }

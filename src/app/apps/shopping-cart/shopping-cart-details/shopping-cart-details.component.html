@@ -22,18 +22,18 @@
 
   <div
     *ngIf="
-          shoppingCartInfo?.books === undefined ||
-          shoppingCartInfo!.books.length <= 0
-        "
+      shoppingCartInfo?.books === undefined ||
+      shoppingCartInfo!.books.length <= 0
+    "
     align="center"
     style="vertical-align: middle"
   >
     <h2 colspan="6" class="text-secondary">
       Your shopping cart is empty, go buy some cool e-books!
     </h2>
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
   </div>
 
   <table class="table" *ngIf="!isLoading">

@@ -36,12 +36,20 @@
           Invite
         </button>
         <button
-          *ngIf="bookclub?.isOwner"
+          *ngIf="bookclub?.isOwner && bookclub?.requestCount === 0"
           mat-button
           color="accent"
           routerLink="requests"
         >
           View Requests
+        </button>
+        <button
+          *ngIf="bookclub?.isOwner && bookclub?.requestCount !== 0"
+          mat-button
+          color="accent"
+          routerLink="requests"
+        >
+          View Requests ({{ bookclub?.requestCount }})
         </button>
         <button
           *ngIf="bookclub?.isOwner"
@@ -50,7 +58,7 @@
           (click)="openBookClubDialog()"
         >
           Edit
-          <mat-icon iconPositionEnd>create</mat-icon>
+          <mat-icon>create</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
@@ -61,9 +69,9 @@
         <h5>Discussions:</h5>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-button color="accent" (click)="openTopicDialog()">
+        <button mat-stroked-button (click)="openTopicDialog()">
           Start a new discussion
-          <mat-icon iconPositionEnd>create</mat-icon>
+          <mat-icon>create</mat-icon>
         </button>
       </mat-card-actions>
       <mat-card-content>

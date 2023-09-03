@@ -3,6 +3,7 @@ export interface BookClub {
   owner: string;
   name: string;
   description: string;
+  requestCount: number;
   isMember: boolean;
   isOwner: boolean;
 }

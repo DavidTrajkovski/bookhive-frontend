@@ -60,12 +60,14 @@ export class RequestsComponent {
   acceptRequest(invitaionId: string) {
     this.invitationService.acceptRequest(invitaionId);
     this.getMembershipRequestsForBookClub();
+    location.reload();
   }
 
   declineRequest(invitaionId: string) {
     if (confirm('Are you sure you want to decline this request?')) {
       this.invitationService.declineRequest(invitaionId);
       this.getMembershipRequestsForBookClub();
+      location.reload();
     }
   }
 }
