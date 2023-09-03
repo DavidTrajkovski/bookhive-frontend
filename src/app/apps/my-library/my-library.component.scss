@@ -1,5 +1,9 @@
 @import "styles";
 
+.bh-progress-bar {
+  background-color: map-get($bookhive-primary, 500);
+}
+
 .cont1 {
   margin-top: 3%;
 }
@@ -123,5 +127,18 @@ mat-card-actions {
     margin-left: 1em;
     margin-right: 1em;
   }
-}
 
+  .footer-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 1.3em;
+    margin-right: 1em;
+
+    mat-card-actions {
+      button {
+        margin-top: 4em;
+      }
+    }
+  }
+}

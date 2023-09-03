@@ -1,5 +1,4 @@
 <div class="container cont1">
-
   <div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -12,12 +11,10 @@
   </div>
 
   <h2>My Library</h2>
-  <!-- <div class="wishlist-spinner" *ngIf="isLoading">
-    <mat-progress-spinner
-      class="align-self-center"
-      mode="indeterminate">
+  <div class="wishlist-spinner" *ngIf="isLoading">
+    <mat-progress-spinner class="align-self-center" mode="indeterminate">
     </mat-progress-spinner>
-  </div> -->
+  </div>
 
   <div class="my-wishlist-cont">
     <div *ngFor="let libraryBook of books">
@@ -29,7 +26,14 @@
           <div class="header-content">
             <mat-card-header>
               <mat-card-title-group>
-                <mat-card-title><a class="title-link" [routerLink]="['/books/', libraryBook.book.id]"> {{ libraryBook.book.name }}</a></mat-card-title>
+                <mat-card-title
+                  ><a
+                    class="title-link"
+                    [routerLink]="['/books/', libraryBook.book.id]"
+                  >
+                    {{ libraryBook.book.name }}</a
+                  ></mat-card-title
+                >
                 <mat-card-subtitle
                   *ngFor="let author of libraryBook.book.authors"
                   >{{ author.name }}&nbsp;{{
@@ -40,7 +44,8 @@
             </mat-card-header>
             <div>
               <mat-card-content class="my-2">
-                <mat-form-field style="width: 55%">
+                <p>Reading progress:</p>
+                <mat-form-field style="width: 100%">
                   <mat-label>Last Page Read</mat-label>
                   <input
                     id="lastPageReadId{{ libraryBook.book.id }}"
@@ -49,12 +54,30 @@
                     type="number"
                     placeholder="{{ libraryBook.lastPageRead }}"
                     value="{{ libraryBook.lastPageRead || 0 }}"
+                    min="0"
+                    max="{{ libraryBook.book.totalPages }}"
                   />
                 </mat-form-field>
-
+                <div class="progress" role="progressbar">
+                  <div
+                    class="progress-bar text-dark fw-bold bh-progress-bar"
+                    [style.width]="
+                      (libraryBook.lastPageRead / libraryBook.book.totalPages) *
+                        100 +
+                      '%'
+                    "
+                  >
+                    {{
+                      (libraryBook.lastPageRead / libraryBook.book.totalPages) *
+                        100
+                    }}%
+                  </div>
+                </div>
+                <div class="text-center">
+                  <small>{{ libraryBook.book.totalPages }} total pages</small>
+                </div>
               </mat-card-content>
             </div>
-
           </div>
           <div class="footer-content">
             <mat-card-actions align="end">
@@ -64,21 +87,15 @@
                   mat-button
                   class="details-link"
                   target="_blank"
-                >Preview
+                >
+                  Preview
                 </button>
               </div>
-<!--              <div class="act-button-div">-->
-<!--                <a-->
-<!--                  [routerLink]="['/books/', libraryBook.book.id]"-->
-<!--                  class="details-link"-->
-<!--                  >Details</a-->
-<!--                >-->
-<!--              </div>-->
               <div class="act-button-div">
                 <button
                   mat-button
                   color="primary"
-                  (click)="editLastPageRead(libraryBook.book.id)"
+                  (click)="editLastPageRead(libraryBook)"
                 >
                   Save Changes
                 </button>
@@ -89,49 +106,5 @@
       </mat-card>
     </div>
   </div>
-  <!-- <div class="my-wishlist-cont" *ngIf="!isLoading && myBooks.length == 0">
-    <h5>There are no books in your wishlist.</h5>
-  </div> -->
 </div>
-<notifier-container></notifier-container>
-
-<!-- <div class="container mt-3">
-  <div class="d-flex justify-content-center">
-    <mat-progress-spinner mode="indeterminate" *ngIf="!books$">
-    </mat-progress-spinner>
-  </div>
-  <div class="mb-3">
-    <button mat-stroked-button class="default-button" (click)="goBack()">
-      <mat-icon style="transform: rotate(180deg)">arrow_right_alt</mat-icon>
-      Back
-    </button>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Last Page Read</th>
-        <th scope="col" class="button-columns">Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let libraryBook of books$ | async"
-        id="{{ libraryBook.book.id }}"
-      >
-        <td>{{ libraryBook.book.name }}</td>
-        <td>
-          <a [routerLink]="['/books/', libraryBook.book.id]" target="_blank">
-            <mat-icon matTooltip="Details" class="mat-buttons info">
-              info
-            </mat-icon>
-          </a>
-        </td>
-      </tr>
-      <tr align="center" style="vertical-align: middle">
-        <td colspan="6" class="text-secondary">Your library is empty.</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
 <notifier-container></notifier-container>
