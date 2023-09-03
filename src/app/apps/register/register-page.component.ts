@@ -53,9 +53,11 @@ export class RegisterPage implements OnInit, OnDestroy {
         (next) => {
           this.loading = false;
           console.log('Registration successful');
+          this._notifierService.notify('error', 'Registration successfully completed: \n')
           this.router.navigate(['/login']);
         },
         (error) => {
+          debugger
           this.loading = false;
           console.error('Registration failed: ', error);
           this._notifierService.notify('error', 'Registration failed: \n'+ error.error)
