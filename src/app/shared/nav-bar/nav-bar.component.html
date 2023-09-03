@@ -4,7 +4,7 @@
   </button>
   <span id="logo" routerLink="home">BookHive</span>
   <span class="spacer"></span>
-  <button *ngIf="isUserLoggedIn" mat-icon-button [matMenuTriggerFor]="menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -31,6 +31,16 @@
     <button *ngIf="isUserLoggedIn" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Log out</span>
+    </button>
+
+    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="login">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
+
+    <button *ngIf="!isUserLoggedIn" mat-menu-item [routerLink]="register">
+      <mat-icon>fingerprint</mat-icon>
+      <span>Register</span>
     </button>
   </mat-menu>
 </mat-toolbar>
