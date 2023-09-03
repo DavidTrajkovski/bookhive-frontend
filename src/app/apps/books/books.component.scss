@@ -52,6 +52,14 @@ mat-form-field {
   margin-right: 10px;
 }
 
+.add-book-button {
+  display: flex;
+  float: right;
+  background-color: map-get($bookhive-primary, 400);
+  color: white !important;
+}
+
+
 ::ng-deep ul > li:not(.active) > a {
   color: map-get($bookhive-accent, 400) !important;
   border-color: black !important;

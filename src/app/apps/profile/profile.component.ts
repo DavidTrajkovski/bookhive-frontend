@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {ProfileService} from "../../core/service/authorization/profile.service";
 import {ProfileRequest} from "../../core/interface/authorization/profile-request";
 import {NotifierService} from "angular-notifier";
+import {User} from "../../core/interface/user";
 
 @Component({
   selector: 'bh-profile',
@@ -15,22 +16,39 @@ export class ProfileComponent implements OnDestroy{
   profileSubscription = new Subscription();
   loading: boolean = false;
 
+  user: User = { id: '', firstName: '', lastName: '', address: '' };
   constructor(
     private _formBuilder: FormBuilder,
     private _profileService: ProfileService,
     private _notifierService: NotifierService,
   ) {}
 
+  ngOnInit(): void {
+    this.getAuthenticatedUserDetails();
+  }
+
+  getAuthenticatedUserDetails(){
+    this._profileService.getAuthenticatedUserDetails().subscribe(response => {
+      this.user = response;
+      this.populateForm();
+    });
+  }
   initializeProfileForm() {
     return (this.profileForm = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', Validators.required],
       address: ['', [Validators.required]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-
+      password: [''],
+      confirmPassword: [''],
     }));
+  }
+
+  populateForm() {
+      this.profileForm.patchValue({
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        address: this.user.address,
+      });
   }
 
   onSubmit() {

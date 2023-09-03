@@ -1,5 +1,5 @@
 <div class="form-container">
-  <mat-card class="form-card">
+  <mat-card class="form-card" style="width: 80vh; height: 80vh">
     <mat-card-header>
       <div style="width: 100%; border-radius: 10px; display: flex; justify-content: center; align-items: center; height: 50px; background-color: #f0f8eb; font-size: 20px; font-weight: bold ">Edit your profile information</div>
     </mat-card-header>
@@ -19,19 +19,16 @@
         <mat-form-field class="mat-form-field">
           <input matInput placeholder="First Name" formControlName="firstName">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="mat-form-field">
           <input matInput placeholder="Last Name" formControlName="lastName">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Age" name="Age" formControlName="age">
-        </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="mat-form-field">
           <input matInput placeholder="Address" name="Address" formControlName="address">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="mat-form-field">
           <input matInput type="password" placeholder="Password" name="password" formControlName="password">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="mat-form-field">
           <input matInput type="password" placeholder="Confirm Password" name="confirmPassword" formControlName="confirmPassword">
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary" style="font-weight: bold; width: 210px">Save</button>
