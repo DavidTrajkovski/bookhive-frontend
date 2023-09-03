@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {BookDto} from "../../core/interface/book/book-dto";
-import {Book} from "../../core/interface/book";
 import {BookService} from "../../core/service/book/book.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RegisterRequest} from "../../core/interface/authorization/register-request";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../../core/service/author/author.service";
 import {BookAuthorInfoDto} from "../../core/interface/author/book-author-info-dto";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-books-add',
@@ -20,13 +19,15 @@ export class BooksAddComponent {
   allAuthors: BookAuthorInfoDto[] = [];
   editMode = false;
   bookId: string | null = null;
+  loading: boolean = false;
 
   constructor(
     private _formBuilder: FormBuilder,
     private bookService: BookService,
     private authorService: AuthorService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _notifierService: NotifierService
   ) {
   }
 
@@ -42,6 +43,8 @@ export class BooksAddComponent {
   }
 
   ngOnInit() {
+    this.loading = true;
+
     this.initializeGenres()
     this.initializeAuthors()
 
@@ -55,6 +58,7 @@ export class BooksAddComponent {
       }
       else {
         console.log("Is not edit mode")
+        this.loading = false
       }
     });
   }
@@ -105,6 +109,8 @@ export class BooksAddComponent {
         price: this.book.price,
         totalPages: this.book.totalPages,
       });
+
+      this.loading = false
     });
   }
 
@@ -120,6 +126,8 @@ export class BooksAddComponent {
 
 
   onSubmitAdd() {
+    this.loading = true;
+
     console.log("INSIDE SUBMIT")
     if (this.addBookForm.invalid) {
       console.log("Invalid form")
@@ -144,13 +152,20 @@ export class BooksAddComponent {
 
     console.log('Book sent:', this.book);
 
-    this.bookService.addBook(this.book).subscribe(response => {
+    this.bookService.addBook(this.book).subscribe({next: response => {
+      this.loading = false;
       console.log('Book added:', response);
+        this._notifierService.notify('success', "New book added successfully");
       this.router.navigate(['/books', response.id]);
-    });
+    },error: (err) => {
+        this._notifierService.notify('error', "Error while adding new book");
+        this.loading = false;
+      }
+    })
   }
 
   onSubmitEdit() {
+    this.loading = true;
     this.book = {
       id: this.addBookForm.value.id,
       isbn: this.addBookForm.value.isbn,
@@ -166,12 +181,21 @@ export class BooksAddComponent {
       authors: [],
       authorIds: this.addBookForm.value.authors
     };
-    this.bookService.updateBook(this.book).subscribe(response => {
+    this.bookService.updateBook(this.book).subscribe({next: response => {
+      this.loading = false;
+      this._notifierService.notify('success', "Book updated added successfully");
       console.log('Book edited:', response);
       this.router.navigate(['/books', response.id]);
+    },error: (err) => {
+        this.loading = false;
+        this._notifierService.notify('error', "Error occurred while updating book");
+      }
     });
 
   }
 
+  getBreadcrumbTailText() {
+    return this.editMode ? "Edit Book" : "Add Book"
+  }
 
 }
