@@ -15,7 +15,7 @@ import { Book } from 'src/app/core/interface/book';
 })
 export class MyLibraryComponent {
   books: LibraryBook[] = [];
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   constructor(
     private _libraryService: LibraryService,
@@ -28,12 +28,17 @@ export class MyLibraryComponent {
   }
 
   getLibraryBooks() {
+    this.isLoading = true;
     this._libraryService.getLibraryBooks().subscribe({
       next: (data) => {
         this.books = data;
+        console.log(this.books);
         this.isLoading = false;
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        console.log(err)
+        this.isLoading = false;
+      },
     });
   }
 

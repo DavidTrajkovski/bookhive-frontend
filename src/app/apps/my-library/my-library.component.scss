@@ -105,6 +105,12 @@ mat-card-actions {
   padding-top: 1.5em;
 }
 
+.spinner-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
 @media screen and (max-width: 1200px) {
   .card-container {
     width: fill;

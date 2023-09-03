@@ -49,6 +49,7 @@ export class LoginPage implements OnInit, OnDestroy {
     this.loading = true;
     this.loginSubscription = this.authService.login(loginRequest).subscribe({
       next: (_) => {
+        this._notifierService.notify('success', 'Login success');
         this.router.navigate(['/home'])
         this.loading = false;
       },

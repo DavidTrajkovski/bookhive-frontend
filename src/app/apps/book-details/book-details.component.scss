@@ -17,7 +17,7 @@ h1 {
 }
 
 .container {
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 h2 {
@@ -94,6 +94,7 @@ mat-card-actions div {
 .div-add-to-favourites-wrapper:hover {
   background: map-get($bookhive-accent, 200) !important;
 }
+
 .add-book-button {
   background-color: map-get($bookhive-primary, 400);
   color: white !important;
