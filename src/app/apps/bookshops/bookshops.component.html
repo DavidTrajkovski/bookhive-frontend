@@ -2,18 +2,21 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="../home">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">
-        Bookshops
-      </li>
+      <li class="breadcrumb-item active" aria-current="page">Bookshops</li>
     </ol>
   </nav>
 </div>
 <div class="container d-flex flex-column align-items-center">
-  <div class="search-container">
+  <div class="search-container" *ngIf="!bookshopsAreLoading">
     <form>
       <mat-form-field>
         <mat-label>Search</mat-label>
-        <input type="search" matInput placeholder="Akademska Kniga" />
+        <input
+          type="search"
+          matInput
+          placeholder="Akademska Kniga"
+          (keyup)="queryBookshopsByName($event)"
+        />
       </mat-form-field>
     </form>
   </div>
@@ -23,7 +26,7 @@
     <mat-progress-spinner mode="indeterminate" *ngIf="bookshopsAreLoading">
     </mat-progress-spinner>
     <bh-bookshop-card
-      *ngFor="let bookshop of bookshops"
+      *ngFor="let bookshop of filteredBookshops"
       [bookshop]="bookshop"
     ></bh-bookshop-card>
   </div>

@@ -1,17 +1,29 @@
 <div class="mt-5 ms-5">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li style="font-size: 16px;" class="breadcrumb-item"><a style="text-decoration: none;" routerLink="../../home">Home</a></li>
-      <li style="font-size: 16px;" class="breadcrumb-item">
-        <a style="text-decoration: none;" [href]="'/books'">Books</a>
+      <li style="font-size: 16px" class="breadcrumb-item">
+        <a style="text-decoration: none" routerLink="../../home">Home</a>
       </li>
-      <li style="font-size: 16px;" class="breadcrumb-item active" aria-current="page">
+      <li style="font-size: 16px" class="breadcrumb-item">
+        <a style="text-decoration: none" [href]="'/books'">Books</a>
+      </li>
+      <li
+        style="font-size: 16px"
+        class="breadcrumb-item active"
+        aria-current="page"
+      >
         <span>Preview</span>
       </li>
     </ol>
   </nav>
-  <div style="width: 100%; display: flex; justify-content: end;">
-    <a *ngIf="_authService.isAdmin()" [href]="'/books/edit/' + book?.id" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Edit book</a>
+  <div style="width: 100%; display: flex; justify-content: end">
+    <a
+      *ngIf="authService.isLoggedIn() && authService.isAdmin()"
+      [href]="'/books/edit/' + book?.id"
+      class="btn text-white mb-3 add-book-button"
+      style="margin-right: 50px"
+      >Edit book</a
+    >
   </div>
 </div>
 <div class="container div-wrapper">
@@ -19,21 +31,24 @@
     <mat-progress-spinner
       class="align-self-center"
       mode="indeterminate"
-      *ngIf="bookIsLoading">
+      *ngIf="bookIsLoading"
+    >
     </mat-progress-spinner>
-    <h1>{{book?.name}}</h1>
-    <h5>ISBN: {{book?.isbn}}</h5>
-    <h5>Pages: {{book?.totalPages}}</h5>
-    <h5>Price: {{book?.price}}.00&euro;</h5>
-    <h5>Date published: {{toDateFormat(book?.datePublished)}}</h5>
+    <h1>{{ book?.name }}</h1>
+    <h5>ISBN: {{ book?.isbn }}</h5>
+    <h5>Pages: {{ book?.totalPages }}</h5>
+    <h5>Price: {{ book?.price }}.00&euro;</h5>
+    <h5>Date published: {{ toDateFormat(book?.datePublished) }}</h5>
     <div class="authors-genres-div">
       <div>
         <div class="authors-div-wrapper">
           <h3>Authors</h3>
           <ul>
-            <li *ngFor="let author of book?.authors"
-                [routerLink]="['/authors/', author?.id]">
-              {{author.name}}&nbsp;{{author.surname}}
+            <li
+              *ngFor="let author of book?.authors"
+              [routerLink]="['/authors/', author?.id]"
+            >
+              {{ author.name }}&nbsp;{{ author.surname }}
             </li>
           </ul>
         </div>
@@ -41,22 +56,38 @@
           <h3>Genres</h3>
           <ul>
             <li *ngFor="let genre of book?.genres">
-              {{genre}}
+              {{ genre }}
             </li>
           </ul>
         </div>
       </div>
       <div class="image-resized">
-        <img *ngIf="book?.coverImageUrl" id="avatar" [ngSrc]="getBookUrl()" height="350" width="350"/>
+        <img
+          *ngIf="book?.coverImageUrl"
+          id="avatar"
+          [ngSrc]="getBookUrl()"
+          height="350"
+          width="350"
+        />
         <div class="mat-card-div">
-          <mat-card-actions align="end">
-            <div class="div-add-to-cart-wrapper">
-              Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart"
-                                        (click)="openAddToCartDialog(book?.id!)">
+          <mat-card-actions align="end" *ngIf="authService.isLoggedIn()">
+            <div class="div-add-to-cart-wrapper" *ngIf="authService.isLoggedIn()">
+              Add to shopping cart
+              <img
+                src="/assets/cart.png"
+                alt="cart"
+                class="cart"
+                (click)="openAddToCartDialog(book?.id!)"
+              />
             </div>
             <div class="div-add-to-favourites-wrapper">
-              &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
-                                                             (click)="addToWishlist(book?.id!)">&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;Add to favourites&nbsp;
+              <img
+                src="/assets/love.png"
+                alt="favourite"
+                class="heart"
+                (click)="addToWishlist(book?.id!)"
+              />&nbsp;&nbsp;&nbsp;
             </div>
           </mat-card-actions>
         </div>
@@ -64,59 +95,77 @@
     </div>
     <div class="bio-wrapper">
       <h5>Book Description:</h5>
-      <p>{{book?.description}}</p>
+      <p>{{ book?.description }}</p>
     </div>
   </div>
   <div class="image-full">
-    <img *ngIf="book?.coverImageUrl" id="avatar" [ngSrc]="getBookUrl()" height="350" width="350"/>
+    <img
+      *ngIf="book?.coverImageUrl"
+      id="avatar"
+      [ngSrc]="getBookUrl()"
+      height="350"
+      width="350"
+    />
     <div class="mat-card-div">
       <mat-card-actions>
-        <div class="div-add-to-cart-wrapper" (click)="openAddToCartDialog(book?.id!)">
-          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart">
+        <div
+          class="div-add-to-cart-wrapper"
+          (click)="openAddToCartDialog(book?.id!)"
+          *ngIf="authService.isLoggedIn()"
+        >
+          Add to shopping cart
+          <img src="/assets/cart.png" alt="cart" class="cart" />
         </div>
-        <div class="div-add-to-favourites-wrapper" (click)="addToWishlist(book?.id!)">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add to wishlist&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
-                                                         >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          class="div-add-to-favourites-wrapper"
+          (click)="addToWishlist(book?.id!)"
+          *ngIf="authService.isLoggedIn()"
+        >
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add to wishlist&nbsp;
+          <img
+            src="/assets/love.png"
+            alt="favourite"
+            class="heart"
+          />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
       </mat-card-actions>
     </div>
   </div>
 </div>
 <div class="container">
-  <h2 style="text-align: center; margin-bottom: 20px;">Bookshops where you can find this book:</h2>
+  <h2 style="text-align: center; margin-bottom: 20px">
+    Bookshops where you can find this book:
+  </h2>
   <table class="table">
     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col"></th>
-    </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let bookshop of bookshops; let i = index;">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ bookshop.name }}</td>
-      <td class="text-center">
-        <a
-          class="default-button"
-          style="text-decoration: none; color: black !important;"
-
-          mat-stroked-button
-          [href]="'/bookshops/' + bookshop.id"
-        >
-          View
-        </a>
-      </td>
-    </tr>
+      <tr *ngFor="let bookshop of bookshops; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ bookshop.name }}</td>
+        <td class="text-center">
+          <a
+            class="default-button"
+            style="text-decoration: none; color: black !important"
+            mat-stroked-button
+            [href]="'/bookshops/' + bookshop.id"
+          >
+            View
+          </a>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
-<div style="display: flex; justify-content: center; margin-bottom: 20px;">
-
-
-
-  <a class="geolocation-wrapper" [href]="'/geolocation/' + book?.id">&nbsp;&nbsp;&nbsp;Open map to view location of the bookshops that have this
-    book&nbsp;&nbsp;&nbsp;</a>
-
+<div style="display: flex; justify-content: center; margin-bottom: 20px">
+  <a class="geolocation-wrapper" [href]="'/geolocation/' + book?.id"
+    >&nbsp;&nbsp;&nbsp;Open map to view location of the bookshops that have this
+    book&nbsp;&nbsp;&nbsp;</a
+  >
 </div>
 <notifier-container></notifier-container>

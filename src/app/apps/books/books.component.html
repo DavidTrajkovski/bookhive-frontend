@@ -10,7 +10,7 @@
     </nav>
   </div>
   <div style="width: 100%; display: flex; justify-content: end;">
-    <a *ngIf="authService.isAdmin()" [href]="'/books/add'" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Add new book</a>
+    <a *ngIf="authService.isLoggedIn() && authService.isAdmin()" [href]="'/books/add'" class="btn text-white mb-3 add-book-button" style="margin-right: 50px;">Add new book</a>
   </div>
 
   <div class="search-container">
