@@ -28,6 +28,7 @@ export class ProfileComponent implements OnDestroy{
   }
 
   getAuthenticatedUserDetails(){
+    this.loading = true;
     this._profileService.getAuthenticatedUserDetails().subscribe(response => {
       this.user = response;
       this.populateForm();
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnDestroy{
         lastName: this.user.lastName,
         address: this.user.address,
       });
+    this.loading = false;
   }
 
   onSubmit() {
