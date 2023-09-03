@@ -32,9 +32,6 @@ export class AuthorsComponent implements OnInit {
         this.loading = false
       }
     })
-    // if (this.authors$ != null) {
-    //   this.loading = false;
-    // }
   }
 
   openAuthorDialog(authorId: string | null) {
