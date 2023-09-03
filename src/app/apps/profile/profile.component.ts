@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {ProfileService} from "../../core/service/authorization/profile.service";
 import {ProfileRequest} from "../../core/interface/authorization/profile-request";
+import {NotifierService} from "angular-notifier";
 import {User} from "../../core/interface/user";
 
 @Component({
@@ -10,13 +11,16 @@ import {User} from "../../core/interface/user";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnDestroy{
   profileForm: FormGroup = this.initializeProfileForm();
   profileSubscription = new Subscription();
+  loading: boolean = false;
+
   user: User = { id: '', firstName: '', lastName: '', address: '' };
   constructor(
     private _formBuilder: FormBuilder,
-    private _profileService: ProfileService
+    private _profileService: ProfileService,
+    private _notifierService: NotifierService,
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +28,7 @@ export class ProfileComponent {
   }
 
   getAuthenticatedUserDetails(){
+    this.loading = true;
     this._profileService.getAuthenticatedUserDetails().subscribe(response => {
       this.user = response;
       this.populateForm();
@@ -45,9 +50,12 @@ export class ProfileComponent {
         lastName: this.user.lastName,
         address: this.user.address,
       });
+    this.loading = false;
   }
 
   onSubmit() {
+    this.loading = true;
+
     console.log("onsubmit clicked");
     if (this.profileForm.invalid) {
       return;
@@ -66,9 +74,13 @@ export class ProfileComponent {
       .subscribe(
         (next) => {
           console.log('Profile update is successful');
+          this._notifierService.notify('success', 'Profile updated successfully');
+          this.loading = false;
         },
         (error) => {
           console.error('Profile update failed: ', error);
+          this._notifierService.notify('error', 'Error while editing profile info');
+          this.loading = false;
         }
       );
   }

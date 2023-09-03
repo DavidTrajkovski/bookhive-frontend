@@ -58,18 +58,25 @@ export class BookPreviewPage implements OnInit {
   }
 
   setPage(event: any) {
-    debugger
     this.page = +event.target.value
   }
 
   decreaseZoom() {
-    this.zoom -= 0.05;
-    this.zoom = +this.zoom.toFixed(3)
+    if (this.zoom > 0.0) {
+      this.zoom -= 0.05;
+      this.zoom = +this.zoom.toFixed(3)
+    }
   }
 
   increaseZoom() {
-    this.zoom += 0.05;
-    this.zoom = +this.zoom.toFixed(3)
+    if (this.zoom < 2.0) {
+      this.zoom += 0.05;
+      this.zoom = +this.zoom.toFixed(3)
+    }
+  }
+
+  setZoom(event: any) {
+    this.zoom = +event.target.value
   }
 
   afterLoadComplete(pdfData: any) {

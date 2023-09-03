@@ -1,6 +1,10 @@
 @import "styles";
 
-
+h1 {
+  margin-bottom: 1em;
+  color: map-get($bookhive-accent, 300);
+  font-family: var(--bookhive-logo-font);
+}
 
 .image-resized {
   display: none;
@@ -48,8 +52,9 @@ ul {
 mat-card-actions {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  margin-right: 25px;
+  justify-content: center;
+  align-items: center;
+
 }
 
 mat-card-actions img {
@@ -71,6 +76,10 @@ mat-card-actions div {
   padding: 0.625em;
 }
 
+.div-add-to-cart-wrapper:hover {
+  background: map-get($bookhive-accent, 200) !important;
+}
+
 .div-add-to-favourites-wrapper {
   cursor: pointer;
   font-weight: bold;
@@ -81,6 +90,11 @@ mat-card-actions div {
   width: max-content;
   padding: 0.625em;
 }
+
+.div-add-to-favourites-wrapper:hover {
+  background: map-get($bookhive-accent, 200) !important;
+}
+
 
 .geolocation-wrapper {
   cursor: pointer;
@@ -94,6 +108,10 @@ mat-card-actions div {
   color: black !important;
   text-decoration: none;
 
+}
+
+.geolocation-wrapper:hover {
+  background: map-get($bookhive-accent, 200) !important;
 }
 
 .bio-wrapper {

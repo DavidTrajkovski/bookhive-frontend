@@ -16,7 +16,7 @@
           <div class="header-content">
             <mat-card-header>
               <mat-card-title-group>
-                <mat-card-title>{{ libraryBook.book.name }}</mat-card-title>
+                <mat-card-title><a class="title-link" [routerLink]="['/books/', libraryBook.book.id]"> {{ libraryBook.book.name }}</a></mat-card-title>
                 <mat-card-subtitle
                   *ngFor="let author of libraryBook.book.authors"
                   >{{ author.name }}&nbsp;{{
@@ -48,19 +48,19 @@
               <div>
                 <button
                   [routerLink]="['/books/', libraryBook.book.id, 'preview']"
-                  mat-raised-button
+                  mat-button
                   class="details-link"
                   target="_blank"
                 >Preview
                 </button>
               </div>
-              <div class="act-button-div">
-                <a
-                  [routerLink]="['/books/', libraryBook.book.id]"
-                  class="details-link"
-                  >Details</a
-                >
-              </div>
+<!--              <div class="act-button-div">-->
+<!--                <a-->
+<!--                  [routerLink]="['/books/', libraryBook.book.id]"-->
+<!--                  class="details-link"-->
+<!--                  >Details</a-->
+<!--                >-->
+<!--              </div>-->
               <div class="act-button-div">
                 <button
                   mat-button

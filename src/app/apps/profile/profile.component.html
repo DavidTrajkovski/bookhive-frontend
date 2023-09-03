@@ -3,8 +3,15 @@
     <mat-card-header>
       <div style="width: 100%; border-radius: 10px; display: flex; justify-content: center; align-items: center; height: 50px; background-color: #f0f8eb; font-size: 20px; font-weight: bold ">Edit your profile information</div>
     </mat-card-header>
-    <div style="height: 30px;"></div>
-    <mat-card-content>
+    <div style="height: 30px;">
+      <div class="spinner-div" *ngIf="loading">
+        <mat-progress-spinner
+          class="align-self-center"
+          mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </div>
+    <mat-card-content *ngIf="!loading">
       <form
         [formGroup]="profileForm"
       (ngSubmit)="onSubmit()"
@@ -29,3 +36,4 @@
     </mat-card-content>
   </mat-card>
 </div>
+<notifier-container></notifier-container>

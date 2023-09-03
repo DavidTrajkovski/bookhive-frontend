@@ -40,7 +40,7 @@
             </div>
             <div class="div-add-to-favourites-wrapper">
               &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
-                                                             (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+                                                             (click)="addToWishlist(book?.id!)">&nbsp;&nbsp;&nbsp;
             </div>
           </mat-card-actions>
         </div>
@@ -54,14 +54,13 @@
   <div class="image-full">
     <img *ngIf="book?.coverImageUrl" id="avatar" [ngSrc]="getBookUrl()" height="350" width="350"/>
     <div class="mat-card-div">
-      <mat-card-actions align="end">
-        <div class="div-add-to-cart-wrapper">
-          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart"
-                                    (click)="openAddToCartDialog(book?.id!)">
+      <mat-card-actions>
+        <div class="div-add-to-cart-wrapper" (click)="openAddToCartDialog(book?.id!)">
+          Add to shopping cart <img src="/assets/cart.png" alt="cart" class="cart">
         </div>
-        <div class="div-add-to-favourites-wrapper">
-          &nbsp;&nbsp;&nbsp;Add to favourites&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
-                                                         (click)="addToFavourites(book?.id!)">&nbsp;&nbsp;&nbsp;
+        <div class="div-add-to-favourites-wrapper" (click)="addToWishlist(book?.id!)">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add to wishlist&nbsp; <img src="/assets/love.png" alt="favourite" class="heart"
+                                                         >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
       </mat-card-actions>
     </div>
@@ -104,4 +103,4 @@
     book&nbsp;&nbsp;&nbsp;</a>
 
 </div>
-
+<notifier-container></notifier-container>

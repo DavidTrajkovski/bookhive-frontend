@@ -19,14 +19,13 @@
           <div class="header-content">
             <mat-card-header>
               <mat-card-title-group>
-                <mat-card-title>{{book.name}}</mat-card-title>
+                <mat-card-title><a class="title-link" [routerLink]="['/books/', book.id]"> {{ book.name }}</a></mat-card-title>
                 <mat-card-subtitle *ngFor="let author of book.authors">{{author.name}}&nbsp;{{author.surname}}</mat-card-subtitle>
               </mat-card-title-group>
             </mat-card-header>
           </div>
           <div class="footer-content">
             <mat-card-actions align="end">
-              <div class="act-button-div"><a [routerLink]="['/books/', book?.id]" class="details-link">Details</a></div>
               <div class="act-button-div"><a (click)="removeBookFromMyWishList(book.id)" class="remove-link">Remove</a></div>
             </mat-card-actions>
           </div>

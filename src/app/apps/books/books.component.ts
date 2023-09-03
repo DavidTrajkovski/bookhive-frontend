@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup} from "@angular/forms";
-import {debounceTime, distinctUntilChanged, filter, map, pairwise, throttleTime,} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter,} from 'rxjs/operators';
 import {Subscription} from "rxjs";
 import {BookService} from "../../core/service/book/book.service";
 import {BookDto} from "../../core/interface/book/book-dto";
@@ -18,7 +18,8 @@ export class BooksComponent implements  OnInit, OnDestroy {
   loading: boolean = false;
   books: BookDto[] = [];
   page: number = 1;
-  total: number = 0
+  total: number = 0;
+  itemsPerPage: number = 9;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -35,6 +36,7 @@ export class BooksComponent implements  OnInit, OnDestroy {
   }
 
   pageChangeEvent(event: number){
+    debugger
     this.page = event;
     this.callGetBooks();
   }
@@ -44,8 +46,9 @@ export class BooksComponent implements  OnInit, OnDestroy {
     const searchValue = this.searchAndFilterForm.get('searchAndFilter.searchValue')!.value;
     const genre = this.searchAndFilterForm.get('searchAndFilter.sortValue')!.value;
     this._bookService.getPageableBooks(this.page, searchValue, genre).subscribe((data) => {
-      this.books = data
-      this.total = data.length
+      debugger
+      this.books = data.bookDtos
+      this.total = data.totalBooksCount
       this.loading = false
     });
   }

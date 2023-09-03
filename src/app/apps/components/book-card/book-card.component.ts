@@ -38,7 +38,7 @@ export class BookCardComponent {
         },
         error: (_) => {
           this._notifierService.notify(
-            'success',
+            'error',
             'Error adding book to wishlist!'
           );
         },
