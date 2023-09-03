@@ -1,14 +1,14 @@
 @import "styles";
 
 .body {
-  background-color: #FC766A;
+  background-color: map-get($bookhive-primary, 50);
   font-family: 'IBM Plex Sans', sans-serif;
   min-height: 100vh;
 }
 
 #map {
   width: auto;
-  height: 500px;
+  height: 75vh;
 }
 .geolocation-wrapper {
   cursor: pointer;
