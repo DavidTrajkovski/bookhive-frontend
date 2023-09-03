@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/core/service/authentication/auth.service';
 })
 export class AuthorsComponent implements OnInit {
   authors$: Observable<BookAuthorInfoDto[]> | null
+  loading: boolean = false;
 
   constructor(private _authorService: AuthorService,
               private router: Router,
@@ -24,7 +25,16 @@ export class AuthorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true
     this.authors$ = this._authorService.getAllAuthors()
+    this.authors$.subscribe(data => {
+      if (data != null) {
+        this.loading = false
+      }
+    })
+    // if (this.authors$ != null) {
+    //   this.loading = false;
+    // }
   }
 
   openAuthorDialog(authorId: string | null) {

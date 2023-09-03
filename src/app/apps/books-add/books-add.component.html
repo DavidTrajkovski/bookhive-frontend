@@ -12,7 +12,13 @@
       </ol>
     </nav>
   </div>
-  <div class="d-flex flex-column align-items-center justify-content-center my-5">
+  <div class="spinner-div" *ngIf="loading">
+    <mat-progress-spinner
+      class="align-self-center"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="d-flex flex-column align-items-center justify-content-center my-5" *ngIf="!loading">
     <h2>{{ editMode ? 'Edit' : 'Add a New' }} Book</h2>
     <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()" class="mb-4" style="width: 60%;">
 
@@ -85,7 +91,6 @@
       </mat-form-field>
       </div>
 
-
       <div class="form-group">
         <mat-form-field class="mat-form-field">
           <mat-label>Authors</mat-label>
@@ -97,8 +102,6 @@
         </mat-form-field>
       </div>
 
-
-
       <button type="submit" class="btn btn-primary w-100">
         {{ editMode ? 'Edit Book' : 'Add Book' }}
       </button>
@@ -106,3 +109,4 @@
     </form>
   </div>
 </div>
+<notifier-container></notifier-container>
